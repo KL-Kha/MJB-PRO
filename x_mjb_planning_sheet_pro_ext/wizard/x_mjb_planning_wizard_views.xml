@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="x_mjb_planning_wizard_form_inherit" model="ir.ui.view">
+        <field name="name">x_mjb_planning_wizard_form_inherit</field>
+        <field name="model">x_mjb_planning_wizard</field>
+        <field name="inherit_id" ref="x_mjb_planning_sheet.x_mjb_planning_wizard_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='x_sheet_id']" position="after">
+                <field name="x_subcontractor" attrs="{ 'invisible': [('x_type', 'not in', ['sell','resupply'])] }"/>
+                <field name="x_operation_type_id" attrs="{ 'invisible': [('x_type', 'not in', ['buy'])] }"/>
+            </xpath>
+            <xpath expr="//notebook/page[3]" position="attributes">
+                <attribute name="attrs">{ 'invisible': [('x_type','not in',['buy','subcontract','manufacture','sell','resupply'])] }</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="x_mjb_planning_sheet_opt_resupply" model="x_mjb_planning_sheet_opt">
+            <field name="x_code">RESUPPLY_OPERATION_TYPE_ID</field>
+            <field name="x_name">12</field>
+            <field name="x_company_id" ref="base.main_company"/>
+        </record>
+        <record id="x_mjb_planning_sheet_opt_resupply_source_location" model="x_mjb_planning_sheet_opt">
+            <field name="x_code">RESUPPLY_SOURCE_LOCATION_ID</field>
+            <field name="x_name">8</field>
+            <field name="x_company_id" ref="base.main_company"/>
+        </record>
+        <record id="x_mjb_planning_sheet.x_mjb_planning_sheet_opt_all" model="x_mjb_planning_sheet_opt">
+            <field name="x_code">STOCK_LOC_ID, BUY_OPERATION_TYPE_ID, SUBCONTRACT_OPERATION_TYPE_ID, MFG_OPERATION_TYPE_ID, RESUPPLY_OPERATION_TYPE_ID, RESUPPLY_SOURCE_LOCATION_ID, MANUFACTURE_LOCATION_ID, KIT_LOCATION_ID</field>
+        </record>
+
+        <record id="x_mjb_planning_sheet_opt_subcontracting_location" model="x_mjb_planning_sheet_opt">
+            <field name="x_code">SUBCONTRACTING_LOCATION_ID</field>
+            <field name="x_company_id" ref="base.main_company"/>
+        </record>
+        <record id="x_mjb_planning_sheet_opt_manufacture_location" model="x_mjb_planning_sheet_opt">
+            <field name="x_code">MANUFACTURE_LOCATION_ID</field>
+            <field name="x_company_id" ref="base.main_company"/>
+        </record>
+        <record id="x_mjb_planning_sheet_opt_kit_location" model="x_mjb_planning_sheet_opt">
+            <field name="x_code">KIT_LOCATION_ID</field>
+            <field name="x_company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="x_mjb_planning_sheet_product_categ_rate" model="x_mjb_planning_sheet_opt">
+            <field name="x_code">PRODUCT_DEFECT_RATE_CATEGORY_ID</field>
+            <field name="x_name"></field>
+            <field name="x_company_id" ref="base.main_company"/>
+        </record>
+
+        <record id="x_mjb_planning_sheet_x_defect_rate" model="x_mjb_planning_sheet_opt">
+            <field name="x_code">DEFECT_RATE_FOR_PRODUCT_CATEGORY</field>
+            <field name="x_name">0.03</field>
+            <field name="x_company_id" ref="base.main_company"/>
+        </record>
+    </data>
+</odoo>

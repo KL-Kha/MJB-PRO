@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="x_mjb_planning_sheet_form_inherit" model="ir.ui.view">
+        <field name="name">x_mjb_planning_sheet.form.inherit</field>
+        <field name="model">x_mjb_planning_sheet</field>
+        <field name="inherit_id" ref="x_mjb_planning_sheet.x_mjb_planning_sheet_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='x_mjb_planning_sheet.x_mjb_planning_sheet_compute']" position="before">
+                <button class="btn btn-dark" name="x_mjb_planning_sheet.x_mjb_planning_wizard_action"
+                        attrs="{'invisible': [('x_stage_code','!=','confirmed')]}" type="action"
+                        context="{'x_type': 'sell'}" string="Sell"/>
+                <button class="btn btn-dark" name="x_mjb_planning_sheet.x_mjb_planning_wizard_action"
+                        attrs="{'invisible': [('x_stage_code','!=','confirmed')]}" type="action"
+                        context="{'x_type': 'resupply'}" string="Resupply"/>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" icon="fa-balance-scale" type="object" name="action_open_sale_order">
+                    <field widget="statinfo" name="x_sale_order_count" string="Sales"/>
+                </button>
+                <button class="oe_stat_button" icon="fa-cubes" type="object" name="action_open_stock_move">
+                    <field widget="statinfo" name="x_stock_move_count" string="Resupply"/>
+                </button>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Planned Sale Lines">
+                    <group/>
+                    <field name="x_sale_order_line_ids"/>
+                </page>
+                <page string="Planned Stock Lines">
+                    <group/>
+                    <field name="x_stock_move_line_ids"/>
+                </page>
+                <page string="Alternative Choices">
+                    <group/>
+                    <field name="x_default_product_ids">
+                        <tree create="0" editable="bottom">
+                            <field name="x_planning_sheet_id" invisible="1" readonly="1" />
+                            <field name="x_bom_id" readonly="1"/>
+                            <field name="x_bom_line_id" invisible="1" readonly="1"/>
+                            <field name="x_product_id" readonly="1"/>
+                            <field name="x_replace_product_ids" widget="many2many_tags" options="{'no_create': True, 'no_create_edit':True}"/>
+                            <field name="x_confirmed_product_id" domain="[('id', 'in', x_replace_product_ids)]"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="//notebook/page[1]/div/field/tree" position="attributes">
+                <attribute name="editable">bottom</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[1]/div/field/tree/field[@name='x_product_id']" position="after">
+                <field name="x_bom_ids" widget="many2many_tags" invisible="1"
+                       options="{'no_create': True, 'no_create_edit':True}"/>
+                <field name="x_bom_id" domain="[('id', 'in', x_bom_ids)]"
+                       options="{'no_create': True, 'no_create_edit':True}"/>
+            </xpath>
+            <xpath expr="//notebook/page[2]" position="attributes">
+                <attribute name="string">Components</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[2]/div/field/tree/field[@name='x_uom_id']" position="after">
+                <field name="x_parent_bom_id" readonly="1" optional="hide"/>
+                <field name="x_bom_type" readonly="1"/>
+            </xpath>
+            <xpath expr="//notebook/page[2]/div/field/tree/field[@name='x_quantity']" position="after">
+                <field name="x_supplier_ids" widget="many2many_tags" invisible="1"
+                       options="{'no_create': True, 'no_create_edit':True}"/>
+                <field name="x_purchased_qty" readonly="1"/>
+            </xpath>
+            <xpath expr="//notebook/page[2]/div/field/tree/field[@name='x_supplier_id']" position="attributes">
+                <attribute name="domain">[('id', 'in', x_supplier_ids)]</attribute>
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[3]/div/field/tree/field[@name='x_quantity']" position="after">
+                <field name="x_supplier_ids" widget="many2many_tags" invisible="1"
+                       options="{'no_create': True, 'no_create_edit':True}"/>
+                <field name="x_purchased_qty" readonly="1"/>
+            </xpath>
+            <xpath expr="//notebook/page[3]/div/field/tree/field[@name='x_supplier_id']" position="attributes">
+                <attribute name="domain">[('id', 'in', x_supplier_ids)]</attribute>
+                <attribute name="optional">hide</attribute>
+            </xpath>
+
+            <xpath expr="//notebook/page/div/field[@name='x_buy_line_ids']/tree/field[@name='x_quantity']" position="before">
+                <field name="x_defect_rate" digits="[12,3]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

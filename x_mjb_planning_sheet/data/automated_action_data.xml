@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- <record id="custom_rak_auto_mo_created_from_planner" model="base.automation">
+        <field name="name">custom_rak - Auto - MO Created from planner</field>
+        <field name="model_id" ref="mrp.model_mrp_production"/>
+        <field name="state">code</field>
+        <field name="trigger">on_create</field>
+        <field name="code">
+if record:
+  if record.x_planner_sheet_line_id.x_sale_order_line_id:
+    record['origin'] = record.x_planner_sheet_line_id.x_sale_order_line_id.order_id.name
+        </field>
+    </record> -->
+
+    <record id="mjb_planning_auto_sheet_update" model="base.automation">
+        <field name="name">mjb_planning - Auto - Sheet Update</field>
+        <field name="model_id" ref="x_mjb_planning_sheet.model_x_mjb_planning_sheet"/>
+        <field name="state">code</field>
+        <field name="trigger">on_create</field>
+        <field name="code">
+def alert(m):
+    raise(UserError(str(m)))
+
+def genCode(record):
+    if not record:
+        return False
+
+    _model = record._name
+    seqName = "%s" % _model
+    matches = env['ir.sequence'].search([
+        ('code', '=', seqName)
+    ])
+    if len(matches) > 0:
+        fields = record.fields_get()
+        potentialFields = [
+            'x_name'
+        ]
+        res = {}
+        for p in potentialFields:
+            if p in fields:
+                if str(record[p]) == 'New' or str(record[p]) == '' or record[p] == False:
+                    res[p] = env['ir.sequence'].next_by_code(seqName)
+                    return res
+    return {}
+
+vd = genCode(record)
+for k in vd:
+    record[k] = vd[k]
+        </field>
+    </record>
+
+    <record id="mjb_planning_sheet_auto_output_line_ids" model="base.automation">
+        <field name="name">mjb_planning - Auto - Output line ids</field>
+        <field name="model_id" ref="x_mjb_planning_sheet.model_x_mjb_planning_sheet"/>
+        <field name="state">code</field>
+        <field name="trigger">on_create</field>
+        <field name="code">
+def alert(m):
+    raise(UserError(str(m)))
+
+def addOrderLines(record):
+    data = {
+        'x_output_line_ids': [],
+        'x_stage_id': 1,
+    }
+    # for so in record['x_sale_order_ids']:
+    #     sale_order = env['sale.order'].browse(so.id)
+    #     for line in sale_order.order_line:
+    #         data['x_output_line_ids'].append((0, 0, {
+    #             'x_product_id': line.product_id.id,
+    #             'x_quantity': line.product_uom_qty,
+    #             'x_unit_price': line.price_unit,
+    #             'x_currency_id': line.currency_id.id,
+    #             'x_sale_order_line_id': line.id,
+    #             'x_type': 'output'
+    #         }))
+    record.write(data)
+
+addOrderLines(record)
+
+        </field>
+    </record>
+
+    <!-- <record id="mjb_planning_default_automated_action" model="base.automation">
+        <field name="name">mjb_planning - Default Automated Action</field>
+        <field name="model_id" ref="base.model_ir_actions_server"/>
+        <field name="state">code</field>
+        <field name="trigger">on_create</field>
+        <field name="code">
+raise(UserError("It works"))
+        </field>
+    </record> -->
+
+</odoo>

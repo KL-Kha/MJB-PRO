@@ -1,0 +1,1245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="x_mjb_planning_sheet.x_mjb_planning_sheet_compute" model="ir.actions.server">
+        <field name="code">
+# Compute all needs for the calculator selection
+# record = env['x_mjb_mrp_planner_sheet'].browse(11)
+def getProductReservedQty(productId=False, locationId=False):
+    if not productId or not locationId:
+        return 0.0
+    res = {}
+    domain_quant = [
+        ("product_id", "=", productId),
+        ('location_id', "=", locationId)
+    ]
+    quants = (
+        env["stock.quant"]
+        .with_context(lang=False)
+        .read_group(
+            domain_quant,
+            ["product_id", "location_id", "quantity", "reserved_quantity"],
+            ["product_id", "location_id"],
+            lazy=False,
+        )
+    )
+    qty = 0.0
+    for quant in quants:
+        qty += quant["reserved_quantity"]
+    return qty
+
+def getProductForecastedQty(productId=False, locationId=False):
+    return 0.0
+
+def get_stock_quant(need,LOCATION_ID):
+    quant_product = env['stock.quant'].search([('location_id','in',list(map(int, LOCATION_ID))),('product_id','=',need['product'].id)])
+
+    onHandQty = sum(quant_product.mapped('quantity'))
+    reservedQty = sum(quant_product.mapped('reserved_quantity'))
+
+    forecastedQty_location = getProductForecastedQty(need['product'].id, list(map(int, LOCATION_ID)))
+
+    availableQty = onHandQty - reservedQty
+
+    return onHandQty,reservedQty,forecastedQty_location,availableQty
+
+def calculateNeed(calculator):
+    validate(calculator)
+    company = env.company
+    if calculator['x_company_id']:
+        company = calculator['x_company_id']
+
+    # companyCurrency = company.currency_id
+
+    STK_LOC_ID = getOption('STOCK_LOC_ID', company)
+    try:
+        STK_LOC_ID = int(STK_LOC_ID)
+    except:
+        alert("STK_LOC_ID option is not a integer ! Please set the value to the stock location ID used to compare stock")
+
+    SUBCONTRACTING_LOCATION_ID = getOption('SUBCONTRACTING_LOCATION_ID', company)
+    SUBCONTRACTING_LOCATION_ID = SUBCONTRACTING_LOCATION_ID.split(',')
+    MANUFACTURE_LOCATION_ID = getOption('MANUFACTURE_LOCATION_ID', company)
+    MANUFACTURE_LOCATION_ID = MANUFACTURE_LOCATION_ID.split(',')
+    KIT_LOCATION_ID = getOption('KIT_LOCATION_ID', company)
+    KIT_LOCATION_ID = KIT_LOCATION_ID.split(',')
+    # log(" ")
+    # log("---")
+    # log("RECURSIVE")
+    # log("---")
+    # log(" ")
+
+    finalProductList = record.x_output_line_ids
+    finalNeeds = []
+    finalErrors = []
+    for line in finalProductList:
+        product = line.x_product_id
+        bom = line.x_bom_id
+        qty = line.x_quantity
+        orderLineId = line.x_sale_order_line_id.id or False
+
+        validateLine(line)
+        needs, errors = getProductNeedWithBom(product, bom, qty, line, len(finalNeeds))
+        finalNeeds += needs
+        finalErrors += errors
+    # alert(str(finalNeeds))
+
+    if len(finalErrors) > 0:
+        alert("\n".join(finalErrors))
+
+    # return False
+    # log(" ")
+    # log("---")
+    # log("GROUPING")
+    # log("---")
+    # log(" ")
+    # organize and group by
+
+    sortedNeeds = {}
+    for need in finalNeeds:
+        key = finalNeeds.index(need)
+
+        if key not in sortedNeeds:
+            # onHandQty = need['product'].with_context({'location': STK_LOC_ID})['qty_available']
+            # reservedQty = getProductReservedQty(need['product'].id, STK_LOC_ID)
+            # availableQty = onHandQty - reservedQty
+            # forecastedQty = getProductForecastedQty(need['product'].id, STK_LOC_ID)
+
+            onHandQty = 0
+            reservedQty = 0
+            forecastedQty = 0
+            availableQty = 0
+            
+            if need['type'] == 'subcontract':
+                onHandQty,reservedQty,forecastedQty_location,availableQty = get_stock_quant(need,SUBCONTRACTING_LOCATION_ID)
+
+            elif need['type'] in ['normal','phantom']:
+                location_avaialbe = MANUFACTURE_LOCATION_ID and KIT_LOCATION_ID
+                onHandQty,reservedQty,forecastedQty_location,availableQty = get_stock_quant(need,location_avaialbe)
+            elif need['type'] == 'buy':
+                if need['parent_bom']['type'] == 'subcontract':
+                    onHandQty,reservedQty,forecastedQty_location,availableQty = get_stock_quant(need,SUBCONTRACTING_LOCATION_ID)
+                elif need['parent_bom']['type'] in ['normal','phantom']:
+                    location_avaialbe = MANUFACTURE_LOCATION_ID and KIT_LOCATION_ID
+                    onHandQty,reservedQty,forecastedQty_location,availableQty = get_stock_quant(need,location_avaialbe)
+
+            sortedNeeds[key] = {
+                'x_sheet_id': calculator.id,
+                "x_product_id": need['product']['id'],
+                # 'x_standard_cost': need['product']['standard_price'],
+                "x_computed_quantity": 0.0,
+                "x_quantity": 0.0,
+                "x_name": "",
+                "x_bom_id": False,
+                "x_parent_bom_id": False,
+                "x_bom_type": "",
+                "x_origin_line_ids": [],
+                "x_onhand_quantity": onHandQty,
+                "x_reserved_quantity": reservedQty,
+                "x_available_quantity": availableQty,
+                "x_forecasted_quantity": forecastedQty,
+                "x_supplier_ids": [],
+                "x_supplier_id": False,
+                'x_unit_price': need['product']['standard_price'],
+                "x_type": need['type']
+            }
+
+            if need['type'] == 'normal':
+                # sortedNeeds[key]['x_name'] = str(need['bom']['id'])
+                sortedNeeds[key]['x_bom_id'] = need['bom']['id']
+                sortedNeeds[key]['x_type'] = 'manufacture'
+                sortedNeeds[key]['x_uom_id'] = need['bom']['product_uom_id']['id']
+
+            if need['type'] == 'phantom':
+                # sortedNeeds[key]['x_name'] = str(need['bom']['id'])
+                sortedNeeds[key]['x_bom_id'] = need['bom']['id']
+                sortedNeeds[key]['x_uom_id'] = need['bom']['product_uom_id']['id']
+
+            if need['type'] == 'subcontract':
+                # sortedNeeds[key]['x_name'] = str(need['bom']['id'])
+                sortedNeeds[key]['x_bom_id'] = need['bom']['id']
+                sortedNeeds[key]['x_uom_id'] = need['product']['uom_po_id']['id']
+
+                if len(need['bom']['subcontractor_ids']) > 0:
+                    for supplier in need['bom']['subcontractor_ids']:
+                        sortedNeeds[key]['x_supplier_ids'].append(supplier['id'])
+                    sortedNeeds[key]['x_supplier_id'] = need['bom']['subcontractor_ids'][0]['id']
+
+                    if len(need['product']['seller_ids']) > 0:
+                        for price in need['product']['seller_ids']:
+                            if price['partner_id']['id'] == need['bom']['subcontractor_ids'][0]['id']:
+                                sortedNeeds[key]['x_unit_price'] = price['price']
+                                sortedNeeds[key]['x_currency_id'] = price['currency_id']['id']
+
+            if need['type'] == 'buy':
+                if len(need['product']['seller_ids']) > 0:
+                    for supplier in need['product']['seller_ids']:
+                        sortedNeeds[key]['x_supplier_ids'].append(supplier['partner_id']['id'])
+                    sortedNeeds[key]['x_supplier_id'] = need['product']['seller_ids'][0]['partner_id']['id']
+                    sortedNeeds[key]['x_unit_price'] = need['product']['seller_ids'][0]['price']
+                    sortedNeeds[key]['x_currency_id'] = need['product']['seller_ids'][0]['currency_id']['id']
+                sortedNeeds[key]['x_uom_id'] = need['product']['uom_po_id']['id']
+                sortedNeeds[key]['x_parent_bom_id'] = need['parent_bom']['id']
+                if need['parent_bom']['type'] == 'normal':
+                    sortedNeeds[key]['x_bom_type'] = 'Manufacture'
+                elif need['parent_bom']['type'] == 'phantom':
+                    sortedNeeds[key]['x_bom_type'] = 'Kit'
+                elif need['parent_bom']['type'] == 'subcontract':
+                    sortedNeeds[key]['x_bom_type'] = 'Subcontracting'
+
+        sortedNeeds[key]['x_computed_quantity'] = sortedNeeds[key]['x_computed_quantity'] + need['quantity']
+        sortedNeeds[key]['x_quantity'] = sortedNeeds[key]['x_quantity'] + need['quantity']
+
+        parentNeed = findParentNeed(need['parentUID'], finalNeeds)
+        rootNeed = findParentNeed(need['rootUID'], finalNeeds)
+        if parentNeed:
+            # log("Root: %s | Parent: %s | Me: %s | %s" % (str(need['rootUID']),str(need['parentUID']),str(need['UID']),str(parentNeed['product'].name)))
+            # alert(str(rootNeed))
+
+            saleOrderLineId = rootNeed['line'].x_sale_order_line_id.id or False
+            bomId = False
+            if parentNeed['bom']:
+                bomId = parentNeed['bom']['id']
+            # alert("Parent "+ str(n))
+            sortedNeeds[key]['x_origin_line_ids'].append((0, 0, {
+                'x_sheet_id': calculator.id,
+                "x_product_id": parentNeed['product']['id'],
+                "x_uom_id": parentNeed['product']['uom_id']['id'],
+                # 'x_standard_cost': parentNeed['product']['standard_price'],
+                "x_computed_quantity": need['quantity'],
+                "x_quantity": need['quantity'],
+                'x_sale_order_line_id': saleOrderLineId,
+                "x_name": "",
+                "x_bom_id": bomId,
+                "x_origin_line_ids": [],
+                "x_onhand_quantity": 0,
+                "x_reserved_quantity": 0,
+                "x_forecasted_quantity": 0,
+                'x_unit_price': 0.0,
+                "x_type": 'origin'
+            }))
+        else:
+            sortedNeeds[key]['x_sale_order_line_id'] = rootNeed['line'].x_sale_order_line_id.id or False
+    
+    newKeys = []
+    newSortedNeeds = {}
+    for need in sortedNeeds:
+        newKey = [sortedNeeds[need]['x_product_id'], sortedNeeds[need]['x_bom_type'], sortedNeeds[need]['x_supplier_id']]
+        if newKey not in newKeys: 
+            newKeys.append(newKey)
+            newSortedNeeds[newKeys.index(newKey)] = {
+                "x_sheet_id": sortedNeeds[need]['x_sheet_id'],
+                "x_product_id": sortedNeeds[need]['x_product_id'],
+                "x_computed_quantity": sortedNeeds[need]['x_computed_quantity'],
+                "x_quantity": sortedNeeds[need]['x_quantity'],
+                "x_name": sortedNeeds[need]['x_name'],
+                "x_bom_id": sortedNeeds[need]['x_bom_id'],
+                "x_parent_bom_id": sortedNeeds[need]['x_parent_bom_id'],
+                "x_bom_type": sortedNeeds[need]['x_bom_type'],
+                "x_origin_line_ids": sortedNeeds[need]['x_origin_line_ids'],
+                "x_onhand_quantity": sortedNeeds[need]['x_onhand_quantity'],
+                "x_reserved_quantity": sortedNeeds[need]['x_reserved_quantity'],
+                "x_available_quantity": sortedNeeds[need]['x_available_quantity'],
+                "x_forecasted_quantity": sortedNeeds[need]['x_forecasted_quantity'],
+                "x_supplier_ids": sortedNeeds[need]['x_supplier_ids'],
+                "x_supplier_id": sortedNeeds[need]['x_supplier_id'],
+                "x_unit_price": sortedNeeds[need]['x_unit_price'],
+                "x_type": sortedNeeds[need]['x_type']
+            }
+        else:
+            newSortedNeeds[newKeys.index(newKey)]['x_computed_quantity'] += sortedNeeds[need]['x_quantity']
+            newSortedNeeds[newKeys.index(newKey)]['x_quantity'] += sortedNeeds[need]['x_quantity']
+    
+    calculator.x_buy_line_ids.unlink()
+    calculator.x_subcontract_line_ids.unlink()
+    calculator.x_manufacture_line_ids.unlink()
+    calculator.x_kit_line_ids.unlink()
+
+    res = []
+    for key in newSortedNeeds:
+        env['x_mjb_planning_sheet_line'].create(newSortedNeeds[key])
+
+    copySortedNeeds = newSortedNeeds.copy()
+    sellSortedNeeds = {}
+
+    for key in copySortedNeeds:
+        if copySortedNeeds[key]['x_type'] == 'buy':
+            sellSortedNeeds[key] = copySortedNeeds[key]
+            sellSortedNeeds[key]['x_type'] = 'sell'
+
+    calculator.x_sale_line_ids.unlink()
+    for key in sellSortedNeeds:
+        env['x_mjb_planning_sheet_line'].create(sellSortedNeeds[key])
+
+    resupplySortedNeeds = {}
+
+    for key in copySortedNeeds:
+        if copySortedNeeds[key]['x_type'] == 'sell':
+            resupplySortedNeeds[key] = copySortedNeeds[key]
+            resupplySortedNeeds[key]['x_type'] = 'resupply'
+    
+    calculator.x_resupply_line_ids.unlink()
+    for key in resupplySortedNeeds:
+        env['x_mjb_planning_sheet_line'].create(resupplySortedNeeds[key])
+
+def findParentNeed(uid, needs):
+    if uid >= 0:
+        for n in needs:
+            if n['UID'] == uid:
+                return n
+    return False
+
+# Make sure the calculator is OK
+
+def validate(calculator):
+    problems = []
+    if not calculator:
+        alert("No calculator provided")
+    #   if calculator.x_studio_status == "confirm":
+    #     alert("Calculator cannot be confirmed")
+    return True
+    # Make sure the need line is OK
+
+def validateLine(needLine):
+    problems = []
+    if not needLine.x_product_id:
+        alert("No product provided")
+    return True
+
+# Select Bom by type preference
+
+def chooseBom(product, bomOrder=['normal', 'subcontract', 'phantom']):
+    boms = product.bom_ids
+    if len(boms) == 0:
+        return False
+
+    for bomType in bomOrder:
+        for bom in boms:
+            if bom.type == bomType and len(bom.bom_line_ids) > 0:
+                return bom
+
+    alert("Error on product %s, no bom type on boms %s" % (product.display_name, str(boms.mapped('id'))))
+
+
+# Compute needs for a product and given qty
+def getProductNeedWithBom(product, bom, quantity, line=False, collectionLength=0, parentUID=-1, rootUID=-1, depth=0, maxDepth=10):
+    if depth > maxDepth:
+        return [], ["Max Depth Reached"]
+
+    UID = collectionLength
+    if parentUID == -1:
+        rootUID = UID
+
+    # log("Root: %s | Parent: %s | Me: %s | %s" % (str(rootUID),str(parentUID),str(UID),str(product.name)))
+
+    # We are a component, just return ourselves
+    if not bom:
+        return [{
+            "UID": UID,
+            "product": product,
+            "type": "buy",
+            "line": line,
+            "quantity": quantity,
+            "bom": False,
+            "parent_bom": False,
+            "parentUID": parentUID,
+            "rootUID": rootUID,
+            "depth": depth
+        }], []
+
+    # We have bom, first add ourselves to the list, then our sub products
+    finalNeeds = []
+    # if depth > 0:
+    finalNeeds.append({
+        "UID": UID,
+        "product": product,
+        "type": bom.type,
+        "line": line,
+        "quantity": quantity,
+        "bom": bom,
+        "parent_bom": bom,
+        "parentUID": parentUID,
+        "rootUID": rootUID,
+        "depth": depth
+    })
+    finalErrors = []
+
+    for line in bom.bom_line_ids:
+        isActive = checkBomLineActive(line, product)
+        if isActive:
+            # factor = production.product_uom_id._compute_quantity(production.product_qty, production.bom_id.product_uom_id) / production.bom_id.product_qty
+            componentUOM = line.x_confirmed_product_id.uom_id
+            bomLineUOM = line.product_uom_id
+            convertedQty = (quantity/bom.product_qty) * bomLineUOM._compute_quantity(line.product_qty, componentUOM)
+
+            needs, errors = getProductNeed(
+                line.x_confirmed_product_id, bom, convertedQty, False, collectionLength + len(finalNeeds), UID, rootUID, depth + 1)
+            finalNeeds += needs
+            finalErrors += errors
+
+    # log(" ")
+    return finalNeeds, finalErrors
+
+def getProductNeed(product, parent_bom, quantity, line=False, collectionLength=0, parentUID=-1, rootUID=-1, depth=0, maxDepth=10):
+    if depth > maxDepth:
+        return [], ["Max Depth Reached"]
+
+    bom = chooseBom(product)
+    UID = collectionLength
+    if parentUID == -1:
+        rootUID = UID
+
+    # log("Root: %s | Parent: %s | Me: %s | %s" % (str(rootUID),str(parentUID),str(UID),str(product.name)))
+
+    # We are a component, just return ourselves
+    if not bom:
+        return [{
+            "UID": UID,
+            "product": product,
+            "type": "buy",
+            "line": line,
+            "quantity": quantity,
+            "bom": False,
+            "parent_bom": parent_bom,
+            "parentUID": parentUID,
+            "rootUID": rootUID,
+            "depth": depth
+        }], []
+
+    # We have bom, first add ourselves to the list, then our sub products
+    finalNeeds = []
+    # if depth > 0:
+    finalNeeds.append({
+        "UID": UID,
+        "product": product,
+        "type": bom.type,
+        "line": line,
+        "quantity": quantity,
+        "bom": bom,
+        "parent_bom": parent_bom,
+        "parentUID": parentUID,
+        "rootUID": rootUID,
+        "depth": depth
+    })
+    finalErrors = []
+
+    for line in bom.bom_line_ids:
+        isActive = checkBomLineActive(line, product)
+        if isActive:
+            # factor = production.product_uom_id._compute_quantity(production.product_qty, production.bom_id.product_uom_id) / production.bom_id.product_qty
+            componentUOM = line.x_confirmed_product_id.uom_id
+            bomLineUOM = line.product_uom_id
+            convertedQty = (quantity/bom.product_qty) * bomLineUOM._compute_quantity(line.product_qty, componentUOM)
+
+            needs, errors = getProductNeed(
+                line.x_confirmed_product_id, bom, convertedQty, False, collectionLength + len(finalNeeds), UID, rootUID, depth + 1)
+            finalNeeds += needs
+            finalErrors += errors
+
+    # log(" ")
+    return finalNeeds, finalErrors
+
+# Check if our bom line is active
+def checkBomLineActive(line, product):
+    lineAttributeValues = line.bom_product_template_attribute_value_ids
+    if len(lineAttributeValues) == 0:
+        return True
+
+    for attributeValue in lineAttributeValues:
+        productAttributeValues = product.product_template_attribute_value_ids
+
+        for productAttributeValue in productAttributeValues:
+            sameType = productAttributeValue.attribute_id.name == attributeValue.attribute_id.name
+            sameName = productAttributeValue.name == attributeValue.name
+            if sameType and sameName:
+                return True
+
+    return False
+
+def alert(m):
+    raise(UserError(str(m)))
+
+def getOption(code, company=False):
+    domain = [
+        ('x_code', '=', code)
+    ]
+    if company:
+        domain.append(('x_company_id', '=', company.id))
+
+    options = env['x_mjb_planning_sheet_opt'].search(domain, limit=1)
+    if options:
+        return options[0].x_name
+    alert("%s is not set ! Please configure the options first !" % str(code))
+
+def updateConfirmedProduct(record):
+    for line in record['x_default_product_ids']:
+        bom_line = env['mrp.bom.line'].browse(line.x_bom_line_id.id)
+        bom_line.write({
+            'x_confirmed_product_id': line.x_confirmed_product_id.id or False,
+        })
+    for line in record['x_output_line_ids']:
+        product = line.x_product_id
+        updateNotConfirmedProduct(product)
+
+def updateNotConfirmedProduct(product):
+    bom = chooseBom(product)
+    if bom:
+        for line in bom.bom_line_ids:
+            if not line.x_confirmed_product_id:
+                line.write({
+                    'x_confirmed_product_id': line.product_id,
+                })
+            updateNotConfirmedProduct(line.product_id)
+
+def updateDefaultProduct(record):
+    validate(record)
+    finalProductList = record.x_output_line_ids
+    finalNeeds = []
+    finalErrors = []
+    for line in finalProductList:
+        product = line.x_product_id
+
+        validateLine(line)
+        needs, errors = getProductReplace(product)
+        finalNeeds += needs
+        finalErrors += errors
+
+    if len(finalErrors) > 0:
+        alert("\n".join(finalErrors))
+
+    sortedNeeds = {}
+    for need in finalNeeds:
+        key = str(need['bom_line']['id'])
+
+        if key not in sortedNeeds:
+            replace_product_ids = []
+            for product in need['replace_product']:
+                replace_product_ids.append((4, product.id))
+            sortedNeeds[key] = {
+                "x_planning_sheet_id": record.id,
+                "x_bom_id": need['bom']['id'],
+                "x_bom_line_id": need['bom_line']['id'],
+                "x_product_id": need['product']['id'],
+                "x_replace_product_ids": replace_product_ids,
+            }
+    for key in sortedNeeds:
+        env['x_mjb_alternative_product'].create(sortedNeeds[key])
+
+def getProductReplace(product):
+    bom = chooseBom(product)
+    if not bom:
+        return [], []
+    # We have bom, first add ourselves to the list, then our sub products
+    finalNeeds = []
+    finalErrors = []
+
+    for line in bom.bom_line_ids:
+        isActive = checkBomLineActive(line, product)
+        if isActive:
+            if line.x_replace_product_ids:
+                finalNeeds.append({
+                    "bom": bom,
+                    "bom_line": line,
+                    "product": line.product_id,
+                    "replace_product": line.x_replace_product_ids,
+                })
+            needs, errors = getProductReplace(line.product_id)
+            finalNeeds += needs
+            finalErrors += errors
+
+    return finalNeeds, finalErrors
+
+if record:
+    if record['x_default_product_ids']:
+        updateConfirmedProduct(record)
+        calculateNeed(record)
+        record['x_computed_date'] = datetime.datetime.today()
+        if not record['x_company_id']:
+            record['x_company_id'] = env.company.id
+    else:
+        updateDefaultProduct(record)
+        updateConfirmedProduct(record)
+        calculateNeed(record)
+        record['x_computed_date'] = datetime.datetime.today()
+        if not record['x_company_id']:
+            record['x_company_id'] = env.company.id
+        </field>
+    </record>
+
+    <record id="x_mjb_planning_sheet.x_mjb_planning_wizard_exec" model="ir.actions.server">
+        <field name="code">
+
+
+def alert(m):
+    raise(UserError(str(m)))
+
+def validate(wizard):
+    if not wizard:
+        alert("No wizard given")
+
+    if not wizard.x_sheet_id:
+        alert("No planning sheet given")
+
+    if wizard.x_type not in ['add_product', 'add_order', 'buy', 'subcontract', 'manufacture', 'sell', 'resupply']:
+        alert("Wrong or not type provided")
+
+    if wizard.x_type == 'add_order':
+        if not wizard.x_sale_order_id:
+            alert("No order provided")
+        if len(wizard.x_sale_order_line_ids) == 0:
+            alert("No order lines provided")
+
+    if wizard.x_type == 'add_product':
+        if len(wizard.x_product_ids) == 0:
+            alert("No products provided")
+            
+    if wizard.x_type == 'buy':
+        if not wizard.x_operation_type_id:
+            alert("No operation type provided")
+
+    return True
+
+def chooseBom(product, bomOrder=['normal', 'subcontract', 'phantom']):
+    boms = product.bom_ids
+    if len(boms) == 0:
+        return []
+    x_bom_ids = []
+    for bomType in bomOrder:
+        for bom in boms:
+            if bom.type == bomType and len(bom.bom_line_ids) > 0:
+                x_bom_ids.append((4, bom.id))
+    if x_bom_ids: 
+        return x_bom_ids
+    else:
+        alert("Error on product %s, no bom type on boms %s" % (product.display_name, str(boms.mapped('id'))))
+
+
+def addOrderLines(wizard):
+    data = {
+        'x_output_line_ids': [],
+        'x_sale_order_ids': []
+    }
+    data['x_sale_order_ids'].append((4, wizard.x_sale_order_id.id))
+
+    for line in wizard.x_sale_order_line_ids:
+        data['x_output_line_ids'].append((0, 0, {
+            'x_product_id': line.product_id.id,
+            'x_bom_ids': chooseBom(line.product_id) or [],
+            'x_bom_id': chooseBom(line.product_id)[0][1] if chooseBom(line.product_id) else [],
+            'x_quantity': line.product_uom_qty,
+            'x_unit_price': line.price_unit,
+            'x_currency_id': line.currency_id.id,
+            'x_sale_order_line_id': line.id,
+            'x_type': 'output'
+        }))
+    wizard.x_sheet_id.write(data)
+
+
+def addProductLines(wizard):
+    data = {
+        'x_output_line_ids': [],
+    }
+    for product in wizard.x_product_ids:
+        data['x_output_line_ids'].append((0, 0, {
+            'x_product_id': product.id,
+            'x_bom_ids': chooseBom(product),
+            'x_bom_id': chooseBom(product)[0][1] or False,
+            'x_quantity': 1,
+            'x_type': 'output',
+        }))
+    wizard.x_sheet_id.write(data)
+
+
+def validateForPO(wizard):
+    problems = []
+    lines = wizard.x_need_line_ids
+    for l in lines:
+        if not l.x_supplier_id:
+            problems.append("Missing supplier for %s" %
+                            str(l.x_product_id.name))
+    if len(problems) > 0:
+        alert("\n".join(problems))
+    return True
+
+def validateForMO(wizard):
+    return True
+
+def validateForSO(wizard):
+    if not wizard.x_subcontractor:
+        alert("Missing subcontractor as the customer to sell the components")
+    return True
+
+def validateForResupply(wizard):
+    if not wizard.x_subcontractor:
+        alert("Missing subcontractor as the customer to sell the components")
+    return True
+
+def getOption(code, company=False):
+    domain = [
+        ('x_code', '=', code)
+    ]
+    if company:
+        domain.append(('x_company_id', '=', company.id))
+
+    options = env['x_mjb_planning_sheet_opt'].search(domain, limit=1)
+    if options:
+        return options[0].x_name
+    alert("%s is not set ! Please configure the options first !" % str(code))
+
+
+def createPOs(wizard, subcontracted=False):
+    validateForPO(wizard)
+    company = env.company
+    if wizard['x_sheet_id']['x_company_id']:
+        company = wizard['x_sheet_id']['x_company_id']
+    lines = wizard.x_need_line_ids
+    orders = {}
+    title = 'Related Purchase Orders'
+    if subcontracted:
+        title = 'Related Subcontracted Orders'
+        OPERATION_TYPE_ID = getOption('SUBCONTRACT_OPERATION_TYPE_ID', company)
+        try:
+            OPERATION_TYPE_ID = int(OPERATION_TYPE_ID)
+        except:
+            alert("SUBCONTRACT_OPERATION_TYPE_ID option is not a integer ! Please set the value to the buy operation type ID used to subcontract products")
+    else:
+        # OPERATION_TYPE_ID = getOption('BUY_OPERATION_TYPE_ID', company)
+        OPERATION_TYPE_ID = wizard['x_operation_type_id']['id']
+        try:
+            OPERATION_TYPE_ID = int(OPERATION_TYPE_ID)
+        except:
+            alert("BUY_OPERATION_TYPE_ID option is not a integer ! Please set the value to the buy operation type ID used to buy components")
+
+    # for each need line
+    for l in lines:
+        supplier = l.x_supplier_id or False
+        if str(supplier.id) not in orders:
+            if subcontracted:
+                SEQ = env['ir.sequence'].next_by_code('po_qe')
+                orders[str(supplier.id)] = {
+                    'origin': wizard.x_sheet_id.x_name,
+                    'x_studio_pro_order': wizard.x_sheet_id.x_pro_order,
+                    'x_sheet_id': wizard.x_sheet_id.id,
+                    'partner_id': supplier.id,
+                    'picking_type_id': OPERATION_TYPE_ID,
+                    'date_order':  datetime.datetime.today(),
+                    'name': SEQ,
+                    'order_line': []
+                }
+            else:
+                orders[str(supplier.id)] = {
+                    'origin': wizard.x_sheet_id.x_name,
+                    'x_studio_pro_order': wizard.x_sheet_id.x_pro_order,
+                    'x_sheet_id': wizard.x_sheet_id.id,
+                    'partner_id': supplier.id,
+                    'picking_type_id': OPERATION_TYPE_ID,
+                    'date_order':  datetime.datetime.today(),
+                    'order_line': []
+                }
+
+        orders[str(supplier.id)]['order_line'].append([0, 0, {
+                'name': l.x_product_id.name,
+                'product_id': l.x_product_id.id,
+                'product_qty': l.x_quantity,
+                'date_planned': datetime.datetime.now(),
+                'x_sheet_id': wizard.x_sheet_id.id,
+                'x_sheet_line_id': l.id,
+                # 'sale_line_id': originLine.x_sale_order_line_id.id,
+                'product_uom': l.x_product_id.uom_po_id.id,
+                'price_unit': l.x_unit_price or 0.0
+            }])
+
+        l.write({
+            'x_quantity': l.x_computed_quantity
+        })
+
+        # create one po line for each origin lines of our need
+        # if len(l.x_origin_line_ids) > 0:
+        #     sortedOrigins = {}
+
+        #     for originLine in l.x_origin_line_ids:
+        #         key = str(originLine.x_sale_order_line_id.id)
+        #         if key not in sortedOrigins:
+        #             sortedOrigins[key] = {
+        #                 'name': "%s (%s - %s)" % (str(l.x_product_id.name), str(originLine.x_sale_order_line_id.order_id.name), str(originLine.x_sale_order_line_id.name)),
+        #                 'product_id': l.x_product_id.id,
+        #                 'product_qty': 0.0,
+        #                 'x_sheet_id': wizard.x_sheet_id.id,
+        #                 'x_sheet_line_id': l.id,
+        #                 'sale_line_id': originLine.x_sale_order_line_id.id,
+        #                 'date_planned': datetime.datetime.now(),
+        #                 'product_uom': l.x_product_id.uom_po_id.id,
+        #                 'price_unit': l.x_unit_price or 0.0
+        #             }
+        #         sortedOrigins[key]['product_qty'] = sortedOrigins[key]['product_qty'] + originLine.x_quantity
+        #     for key in sortedOrigins:
+        #         orders[str(supplier.id)]['order_line'].append(
+        #             [0, 0, sortedOrigins[key]])
+        # else:
+        #     orders[str(supplier.id)]['order_line'].append([0, 0, {
+        #         'name': l.x_product_id.name,
+        #         'product_id': l.x_product_id.id,
+        #         'product_qty': l.x_quantity,
+        #         'date_planned': datetime.datetime.now(),
+        #         'x_sheet_id': wizard.x_sheet_id.id,
+        #        'x_sheet_line_id': l.id,
+        #         # 'sale_line_id': originLine.x_sale_order_line_id.id,
+        #         'product_uom': l.x_product_id.uom_po_id.id,
+        #         'price_unit': l.x_unit_price or 0.0
+        #     }])
+
+    pos = []
+    for k in orders:
+        po = env['purchase.order'].sudo().create(orders[k])
+        pos.append(po)
+
+    return {
+        'name': title,
+        'view_mode': 'tree,form',
+        'res_model': 'purchase.order',
+        'type': 'ir.actions.act_window',
+        'domain': [('x_sheet_id', '=', wizard.x_sheet_id.id)],
+        'target': 'current',
+        'nodestroy': True
+    }
+
+def createMOs(wizard):
+    validateForMO(wizard)
+    company = env.company
+    if wizard['x_sheet_id']['x_company_id']:
+        company = wizard['x_sheet_id']['x_company_id']
+    lines = wizard.x_need_line_ids
+    orders = []
+    OPERATION_TYPE_ID = getOption('MFG_OPERATION_TYPE_ID', company)
+    try:
+        OPERATION_TYPE_ID = int(OPERATION_TYPE_ID)
+    except:
+        alert("MFG_OPERATION_TYPE_ID option is not a integer ! Please set the value to the manufacture operation type ID used to manufacture products")
+    operationType = env['stock.picking.type'].browse(OPERATION_TYPE_ID)
+
+    # for each need line
+    for l in lines:
+        bom = l.x_bom_id
+        # branchId = False
+        # routing = bom.routing_id
+        # if routing:
+        #     branch_id = routing.x_studio_branch_1.id
+
+        # If we have 2 or more origins, it means we do not link to SO (shared component without color)
+        # Else, we need to link to SO  and SO line
+        salesOrderId = False
+        salesOrderLineId = False
+        if len(l.x_origin_line_ids) == 1:
+            salesOrderLineId = l.x_origin_line_ids[0].x_sale_order_line_id.id
+            salesOrderId = l.x_origin_line_ids[0].x_sale_order_line_id.order_id.id
+        else:
+            if l.x_sale_order_line_id:
+                salesOrderLineId = l.x_sale_order_line_id.id
+                salesOrderId = l.x_sale_order_line_id.order_id.id
+
+        orders.append({
+            'origin': wizard.x_sheet_id.x_name,
+            'x_studio_pro_order': wizard.x_sheet_id.x_pro_order,
+            'product_id': l.x_product_id.id,
+            'bom_id': bom.id,
+            # 'branch_id': branch_id,
+            'product_qty': l.x_quantity,
+            'product_uom_id': bom.product_uom_id.id,
+            'picking_type_id': OPERATION_TYPE_ID,
+            'location_src_id': operationType.default_location_src_id.id,
+            'location_dest_id': operationType.default_location_dest_id.id,
+            'x_sheet_id': wizard.x_sheet_id.id,
+            'x_planner_sheet_line_id': l.id
+            # 'x_sale_order_id': salesOrderId,
+            # 'x_studio_sales_order_line_id': salesOrderLineId
+            # 'date_order':  datetime.datetime.today()
+        })
+        # alert(str(orders))
+
+    mos = []
+    for order in orders:
+        mo = env['mrp.production'].sudo().create(order)
+        # mo._onchange_move_raw()
+        mos.append(mo)
+
+    return {
+        'name': "Related Manufacturing Orders",
+        'view_mode': 'tree,form',
+        'res_model': 'mrp.production',
+        'type': 'ir.actions.act_window',
+        'domain': [('x_sheet_id', '=', wizard.x_sheet_id.id)],
+        'target': 'current',
+        'nodestroy': True
+    }
+
+def createSOs(wizard):
+    validateForSO(wizard)
+    customer = wizard.x_subcontractor
+    lines = wizard.x_need_line_ids
+    orders = {}
+    seq = env['ir.sequence'].next_by_code('so_qe')
+    orders[str(customer.id)] = {
+                'origin': wizard.x_sheet_id.x_name,
+                'x_studio_pro_order': wizard.x_sheet_id.x_pro_order,
+                'x_sheet_id': wizard.x_sheet_id.id,
+                'partner_id': customer.id,
+                'name': seq,
+                'order_line': []
+            }
+    # for each need line
+    for l in lines:
+        orders[str(customer.id)]['order_line'].append([0, 0, {
+                'name': l.x_product_id.name,
+                'product_id': l.x_product_id.id,
+                'product_uom_qty': l.x_quantity,
+                'x_sheet_id': wizard.x_sheet_id.id,
+                'x_sheet_line_id': l.id,
+                'product_uom': l.x_product_id.uom_po_id.id,
+                'price_unit': l.x_unit_price or 0.0
+            }])
+        l.write({
+            'x_quantity': l.x_computed_quantity
+        })
+        # create one po line for each origin lines of our need
+        # if len(l.x_origin_line_ids) > 0:
+        #     sortedOrigins = {}
+        #     
+        #     for originLine in l.x_origin_line_ids:
+        #         key = str(originLine.x_sale_order_line_id.id)
+        #         if key not in sortedOrigins:
+        #             sortedOrigins[key] = {
+        #                 'name': "%s (%s - %s)" % (str(l.x_product_id.name), str(originLine.x_sale_order_line_id.order_id.name), str(originLine.x_sale_order_line_id.name)),
+        #                 'product_id': l.x_product_id.id,
+        #                 'product_uom_qty': 0.0,
+        #                 'x_sheet_id': wizard.x_sheet_id.id,
+        #                 'x_sheet_line_id': l.id,
+        #                 'product_uom': l.x_product_id.uom_po_id.id,
+        #                 'price_unit': l.x_unit_price or 0.0
+        #             }
+        #         sortedOrigins[key]['product_uom_qty'] = sortedOrigins[key]['product_uom_qty'] + originLine.x_quantity
+        #     for key in sortedOrigins:
+        #        orders[str(customer.id)]['order_line'].append(
+        #             [0, 0, sortedOrigins[key]])
+        # else:
+        #    orders[str(customer.id)]['order_line'].append([0, 0, {
+        #         'name': l.x_product_id.name,
+        #         'product_id': l.x_product_id.id,
+        #         'product_uom_qty': l.x_quantity,
+        #         'x_sheet_id': wizard.x_sheet_id.id,
+        #         'x_sheet_line_id': l.id,
+        #         'product_uom': l.x_product_id.uom_po_id.id,
+        #         'price_unit': l.x_unit_price or 0.0
+        #     }])
+
+    sos = []
+    for k in orders:
+        so = env['sale.order'].sudo().create(orders[k])
+        sos.append(so)
+
+    return {
+        'name': "Related Sales Orders",
+        'view_mode': 'tree,form',
+        'res_model': 'sale.order',
+        'type': 'ir.actions.act_window',
+        'domain': [('x_sheet_id', '=', wizard.x_sheet_id.id)],
+        'target': 'current',
+        'nodestroy': True
+    }
+
+def createResupplies(wizard):
+    validateForResupply(wizard)
+    company = env.company
+    if wizard['x_sheet_id']['x_company_id']:
+        company = wizard['x_sheet_id']['x_company_id']
+    lines = wizard.x_need_line_ids
+
+    OPERATION_TYPE_ID = getOption('RESUPPLY_OPERATION_TYPE_ID', company)
+    try:
+        OPERATION_TYPE_ID = int(OPERATION_TYPE_ID)
+    except:
+        alert("RESUPPLY_OPERATION_TYPE_ID option is not a integer ! Please set the value to the resupply operation type ID used to resupply products")
+    operationType = env['stock.picking.type'].browse(OPERATION_TYPE_ID)
+
+    SOURCE_LOCATION_ID = getOption('RESUPPLY_SOURCE_LOCATION_ID', company)
+    try:
+        SOURCE_LOCATION_ID = int(SOURCE_LOCATION_ID)
+    except:
+        alert("RESUPPLY_SOURCE_LOCATION_ID option is not a integer ! Please set the value to the resupply source location ID used to resupply products")
+    operationType = env['stock.location'].browse(SOURCE_LOCATION_ID)
+
+    customer = wizard.x_subcontractor
+    lines = wizard.x_need_line_ids
+    orders = {}
+    orders[str(customer.id)] = {
+                'origin': wizard.x_sheet_id.x_name,
+                'x_studio_pro_order': wizard.x_sheet_id.x_pro_order,
+                'x_sheet_id': wizard.x_sheet_id.id,
+                'partner_id': customer.id,
+                'picking_type_id': OPERATION_TYPE_ID,
+                'location_id': SOURCE_LOCATION_ID,
+                'scheduled_date': datetime.datetime.today(),
+                'move_ids_without_package': []
+            }
+    # for each need line
+    for l in lines:
+        orders[str(customer.id)]['move_ids_without_package'].append([0, 0, {
+                'product_id': l.x_product_id.id,
+                'product_uom_qty': l.x_quantity,
+                'quantity_done': l.x_quantity,
+                'x_sheet_id': wizard.x_sheet_id.id,
+                'x_sheet_line_id': l.id,
+                'product_uom': l.x_product_id.uom_po_id.id,
+                'location_id': SOURCE_LOCATION_ID,
+                'location_dest_id': env['stock.picking.type'].browse(OPERATION_TYPE_ID).default_location_dest_id.id,
+                'name': l.x_product_id.name
+            }])
+        l.write({
+            'x_quantity': l.x_computed_quantity
+        })
+        # orders[str(customer.id)]['move_line_ids_without_package'].append([0, 0, {
+        #         'product_id': l.x_product_id.id,
+        #         'qty_done': l.x_quantity,
+        #         'x_sheet_id': wizard.x_sheet_id.id,
+        #         'x_sheet_line_id': l.id,
+        #         'product_uom_id': l.x_product_id.uom_po_id.id,
+        #     }])
+        # create one po line for each origin lines of our need
+        # if len(l.x_origin_line_ids) > 0:
+        #     sortedOrigins = {}
+
+        #     for originLine in l.x_origin_line_ids:
+        #         key = str(originLine.x_sale_order_line_id.id)
+        #         if key not in sortedOrigins:
+        #             sortedOrigins[key] = {
+        #                 'product_id': l.x_product_id.id,
+        #                 'qty_done': l.x_quantity,
+        #                 'x_sheet_id': wizard.x_sheet_id.id,
+        #                 'x_sheet_line_id': l.id,
+        #                 'product_uom_id': l.x_product_id.uom_po_id.id,
+        #             }
+        #     for key in sortedOrigins:
+        #         orders[str(customer.id)]['move_line_ids_without_package'].append(
+        #             [0, 0, sortedOrigins[key]])
+        # else:
+        #     orders[str(customer.id)]['move_line_ids_without_package'].append([0, 0, {
+        #         'product_id': l.x_product_id.id,
+        #         'qty_done': l.x_quantity,
+        #         'x_sheet_id': wizard.x_sheet_id.id,
+        #         'x_sheet_line_id': l.id,
+        #         'product_uom_id': l.x_product_id.uom_po_id.id,
+        #     }])
+
+    sos = []
+    for k in orders:
+        so = env['stock.picking'].sudo().create(orders[k])
+        sos.append(so)
+
+    return {
+        'name': "Related Resupply Subcontractor",
+        'view_mode': 'tree,form',
+        'res_model': 'stock.picking',
+        'type': 'ir.actions.act_window',
+        'domain': [('x_sheet_id', '=', wizard.x_sheet_id.id)],
+        'target': 'current',
+        'context': {
+            'search_default_picking_type_id': OPERATION_TYPE_ID,
+        },
+        'nodestroy': True
+    }
+
+def addToCalculator(wizard):
+    validate(wizard)
+    action = False
+
+    if wizard.x_type == 'add_order':
+        addOrderLines(wizard)
+
+    if wizard.x_type == 'add_product':
+        addProductLines(wizard)
+
+    if wizard.x_type == 'buy':
+        action = createPOs(wizard)
+
+    if wizard.x_type == 'subcontract':
+        action = createPOs(wizard, True)
+
+    if wizard.x_type == 'manufacture':
+        action = createMOs(wizard)
+    
+    if wizard.x_type == 'sell':
+        action = createSOs(wizard)
+    
+    if wizard.x_type == 'resupply':
+        action = createResupplies(wizard)
+
+    return action
+
+action = addToCalculator(record)
+        </field>
+    </record>
+
+    <record id="x_mjb_planning_sheet.x_mjb_planning_wizard_action" model="ir.actions.server">
+        <field name="code">
+def alert(m):
+    raise(UserError(str(m)))
+
+def routeWizard(sheet):
+    wType = env.context['x_type'] or ""
+
+    if wType == 'add_product':
+        return {
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'x_mjb_planning_wizard',
+            'view_id': env.ref('x_mjb_planning_sheet.x_mjb_planning_wizard_form').id,
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'nodestroy': True,
+            'context': {
+                'default_x_sheet_id': sheet.id,
+                'default_x_type': wType
+            }
+        }
+
+    if wType == 'add_order':
+        return {
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'x_mjb_planning_wizard',
+            'view_id': env.ref('x_mjb_planning_sheet.x_mjb_planning_wizard_form').id,
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'nodestroy': True,
+            'context': {
+                'default_x_sheet_id': sheet.id,
+                'default_x_type': wType
+            }
+        }
+
+    if wType == 'buy':
+        lines = []
+        for l in sheet.x_buy_line_ids:
+            # if l.x_supplier_id:
+            lines.append(l.id)
+        return {
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'x_mjb_planning_wizard',
+            'view_id': env.ref('x_mjb_planning_sheet.x_mjb_planning_wizard_form').id,
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'nodestroy': True,
+            'context': {
+                'default_x_sheet_id': sheet.id,
+                'default_x_type': wType,
+                # 'default_x_need_line_ids': lines
+            }
+        }
+    if wType == 'manufacture':
+        lines = []
+        for l in sheet.x_manufacture_line_ids:
+            lines.append(l.id)
+        # alert(lines)
+        return {
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'x_mjb_planning_wizard',
+            'view_id': env.ref('x_mjb_planning_sheet.x_mjb_planning_wizard_form').id,
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'nodestroy': True,
+            'context': {
+                'default_x_sheet_id': sheet.id,
+                'default_x_type': wType,
+                'default_x_need_line_ids': lines
+            }
+        }
+    if wType == 'subcontract':
+        lines = []
+        for l in sheet.x_subcontract_line_ids:
+            # if l.x_supplier_id:
+            lines.append(l.id)
+
+        return {
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'x_mjb_planning_wizard',
+            'view_id': env.ref('x_mjb_planning_sheet.x_mjb_planning_wizard_form').id,
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'nodestroy': True,
+            'context': {
+                'default_x_sheet_id': sheet.id,
+                'default_x_type': wType,
+                'default_x_need_line_ids': lines
+            }
+        }
+
+    if wType == 'sell':
+        lines = []
+        for l in sheet.x_sale_line_ids:
+            # if l.x_supplier_id:
+            lines.append(l.id)
+
+        return {
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'x_mjb_planning_wizard',
+            'view_id': env.ref('x_mjb_planning_sheet.x_mjb_planning_wizard_form').id,
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'nodestroy': True,
+            'context': {
+                'default_x_sheet_id': sheet.id,
+                'default_x_type': wType,
+                'default_x_subcontractor': env['res.partner'].browse(315).id,
+                # 'default_x_need_line_ids': lines
+            }
+        }
+    if wType == 'resupply':
+        lines = []
+        for l in sheet.x_resupply_line_ids:
+            # if l.x_supplier_id:
+            lines.append(l.id)
+
+        return {
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'x_mjb_planning_wizard',
+            'view_id': env.ref('x_mjb_planning_sheet.x_mjb_planning_wizard_form').id,
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'nodestroy': True,
+            'context': {
+                'default_x_sheet_id': sheet.id,
+                'default_x_type': wType,
+                'default_x_subcontractor': env['res.partner'].browse(315).id,
+                # 'default_x_need_line_ids': lines
+            }
+        }
+
+    alert("Nothing to do !")
+
+if record:
+    action = routeWizard(record)
+        </field>
+    </record>
+
+    <record id="x_mjb_planning_sheet_update_pro_order" model="ir.actions.server">
+        <field name="name">PRO - Planning Sheet - Update PRO Order</field>
+        <field name="model_id" ref="x_mjb_planning_sheet.model_x_mjb_planning_sheet"/>
+        <field name="state">code</field>
+        <field name="code">
+pro_orders = []
+
+if record: 
+    if record.x_sale_order_ids:
+        for order in record.x_sale_order_ids:
+            pro_order = order.x_studio_pro_order 
+            if pro_order:
+                pro_orders.append(pro_order)
+        
+        record['x_pro_order'] = ','.join(pro_orders)
+        </field>
+    </record>
+</odoo>

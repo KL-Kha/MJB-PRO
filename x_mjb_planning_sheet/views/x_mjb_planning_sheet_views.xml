@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="x_mjb_planning_sheet_form" model="ir.ui.view">
+        <field name="name">x_mjb_planning_sheet.form</field>
+        <field name="model">x_mjb_planning_sheet</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button class="btn btn-dark" name="x_mjb_planning_sheet.x_mjb_planning_wizard_action"
+                            attrs="{'invisible': [('x_stage_code','!=','new')]}" type="action"
+                            context="{'x_type': 'add_order'}" string="Add Order"/>
+                    <button class="btn btn-dark" name="x_mjb_planning_sheet.x_mjb_planning_wizard_action"
+                            attrs="{'invisible': [('x_stage_code','!=','new')]}" type="action"
+                            context="{'x_type': 'add_product'}" string="Add Products"/>
+                    <button class="btn btn-dark" name="x_mjb_planning_sheet.x_mjb_planning_wizard_action"
+                            attrs="{'invisible': [('x_stage_code','!=','confirmed')]}" type="action"
+                            context="{'x_type': 'buy'}" string="Buy"/>
+                    <button class="btn btn-dark" name="x_mjb_planning_sheet.x_mjb_planning_wizard_action"
+                            attrs="{'invisible': [('x_stage_code','!=','confirmed')]}" type="action"
+                            context="{'x_type': 'subcontract'}" string="Subcontract"/>
+                    <button class="btn btn-dark" name="x_mjb_planning_sheet.x_mjb_planning_wizard_action"
+                            attrs="{'invisible': [('x_stage_code','!=','confirmed')]}" type="action"
+                            context="{'x_type': 'manufacture'}" string="Manufacture"/>
+                    <button class="btn btn-info" name="x_mjb_planning_sheet.x_mjb_planning_sheet_compute"
+                            attrs="{'invisible': [('x_stage_code','!=','new')]}" type="action"
+                            context="{'x_type': 'compute'}" string="Compute"/>
+                    <button class="btn btn-success" name="x_mjb_planning_sheet.x_mjb_planning_sheet_stage_action"
+                            attrs="{'invisible': [('x_stage_code','!=','new')]}" type="action"
+                            context="{'x_type': 'confirm'}" string="Confirm"/>
+                    <button class="btn btn-danger" name="x_mjb_planning_sheet.x_mjb_planning_sheet_stage_action"
+                            attrs="{'invisible': [('x_stage_code','!=','closed')]}" type="action"
+                            context="{'x_type': 'confirm'}" string="Back"/>
+                    <button class="btn btn-warning" name="x_mjb_planning_sheet.x_mjb_planning_sheet_stage_action"
+                            attrs="{'invisible': [('x_stage_code','!=','confirmed')]}" type="action"
+                            context="{'x_type': 'close'}" string="Close"/>
+                    <button class="btn btn-danger" name="x_mjb_planning_sheet.x_mjb_planning_sheet_stage_action"
+                            attrs="{'invisible': [('x_stage_code','!=','confirmed')]}" type="action"
+                            context="{'send_to': 'new'}" string="Back"/>
+                    <field name="x_stage_id" widget="statusbar" options="{'clickable': '0'}"/>
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button class="oe_stat_button" icon="fa-shopping-basket" type="object" name="action_open_purchase_order">
+                            <field widget="statinfo" name="x_purchase_order_count" string="Purchases"/>
+                        </button>
+                        <button class="oe_stat_button" icon="fa-briefcase" type="object" name="action_open_mrp_production">
+                            <field widget="statinfo" name="x_mrp_production_count" string="Manufacture"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="x_name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="x_date" required="1"/>
+                            <field name="x_computed_date" readonly="1"/>
+                            <field name="x_sale_order_ids" widget="many2many_tags" domain="[('state', 'in', ['sale','done'])]" readonly="1"/>
+                            <field name="x_notes"/>
+                        </group>
+                        <group>
+                            <field name="create_date"/>
+                            <field name="create_uid"/>
+                            <field name="write_date"/>
+                            <field name="write_uid"/>
+                            <field name="x_company_id" required="1"/>
+                            <field name="x_stage_code" readonly="1" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Output">
+                            <group>
+                            </group>
+                            <div>
+                                <field name="x_output_line_ids">
+                                    <tree create="0">
+                                        <field name="x_parent_line_id" invisible="1" readonly="1"/>
+                                        <field name="create_date" invisible="1"/>
+                                        <field name="create_uid" invisible="1"/>
+                                        <field name="write_date" invisible="1"/>
+                                        <field name="write_uid" invisible="1"/>
+                                        <field name="x_type" invisible="1" readonly="1"/>
+                                        <field name="x_sale_order_line_id" readonly="1"/>
+                                        <field name="x_product_id" readonly="1"/>
+                                        <field name="x_quantity"/>
+                                        <field name="x_unit_price" readonly="1"/>
+                                        <field name="x_currency_id" readonly="1"
+                                               options="{'no_create': True, 'no_create_edit':True}"/>
+                                        <field name="x_total_price" readonly="1"
+                                               options="{'currency_field': 'x_currency_id'}" widget="monetary"/>
+                                        <field class="text-bf" name="x_total_price_signed" readonly="1"
+                                               options="{'currency_field': 'x_company_currency_id'}" widget="monetary"
+                                               sum="Total" optional="hide"/>
+                                        <field name="x_company_currency_id" invisible="1" readonly="1"
+                                               options="{'no_create': True, 'no_create_edit':True}"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </page>
+                        <page string="Buy">
+                            <group>
+                            </group>
+                            <div>
+                                <field name="x_buy_line_ids">
+                                    <tree create="0" editable="bottom">
+                                        <field name="x_parent_line_id" invisible="1" readonly="1"/>
+                                        <field name="create_date" invisible="1"/>
+                                        <field name="create_uid" invisible="1"/>
+                                        <field name="write_date" invisible="1"/>
+                                        <field name="write_uid" invisible="1"/>
+                                        <field name="x_type" invisible="1" readonly="1"/>
+                                        <field name="x_product_id" readonly="1"/>
+                                        <field name="x_uom_id" readonly="1"/>
+                                        <field class="text-dark" name="x_computed_quantity" readonly="1"/>
+                                        <field class="text-info" name="x_onhand_quantity" readonly="1"/>
+                                        <field class="text-danger" name="x_reserved_quantity" readonly="1"/>
+                                        <field class="text-success" name="x_available_quantity" readonly="1"/>
+                                        <field name="x_quantity"/>
+                                        <field name="x_supplier_id"
+                                            options="{'no_create': True, 'no_create_edit':True}"/>
+                                        <field name="x_unit_price"
+                                            options="{'no_create': True, 'no_create_edit':True}"/>
+                                        <field name="x_currency_id"
+                                            options="{'no_create': True, 'no_create_edit':True}"/>
+                                        <field name="x_total_price" readonly="1"
+                                            options="{'currency_field': 'x_currency_id'}" widget="monetary"/>
+                                        <field class="text-bf" name="x_total_price_signed" readonly="1"
+                                            options="{'currency_field': 'x_company_currency_id'}" widget="monetary"
+                                            sum="Total" optional="hide"/>
+                                        <field name="x_company_currency_id" invisible="1" readonly="1"
+                                            options="{'no_create': True, 'no_create_edit':True}"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </page>
+                        <page string="Subcontract">
+                            <group>
+                            </group>
+                            <div>
+                                <field name="x_subcontract_line_ids">
+                                    <tree create="0" editable="bottom">
+                                        <field name="x_parent_line_id" invisible="1" readonly="1"/>
+                                        <field name="create_date" invisible="1"/>
+                                        <field name="create_uid" invisible="1"/>
+                                        <field name="write_date" invisible="1"/>
+                                        <field name="write_uid" invisible="1"/>
+                                        <field name="x_type" invisible="1" readonly="1"/>
+                                        <field name="x_product_id" readonly="1"/>
+                                        <field name="x_uom_id" readonly="1"/>
+                                        <field class="text-dark" name="x_computed_quantity" readonly="1"/>
+                                        <field class="text-info" name="x_onhand_quantity" readonly="1"/>
+                                        <field class="text-danger" name="x_reserved_quantity" readonly="1"/>
+                                        <field class="text-success" name="x_available_quantity" readonly="1"/>
+                                        <field name="x_quantity"/>
+                                        <field name="x_supplier_id"
+                                            options="{'no_create': True, 'no_create_edit':True}"/>
+                                        <field name="x_unit_price"
+                                            options="{'no_create': True, 'no_create_edit':True}"/>
+                                        <field name="x_currency_id"
+                                            options="{'no_create': True, 'no_create_edit':True}"/>
+                                        <field name="x_total_price" readonly="1"
+                                            options="{'currency_field': 'x_currency_id'}" widget="monetary"/>
+                                        <field class="text-bf" name="x_total_price_signed" readonly="1"
+                                            options="{'currency_field': 'x_company_currency_id'}" widget="monetary"
+                                            sum="Total" optional="hide"/>
+                                        <field name="x_company_currency_id" invisible="1" readonly="1"
+                                            options="{'no_create': True, 'no_create_edit':True}"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </page>
+                        <page string="Manufacture">
+                            <group/>
+                            <div>
+                                <field name="x_manufacture_line_ids">
+                                    <tree create="0">
+                                        <field name="x_parent_line_id" invisible="1" readonly="1"/>
+                                        <field name="create_date" invisible="1"/>
+                                        <field name="create_uid" invisible="1"/>
+                                        <field name="write_date" invisible="1"/>
+                                        <field name="write_uid" invisible="1"/>
+                                        <field name="x_type" invisible="1" readonly="1"/>
+                                        <field name="x_sale_order_line_id" readonly="1" invisible="1"/>
+                                        <field name="x_product_id" readonly="1"/>
+                                        <field class="text-dark" name="x_computed_quantity" readonly="1"/>
+                                        <field class="text-info" name="x_onhand_quantity" readonly="1"/>
+                                        <field class="text-danger" name="x_reserved_quantity" readonly="1"/>
+                                        <field class="text-success" name="x_available_quantity" readonly="1"/>
+                                        <field name="x_quantity"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </page>
+                        <page string="Kit">
+                            <group/>
+                            <div>
+                                <field name="x_kit_line_ids">
+                                    <tree create="0">
+                                        <field name="x_parent_line_id" invisible="1" readonly="1"/>
+                                        <field name="create_date" invisible="1"/>
+                                        <field name="create_uid" invisible="1"/>
+                                        <field name="write_date" invisible="1"/>
+                                        <field name="write_uid" invisible="1"/>
+                                        <field name="x_type" invisible="1" readonly="1"/>
+                                        <field name="x_sale_order_line_id" readonly="1" invisible="1"/>
+                                        <field name="x_product_id" readonly="1"/>
+                                        <field class="text-dark" name="x_computed_quantity" readonly="1"/>
+                                        <field class="text-info" name="x_onhand_quantity" readonly="1"/>
+                                        <field class="text-danger" name="x_reserved_quantity" readonly="1"/>
+                                        <field class="text-success" name="x_available_quantity" readonly="1"/>
+                                        <field name="x_quantity"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </page>
+                        <page string="Planned MO">
+                            <group/>
+                            <field name="x_production_ids"/>
+                        </page>
+                        <page string="Planned Purchase Lines">
+                            <group/>
+                            <field name="x_purchase_order_line_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="x_mjb_planning_sheet_tree" model="ir.ui.view">
+        <field name="name">x_mjb_planning_sheet.tree</field>
+        <field name="model">x_mjb_planning_sheet</field>
+        <field name="arch" type="xml">
+            <tree string="Planning Sheet">
+                <field name="x_name" required="1"/>
+                <field name="x_date" required="1"/>
+                <field name="x_computed_date" readonly="1"/>
+                <field name="x_sale_order_ids" widget="many2many_tags" readonly="1"/>
+                <field name="x_stage_id" readonly="1"/>
+                <field name="x_notes"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="x_mjb_planning_sheet_window" model="ir.actions.act_window">
+        <field name="name">Planning Sheet</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">x_mjb_planning_sheet</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Planner
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="x_mjb_planning_sheet_main_menu" name="Planning Sheet" web_icon="fa fa-sitemap,#FFFFFF,#BC4242"/>
+
+    <menuitem id="x_mjb_planning_sheet_menu"
+              name="Planning Sheet"
+              action="x_mjb_planning_sheet_window"
+              parent="x_mjb_planning_sheet_main_menu"
+              sequence="10"/>
+
+    <menuitem id="x_mjb_planning_sheet_stage_menu"
+              name="Sheet Stage"
+              parent="x_mjb_planning_sheet_main_menu"
+              action="x_mjb_planning_sheet_stage_window"
+              sequence="10"/>
+
+    <menuitem id="x_mjb_planning_sheet_line_menu"
+              name="Planning Sheet Lines"
+              parent="x_mjb_planning_sheet_main_menu"
+              action="x_mjb_planning_sheet_line_window"
+              sequence="30"/>
+
+    <menuitem id="x_mjb_planning_sheet_opt_menu"
+              name="Planner Option"
+              parent="x_mjb_planning_sheet_main_menu"
+              action="x_mjb_planning_sheet_opt_window"
+              sequence="40"/>
+
+</odoo>

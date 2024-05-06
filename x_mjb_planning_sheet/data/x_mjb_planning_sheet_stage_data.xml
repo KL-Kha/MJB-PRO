@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="x_mjb_planning_sheet_stage_new" model="x_mjb_planning_sheet_stage">
+            <field name="x_code">new</field>
+            <field name="x_name">New</field>
+        </record>
+        <record id="x_mjb_planning_sheet_stage_confirmed" model="x_mjb_planning_sheet_stage">
+            <field name="x_code">confirmed</field>
+            <field name="x_name">Confirmed</field>
+        </record>
+        <record id="x_mjb_planning_sheet_stage_closed" model="x_mjb_planning_sheet_stage">
+            <field name="x_code">closed</field>
+            <field name="x_name">Closed</field>
+        </record>
+    </data>
+</odoo>

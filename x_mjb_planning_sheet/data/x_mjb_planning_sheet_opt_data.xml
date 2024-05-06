@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="x_mjb_planning_sheet_opt_subcontract" model="x_mjb_planning_sheet_opt">
+            <field name="x_code">SUBCONTRACT_OPERATION_TYPE_ID</field>
+            <field name="x_name">1</field>
+            <field name="x_company_id" ref="base.main_company"/>
+        </record>
+        <record id="x_mjb_planning_sheet_opt_buy" model="x_mjb_planning_sheet_opt">
+            <field name="x_code">BUY_OPERATION_TYPE_ID</field>
+            <field name="x_name">1</field>
+            <field name="x_company_id" ref="base.main_company"/>
+        </record>
+        <record id="x_mjb_planning_sheet_opt_mfg" model="x_mjb_planning_sheet_opt">
+            <field name="x_code">MFG_OPERATION_TYPE_ID</field>
+            <field name="x_name">10</field>
+            <field name="x_company_id" ref="base.main_company"/>
+        </record>
+        <record id="x_mjb_planning_sheet_opt_stock" model="x_mjb_planning_sheet_opt">
+            <field name="x_code">STOCK_LOC_ID</field>
+            <field name="x_name">8</field>
+            <field name="x_company_id" ref="base.main_company"/>
+        </record>
+        <record id="x_mjb_planning_sheet_opt_all" model="x_mjb_planning_sheet_opt">
+            <field name="x_code">STOCK_LOC_ID, BUY_OPERATION_TYPE_ID, SUBCONTRACT_OPERATION_TYPE_ID, MFG_OPERATION_TYPE_ID</field>
+        </record>
+    </data>
+</odoo>

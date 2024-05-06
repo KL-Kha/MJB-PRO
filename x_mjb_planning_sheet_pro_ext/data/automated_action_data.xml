@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mjb_planning_pro_ext_auto_update_purchased_qty" model="base.automation">
+        <field name="name">Planning Sheet Auto Update Purchased Qty</field>
+        <field name="model_id" ref="purchase.model_purchase_order"/>
+        <field name="state">code</field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="code">
+planning_sheet = env['x_mjb_planning_sheet'].search([('x_name', '=', record['origin'])])
+if planning_sheet:
+    for line in planning_sheet['x_buy_line_ids']:
+        purchased_qty = 0
+        line.write({
+                'x_purchased_qty': purchased_qty
+            })
+        po_line = env['purchase.order.line'].search([('x_sheet_id', '=', planning_sheet.id), ('x_sheet_line_id', '=', line.id)])
+        if len(po_line) &gt; 0:
+            for item in po_line:
+                if item.order_id.state != 'cancel':
+                    purchased_qty += item.product_qty
+            line.write({
+                'x_purchased_qty': purchased_qty
+            })
+    for line in planning_sheet['x_subcontract_line_ids']:
+        purchased_qty = 0
+        line.write({
+                'x_purchased_qty': purchased_qty
+            })
+        po_line = env['purchase.order.line'].search([('x_sheet_id', '=', planning_sheet.id), ('x_sheet_line_id', '=', line.id)])
+        if len(po_line) &gt; 0:
+            for item in po_line:
+                if item.order_id.state != 'cancel':
+                    purchased_qty += item.product_qty
+            line.write({
+                'x_purchased_qty': purchased_qty
+            })
+    for line in planning_sheet['x_resupply_line_ids']:
+        for buy_line in planning_sheet['x_buy_line_ids']:
+            if line.x_product_id == buy_line.x_product_id:
+                line.write({
+                    'x_purchased_qty': buy_line.x_purchased_qty
+                })
+    for line in planning_sheet['x_sale_line_ids']:
+        for buy_line in planning_sheet['x_buy_line_ids']:
+            if line.x_product_id == buy_line.x_product_id:
+                line.write({
+                    'x_purchased_qty': buy_line.x_purchased_qty
+                })
+        </field>
+    </record>
+
+    <record id="mjb_planning_pro_ext_auto_update_x_quantity" model="base.automation">
+        <field name="name">Planning Sheet Auto Update Quantity</field>
+        <field name="model_id" ref="x_mjb_planning_sheet_pro_ext.model_x_mjb_planning_sheet_line"/>
+        <field name="state">code</field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="trigger_field_ids" eval="[(4, ref('x_mjb_planning_sheet_pro_ext.field_x_mjb_planning_sheet_line__x_defect_rate'))]"/>
+        <field name="code">
+for record in records:
+    if record.x_defect_rate and record.x_computed_quantity:
+        quantity = record.x_computed_quantity * (1 + record.x_defect_rate)
+        record.write({
+            'x_quantity': quantity
+        })
+        </field>
+    </record>
+
+    <record id="mjb_planning_pro_ext_auto_update_rate_based_product" model="base.automation">
+        <field name="name">Planning Sheet Auto Update rate</field>
+        <field name="model_id" ref="x_mjb_planning_sheet_pro_ext.model_x_mjb_planning_sheet_line"/>
+        <field name="state">code</field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="trigger_field_ids" eval="[(4, ref('x_mjb_planning_sheet.field_x_mjb_planning_sheet_line__x_product_id'))]"/>
+        <field name="code">
+for record in records:
+    try:
+        PRODUCT_DEFECT_RATE_CATEGORY_ID = record.env.ref('x_mjb_planning_sheet_pro_ext.x_mjb_planning_sheet_product_categ_rate').x_name or []
+        if len(PRODUCT_DEFECT_RATE_CATEGORY_ID) > 1:
+            PRODUCT_DEFECT_RATE_CATEGORY_ID = PRODUCT_DEFECT_RATE_CATEGORY_ID.split(',')
+        INT_PRODUCT_DEFECT_RATE_CATEGORY_ID = [int(item.strip()) for item in PRODUCT_DEFECT_RATE_CATEGORY_ID]
+    except:
+        raise(UserError('Unacceptable for the PRODUCT_DEFECT_RATE_CATEGORY_ID'))
+    try:
+        DEFECT_RATE_FOR_PRODUCT_CATEGORY = record.env.ref('x_mjb_planning_sheet_pro_ext.x_mjb_planning_sheet_x_defect_rate').x_name or 0.0
+        DEFECT_RATE_FOR_PRODUCT_CATEGORY = float(DEFECT_RATE_FOR_PRODUCT_CATEGORY)
+    except:
+        raise(UserError('Unacceptable for the DEFECT_RATE_FOR_PRODUCT_CATEGORY'))
+
+    if record.x_product_id.categ_id.id and record.x_product_id.categ_id.id in INT_PRODUCT_DEFECT_RATE_CATEGORY_ID:
+        record.write({
+            'x_defect_rate': DEFECT_RATE_FOR_PRODUCT_CATEGORY
+        })
+        </field>
+    </record>
+
+    <record id="mjb_planning_pro_ext_maximum_3_decimals_defect_rate" model="base.automation">
+        <field name="name">Planning Sheet Opt Maximum 3 Decimals Defect Rate</field>
+        <field name="model_id" ref="x_mjb_planning_sheet.model_x_mjb_planning_sheet_opt"/>
+        <field name="state">code</field>
+        <field name="trigger">on_create_or_write</field>
+        <field name="trigger_field_ids" eval="[(4, ref('x_mjb_planning_sheet.field_x_mjb_planning_sheet_opt__x_name'))]"/>
+        <field name="code">
+for record in records:
+    if record.x_code == 'DEFECT_RATE_FOR_PRODUCT_CATEGORY':
+        current_value = float(record.x_name) or 0.0
+        try:
+            record.write({
+                'x_name': round(current_value,3)
+            })
+        except:
+            raise(UserError('Unacceptable for the DEFECT_RATE_FOR_PRODUCT_CATEGORY'))
+        </field>
+    </record>
+</odoo>

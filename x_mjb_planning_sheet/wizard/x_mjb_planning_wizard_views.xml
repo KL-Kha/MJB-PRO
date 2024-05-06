@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="x_mjb_planning_wizard_form" model="ir.ui.view">
+        <field name="name">x_mjb_planning_wizard_form</field>
+        <field name="model">x_mjb_planning_wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="x_sale_order_id" attrs="{ 'invisible': [('x_type','!=','add_order')] }"
+                                   options="{'no_create': True, 'no_create_edit':True}" domain="[('state', 'in', ['sale','done'])]"/>
+                            <field name="x_type" readonly="1"/>
+                            <field name="x_sheet_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Order Lines" attrs="{ 'invisible': [('x_sale_order_id', '=', False)] }">
+                            <div>
+                                <field name="x_sale_order_line_ids" domain="[('order_id', '=', x_sale_order_id)]"
+                                       options="{'no_create': True, 'no_create_edit':True}">
+                                    <tree>
+                                        <field name="order_id"/>
+                                        <field name="product_id"/>
+                                        <field name="product_uom_qty"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </page>
+                        <page string="Products" attrs="{ 'invisible': [('x_type','!=','add_product')] }"
+                              options="{'no_create': True, 'no_create_edit':True}">
+                            <field name="x_product_ids"/>
+                        </page>
+                        <page string="Plan"
+                              attrs="{ 'invisible': [('x_type','not in',['buy','subcontract','manufacture'])] }"
+                              options="{'no_create': True, 'no_create_edit':True}">
+                            <field name="x_need_line_ids" domain="[('x_sheet_id', '=', x_sheet_id), ('x_type', '=', x_type)]"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <footer>
+                    <button class="btn btn-success" name="x_mjb_planning_sheet.x_mjb_planning_wizard_exec"
+                            type="action" string="Confirm"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="x_mjb_planning_wizard_window" model="ir.actions.act_window">
+        <field name="name">Planning Wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">x_mjb_planning_wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Planner
+            </p>
+        </field>
+    </record>
+
+
+</odoo>
