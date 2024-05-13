@@ -8,8 +8,7 @@ class AccountMove(models.Model):
     _inherit = 'account.move'
 
     def unlink(self):
-        downpayment_lines = self.mapped('line_ids.purchase_line_id').filtered(lambda line: line.mjb_is_downpayment)
-        res = super(AccountMove, self).unlink()
+        downpayment_lines = self.mapped('line_ids.purchase_line_id').filtered(lambda line: line.mjb_is_downpayment and line.invoice_lines <= self.mapped('line_ids'))        res = super(AccountMove, self).unlink()
         for downpayment_line in downpayment_lines:
             # As we can't use odoo unlink (Blocked by the purchase state, we need to force it by cr)
             account_move = self.env['account.move'].search([('line_ids.purchase_line_id.id', 'in', [downpayment_line.id]), ('state', '=', 'posted')])
