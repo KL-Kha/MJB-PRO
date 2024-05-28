@@ -20,4 +20,7 @@ Technical functions
     'installable': True,
     'application': False,
     'images': [],
+    'external_dependencies': {
+        'python': ['xmltodict'],
+    },
 }
