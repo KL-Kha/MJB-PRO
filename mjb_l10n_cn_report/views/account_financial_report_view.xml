@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_account_report_line_form_falcnrep" model="ir.ui.view">
+            <field name="name">account.report.line.form.falcnrep</field>
+            <field name="model">account.report.line</field>
+            <field name="inherit_id" ref="account_reports.account_report_line_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='hierarchy_level']" position="after">
+                    <field name="mjb_is_page2"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

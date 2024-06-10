@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		
+		<record id="financial_report_cn" model="account.financial.html.report">
+            <field name="name">Balance Sheet China</field>
+            <field name="analytic" eval="True"/>
+            <field name="unfold_all_filter" eval="True"/>
+            <field name="show_journal_filter" eval="True"/>
+            <field name='parent_id' ref='account.account_reports_legal_statements_menu'/>
+        </record>
+
+        <record id="financial_report_cn_asset" model="account.financial.html.report.line">
+            <field name="name">Assets</field>
+            <field name="code">BS_01</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="0" />
+        </record>
+
+        <record id="financial_report_cn_curasset" model="account.financial.html.report.line">
+            <field name="name">Current Assets</field>
+            <field name="code">BS_02</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="1" />
+            <field name="domain" eval="[('account_id.china_account_type', '=','流动资产：')]"/>
+        </record>
+
+        <record id="financial_report_cn_bankcash" model="account.financial.html.report.line">
+            <field name="name">Bank and Cash</field>
+            <field name="code">BS_03</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="3" />
+            <field name="groupby">partner_id</field>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','货币资金')]"/>
+        </record>
+
+        <record id="financial_report_cn_mmf" model="account.financial.html.report.line">
+            <field name="name">Money Market Funds</field>
+            <field name="code">BS_04</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="3"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','交易性金融资产')]"/>
+        </record>
+
+        <record id="financial_report_cn_nr" model="account.financial.html.report.line">
+            <field name="name">Notes Receivable</field>
+            <field name="code">BS_05</field>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval=" [('account_id.china_account_type', '=','应收票据')]"/>
+        </record>
+
+        <record id="financial_report_cn_ar" model="account.financial.html.report.line">
+            <field name="name">Accounts Receivable</field>
+            <field name="code">BS_06</field>
+            <field name="sequence" eval="6"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="groupby">partner_id</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','应收账款')]"/>
+        </record>
+
+        <record id="financial_report_cn_pre" model="account.financial.html.report.line">
+            <field name="name">Prepayments</field>
+            <field name="code">BS_07</field>
+            <field name="sequence" eval="7"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','预付款项')]"/>
+        </record>
+
+        <record id="financial_report_cn_dr" model="account.financial.html.report.line">
+            <field name="name">Dividends Receivable</field>
+            <field name="code">BS_08</field>
+            <field name="sequence" eval="8"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','应收利息')]"/>
+        </record>
+
+        <record id="financial_report_cn_ir" model="account.financial.html.report.line">
+            <field name="name">Interest Receivable</field>
+            <field name="code">BS_09</field>
+            <field name="sequence" eval="9"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','应收股利')]"/>
+        </record>
+
+        <record id="financial_report_cn_or" model="account.financial.html.report.line">
+            <field name="name">Other Receivable</field>
+            <field name="code">BS_10</field>
+            <field name="sequence" eval="10"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','其他应收款')]"/>
+        </record>
+
+        <record id="financial_report_cn_inv" model="account.financial.html.report.line">
+            <field name="name">Inventories</field>
+            <field name="code">BS_11</field>
+            <field name="sequence" eval="11"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','存货')]"/>
+        </record>
+
+        <record id="financial_report_cn_non_cur" model="account.financial.html.report.line">
+            <field name="name">Non-current Assets Falling Due Treasury Stock Within One Year</field>
+            <field name="code">BS_12</field>
+            <field name="sequence" eval="12"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','一年内到期的非流动资产')]"/>
+        </record>
+
+        <record id="financial_report_cn_oca" model="account.financial.html.report.line">
+            <field name="name">Other Current Assets</field>
+            <field name="code">BS_13</field>
+            <field name="sequence" eval="13"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','其他流动资产')]"/>
+        </record>
+
+        <record id="financial_report_cn_tca" model="account.financial.html.report.line">
+            <field name="name">Total Current Assets</field>
+            <field name="code">BS_14</field>
+            <field name="sequence" eval="14"/>
+            <field name="level" eval="2"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">BS_03 + BS_04 + BS_05 + BS_06 + BS_07 + BS_08 + BS_09 + BS_10 + BS_11 + BS_12 + BS_13  </field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','流动资产合计')]"/>
+        </record>
+
+         <record id="financial_report_cn_nca" model="account.financial.html.report.line">
+            <field name="name">Non-Current Assets</field>
+            <field name="code">BS_15</field>
+            <field name="sequence" eval="15"/>
+            <field name="level" eval="1"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="domain" eval="[('account_id.china_account_type', '=','非流动资产：')]"/>
+        </record>
+
+        <record id="financial_report_cn_sma" model="account.financial.html.report.line">
+            <field name="name">Available for Sale Monetary Assets</field>
+            <field name="code">BS_16</field>
+            <field name="sequence" eval="16"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','可供出售金融资产')]"/>
+        </record>
+
+        <record id="financial_report_cn_hms" model="account.financial.html.report.line">
+            <field name="name">Held-to-Maturity Securities</field>
+            <field name="code">BS_17</field>
+            <field name="sequence" eval="17"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','持有至到期投资')]"/>
+        </record>
+
+        <record id="financial_report_cn_lar" model="account.financial.html.report.line">
+            <field name="name">Long-term Accounts Receivable</field>
+            <field name="code">BS_18</field>
+            <field name="sequence" eval="18"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','长期应收款')]"/>
+        </record>
+
+        <record id="financial_report_cn_lei" model="account.financial.html.report.line">
+            <field name="name">Long-term Equity Investment</field>
+            <field name="code">BS_19</field>
+            <field name="sequence" eval="19"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','长期股权投资')]"/>
+        </record>
+
+        <record id="financial_report_cn_ere" model="account.financial.html.report.line">
+            <field name="name">Equity Real Estate</field>
+            <field name="code">BS_20</field>
+            <field name="sequence" eval="20"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','投资性房地产')]"/>
+        </record>
+
+        <record id="financial_report_cn_fa" model="account.financial.html.report.line">
+            <field name="name">Fixed Assets</field>
+            <field name="code">BS_21</field>
+            <field name="sequence" eval="21"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="groupby">partner_id</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','固定资产')]"/>
+        </record>
+
+        <record id="financial_report_cn_ad" model="account.financial.html.report.line">
+            <field name="name">Accumulated Depreciation</field>
+            <field name="code">BS_22</field>
+            <field name="sequence" eval="22"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="groupby">partner_id</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','累计折旧')]"/>
+        </record>
+
+        <record id="financial_report_cn_em" model="account.financial.html.report.line">
+            <field name="name">Engineering Material</field>
+            <field name="code">BS_23</field>
+            <field name="sequence" eval="23"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','工程物资')]"/>
+        </record>
+
+        <record id="financial_report_cn_dfa" model="account.financial.html.report.line">
+            <field name="name">Disposal of Fixed Assets</field>
+            <field name="code">BS_24</field>
+            <field name="sequence" eval="24"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','固定资产清理')]"/>
+        </record>
+
+        <record id="financial_report_cn_bap" model="account.financial.html.report.line">
+            <field name="name">Biologically Assets for Production</field>
+            <field name="code">BS_25</field>
+            <field name="sequence" eval="25"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','生产性生物资产')]"/>
+        </record>
+
+        <record id="financial_report_cn_goa" model="account.financial.html.report.line">
+            <field name="name">Gas and Oil Assets</field>
+            <field name="code">BS_26</field>
+            <field name="sequence" eval="26"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','累计摊销')]"/>
+        </record>
+
+        <record id="financial_report_cn_ia" model="account.financial.html.report.line">
+            <field name="name">Intangible Assets</field>
+            <field name="code">BS_27</field>
+            <field name="sequence" eval="27"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','无形资产')]"/>
+        </record>
+
+        <record id="financial_report_cn_de" model="account.financial.html.report.line">
+            <field name="name">Development Expenditures</field>
+            <field name="code">BS_28</field>
+            <field name="sequence" eval="28"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','开发支出')]"/>
+        </record>
+
+        <record id="financial_report_cn_gw" model="account.financial.html.report.line">
+            <field name="name">Goodwill</field>
+            <field name="code">BS_29</field>
+            <field name="sequence" eval="29"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','商誉')]"/>
+        </record>
+
+        <record id="financial_report_cn_lde" model="account.financial.html.report.line">
+            <field name="name">Long-term Deferred Expenditure</field>
+            <field name="code">BS_30</field>
+            <field name="sequence" eval="30"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="groupby">partner_id</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','长摊待摊费用')]"/>
+        </record>
+
+        <record id="financial_report_cn_tda" model="account.financial.html.report.line">
+            <field name="name">Income Tax Deferred Assets</field>
+            <field name="code">BS_31</field>
+            <field name="sequence" eval="31"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','递延所得税资产')]"/>
+        </record>
+
+        <record id="financial_report_cn_onca" model="account.financial.html.report.line">
+            <field name="name">Other Non-Current Assets</field>
+            <field name="code">BS_32</field>
+            <field name="sequence" eval="32"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','其他非流动资产')]"/>
+        </record>
+
+        <record id="financial_report_cn_tnca" model="account.financial.html.report.line">
+            <field name="name">Total Non-Current Assets</field>
+            <field name="code">BS_33</field>
+            <field name="sequence" eval="33"/>
+            <field name="level" eval="2"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">BS_16 + BS_17 + BS_18 + BS_19 + BS_20 + BS_21 + BS_22 + BS_23 + BS_24 + BS_25 + BS_26 + BS_27 + BS_28 + BS_29 + BS_30 + BS_31 + BS_32</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','非流动资产合计')]"/>
+        </record>
+
+        <record id="financial_report_cn_ta" model="account.financial.html.report.line">
+            <field name="name">Total Assets</field>
+            <field name="code">BS_34</field>
+            <field name="sequence" eval="34"/>
+            <field name="level" eval="2"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">BS_14 + BS_33</field>
+        </record>
+
+        <record id="financial_report_cn_loe" model="account.financial.html.report.line">
+            <field name="name">Liabilities and Owner’s Equity (or Shareholder Shares)</field>
+            <field name="code">BS_35</field>
+            <field name="sequence" eval="35"/>
+            <field name="level" eval="0"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+        </record>
+
+        <record id="financial_report_cn_lia" model="account.financial.html.report.line">
+            <field name="name">Liabilities</field>
+            <field name="code">BS_36</field>
+            <field name="sequence" eval="36"/>
+            <field name="level" eval="0"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+        </record>
+
+        <record id="financial_report_cn_cl" model="account.financial.html.report.line">
+            <field name="name">Current Liabilities</field>
+            <field name="code">BS_37</field>
+            <field name="sequence" eval="37"/>
+            <field name="level" eval="1"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="domain" eval="[('account_id.china_account_type', '=','流动负债：')]"/>
+        </record>
+
+        <record id="financial_report_cn_stl" model="account.financial.html.report.line">
+            <field name="name"> Short-term Loans</field>
+            <field name="code">BS_38</field>
+            <field name="sequence" eval="38"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','短期借款')]"/>
+        </record>
+
+        <record id="financial_report_cn_mml" model="account.financial.html.report.line">
+            <field name="name">Money Market Liabilities</field>
+            <field name="code">BS_39</field>
+            <field name="sequence" eval="39"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','交易性金融负债')]"/>
+        </record>
+
+        <record id="financial_report_cn_np" model="account.financial.html.report.line">
+            <field name="name">Notes Payable</field>
+            <field name="code">BS_40</field>
+            <field name="sequence" eval="40"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','应付票据')]"/>
+        </record>
+
+        <record id="financial_report_cn_ap" model="account.financial.html.report.line">
+            <field name="name">Accounts Payable</field>
+            <field name="code">BS_41</field>
+            <field name="sequence" eval="41"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="groupby">partner_id</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','应付账款')]"/>
+        </record>
+
+        <record id="financial_report_cn_afc" model="account.financial.html.report.line">
+            <field name="name">Advances from Customers</field>
+            <field name="code">BS_42</field>
+            <field name="sequence" eval="42"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','预收款项')]"/>
+        </record>
+
+        <record id="financial_report_cn_apr" model="account.financial.html.report.line">
+            <field name="name">Accrued Payroll</field>
+            <field name="code">BS_43</field>
+            <field name="sequence" eval="43"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="groupby">partner_id</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','应付职工薪酬')]"/>
+        </record>
+
+        <record id="financial_report_cn_tp" model="account.financial.html.report.line">
+            <field name="name">Taxes Payable</field>
+            <field name="code">BS_44</field>
+            <field name="sequence" eval="44"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="groupby">partner_id</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','应交税费')]"/>
+        </record>
+
+        <record id="financial_report_cn_ip" model="account.financial.html.report.line">
+            <field name="name">Interest Payable</field>
+            <field name="code">BS_45</field>
+            <field name="sequence" eval="45"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','应付利息')]"/>
+        </record>
+
+        <record id="financial_report_cn_dp" model="account.financial.html.report.line">
+            <field name="name">Dividends Payable</field>
+            <field name="code">BS_46</field>
+            <field name="sequence" eval="46"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','应付股利')]"/>
+        </record>
+
+        <record id="financial_report_cn_op" model="account.financial.html.report.line">
+            <field name="name">Other Payables</field>
+            <field name="code">BS_47</field>
+            <field name="sequence" eval="47"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="groupby">partner_id</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','其他应付款')]"/>
+        </record>
+
+        <record id="financial_report_cn_nclf" model="account.financial.html.report.line">
+            <field name="name">Non-Current Liabilities Falling Due within One Year</field>
+            <field name="code">BS_48</field>
+            <field name="sequence" eval="48"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="groupby">partner_id</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','预提费用')]"/>
+        </record>
+
+        <record id="financial_report_cn_ocl" model="account.financial.html.report.line">
+            <field name="name">Other Current Liabilities</field>
+            <field name="code">BS_49</field>
+            <field name="sequence" eval="49"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','其他流动负债')]"/>
+        </record>
+
+        <record id="financial_report_cn_tcl" model="account.financial.html.report.line">
+            <field name="name">Total Current Liabilities</field>
+            <field name="code">BS_50</field>
+            <field name="sequence" eval="50"/>
+            <field name="level" eval="2"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">BS_38 + BS_39 + BS_40 + BS_41 + BS_42 + BS_43 + BS_44 + BS_45 + BS_46 + BS_47 + BS_48 + BS_49</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','流动负债合计')]"/>
+        </record>
+
+        <record id="financial_report_cn_ncl" model="account.financial.html.report.line">
+            <field name="name">Non-Current Liabilities</field>
+            <field name="code">BS_51</field>
+            <field name="sequence" eval="51"/>
+            <field name="level" eval="1"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="domain" eval="[('account_id.china_account_type', '=','非流动负债：')]"/>
+        </record>
+
+        <record id="financial_report_cn_ltl" model="account.financial.html.report.line">
+            <field name="name">Long-term Loans</field>
+            <field name="code">BS_52</field>
+            <field name="sequence" eval="52"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','长期借款')]"/>
+        </record>
+
+        <record id="financial_report_cn_bp" model="account.financial.html.report.line">
+            <field name="name">Bonds Payable</field>
+            <field name="code">BS_53</field>
+            <field name="sequence" eval="53"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','应付债券')]"/>
+        </record>
+
+        <record id="financial_report_cn_ltap" model="account.financial.html.report.line">
+            <field name="name">Long-term Accounts Payable</field>
+            <field name="code">BS_54</field>
+            <field name="sequence" eval="54"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="groupby">partner_id</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','长期应付款')]"/>
+        </record>
+
+        <record id="financial_report_cn_sap" model="account.financial.html.report.line">
+            <field name="name">Special Accounts Payable</field>
+            <field name="code">BS_55</field>
+            <field name="sequence" eval="55"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="formulas">-sum</field>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="domain" eval="[('account_id.china_account_type', '=','专项应付款')]"/>
+        </record>
+
+        <record id="financial_report_cn_fl" model="account.financial.html.report.line">
+            <field name="name">Forecasted Liabilities</field>
+            <field name="code">BS_56</field>
+            <field name="sequence" eval="56"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="formulas">-sum</field>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="domain" eval="[('account_id.china_account_type', '=','预计负债')]"/>
+        </record>
+
+        <record id="financial_report_cn_itdl" model="account.financial.html.report.line">
+            <field name="name">Income Tax Deferred Liabilities</field>
+            <field name="code">BS_57</field>
+            <field name="sequence" eval="57"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval=" [('account_id.china_account_type', '=','递延所得税负债')]"/>
+        </record>
+
+        <record id="financial_report_cn_oncl" model="account.financial.html.report.line">
+            <field name="name">Other Non-Current Liabilities</field>
+            <field name="code">BS_58</field>
+            <field name="sequence" eval="58"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval=" [('account_id.china_account_type', '=','其他非流动负债')]"/>
+        </record>
+
+        <record id="financial_report_cn_tncl" model="account.financial.html.report.line">
+            <field name="name">Total Non-Current Liabilities</field>
+            <field name="code">BS_59</field>
+            <field name="sequence" eval="59"/>
+            <field name="level" eval="2"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">BS_52 + BS_53 + BS_54 + BS_55 + BS_56 + BS_57 + BS_58</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','非流动负债合计')]"/>
+        </record>
+
+        <record id="financial_report_cn_tl" model="account.financial.html.report.line">
+            <field name="name">Total Liabilities</field>
+            <field name="code">BS_60</field>
+            <field name="sequence" eval="60"/>
+            <field name="level" eval="2"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">BS_50 + BS_59</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','负债合计')]"/>
+        </record>
+
+        <record id="financial_report_cn_oe" model="account.financial.html.report.line">
+            <field name="name">Owner’s Equity：(Shareholders’ Equity)</field>
+            <field name="code">BS_61</field>
+            <field name="sequence" eval="61"/>
+            <field name="level" eval="0"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+        </record>
+
+        <record id="financial_report_cn_pic" model="account.financial.html.report.line">
+            <field name="name">Paid-in Capital(Shares)</field>
+            <field name="code">BS_62</field>
+            <field name="sequence" eval="62"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="groupby">partner_id</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','实收资本（或股本）')]"/>
+        </record>
+
+        <record id="financial_report_cn_cr" model="account.financial.html.report.line">
+            <field name="name">Capital Reserves</field>
+            <field name="code">BS_63</field>
+            <field name="sequence" eval="63"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="groupby">partner_id</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','资本公积')]"/>
+        </record>
+
+        <record id="financial_report_cn_lts" model="account.financial.html.report.line">
+            <field name="name">Less: Treasury Stock</field>
+            <field name="code">BS_64</field>
+            <field name="sequence" eval="64"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','减：库存股')]"/>
+        </record>
+
+        <record id="financial_report_cn_sr" model="account.financial.html.report.line">
+            <field name="name">Surplus Reserves</field>
+            <field name="code">BS_65</field>
+            <field name="sequence" eval="65"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','盈余公积')]"/>
+        </record>
+
+        <record id="financial_report_cn_re" model="account.financial.html.report.line">
+            <field name="name">Retained Earnings</field>
+            <field name="code">BS_66</field>
+            <field name="sequence" eval="66"/>
+            <field name="level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">-sum+PL_22</field>
+            <field name="groupby">partner_id</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','未分配利润')]"/>
+        </record>
+
+        <record id="financial_report_cn_toe" model="account.financial.html.report.line">
+            <field name="name">Total Owner’s Equity</field>
+            <field name="code">BS_67</field>
+            <field name="sequence" eval="67"/>
+            <field name="level" eval="2"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">BS_62 + BS_63 + BS_64 + BS_65 + BS_66</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','所有者权益（或股东权益）合计')]"/>
+        </record>
+
+        <record id="financial_report_cn_tloe" model="account.financial.html.report.line">
+            <field name="name">Total Liabilities and Owner’s Equity</field>
+            <field name="code">BS_68</field>
+            <field name="sequence" eval="68"/>
+            <field name="level" eval="2"/>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="financial_report_cn"/>
+            <field name="formulas">BS_60 + BS_67</field>
+        </record>
+
+	</data>
+</odoo>

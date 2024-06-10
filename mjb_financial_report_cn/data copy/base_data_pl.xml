@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="cn_pl_rmb" model="china.account.type">
+            <field name="name">一、营业收入</field>
+        </record>
+
+        <record id="cn_pl_loc" model="china.account.type">
+            <field name="name">减：营业成本</field>
+        </record>
+
+        <record id="cn_pl_bts" model="china.account.type">
+            <field name="name">营业税金及附加</field>
+        </record>
+
+        <record id="cn_pl_se" model="china.account.type">
+            <field name="name">销售费用</field>
+        </record>
+
+        <record id="cn_pl_gae" model="china.account.type">
+            <field name="name">管理费用</field>
+        </record>
+
+        <record id="cn_pl_fe" model="china.account.type">
+            <field name="name">财务费用</field>
+        </record>
+
+        <record id="cn_pl_awd" model="china.account.type">
+            <field name="name">资产减值损失</field>
+        </record>
+
+        <record id="cn_pl_ifv" model="china.account.type">
+            <field name="name">加：公允价值变动收益（损失以“-”号填列）</field>
+        </record>
+
+        <record id="cn_pl_ii" model="china.account.type">
+            <field name="name">投资收益（损失以“－”号填列）</field>
+        </record>
+
+        <record id="cn_pl_ime" model="china.account.type">
+            <field name="name">其中：对联营企业和合营企业的投资收益</field>
+        </record>
+
+        <record id="cn_pl_aoi" model="china.account.type">
+            <field name="name">加：营业外收入</field>
+        </record>
+
+        <record id="cn_pl_loe" model="china.account.type">
+            <field name="name">减：营业外支出</field>
+        </record>
+
+        <record id="cn_pl_ina" model="china.account.type">
+            <field name="name">其中：非流动资产处置损失</field>
+        </record>
+
+        <record id="cn_pl_lit" model="china.account.type">
+            <field name="name">减：所得税费用</field>
+        </record>
+
+        <record id="cn_pl_bei" model="china.account.type">
+            <field name="name">（一）基本每股收益</field>
+        </record>
+
+        <record id="cn_pl_dei" model="china.account.type">
+            <field name="name">（二）稀释每股收益</field>
+        </record>
+        
+    </data>
+</odoo>

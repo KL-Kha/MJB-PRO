@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="cn_cur_asset" model="china.account.type">
+            <field name="name">Current Assets</field>
+            <field name="code">current_assets</field>
+        </record>
+
+        <record id="cn_bnc" model="china.account.type">
+            <field name="name">Monetary Capital</field>
+            <field name="code">monetary_capital</field>
+        </record>
+
+        <record id="cn_mmf" model="china.account.type">
+            <field name="name">Money Market Funds</field>
+            <field name="code">money_market_funds</field>
+        </record>
+
+        <record id="cn_ar" model="china.account.type">
+            <field name="name">Accounts Receivable</field>
+            <field name="code">accounts_receivable</field>
+        </record>
+
+        <record id="cn_nr" model="china.account.type">
+            <field name="name">Notes Receivable</field>
+            <field name="code">notes_receivable</field>
+        </record>
+
+        <record id="cn_pre" model="china.account.type">
+            <field name="name">Prepayments</field>
+            <field name="code">prepayments</field>
+        </record>
+
+        <record id="cn_dr" model="china.account.type">
+            <field name="name">Interest Receivable</field>
+            <field name="code">interest_receivable</field>
+        </record>
+
+        <record id="cn_intr" model="china.account.type">
+            <field name="name">Dividends Receivable</field>
+            <field name="code">dividends_receivable</field>
+        </record>
+
+        <record id="cn_or" model="china.account.type">
+            <field name="name">Other Receivable</field>
+            <field name="code">other_receivable</field>
+        </record>
+
+        <record id="cn_inv" model="china.account.type">
+            <field name="name">Inventories</field>
+            <field name="code">inventories</field>
+        </record>
+
+        <record id="cn_non_cur" model="china.account.type">
+            <field name="name">Non-current Assets Falling Due Treasury Stock Within One Year</field>
+            <field name="code">non_current_assets_falling_due_treasury_stock_within_one_year</field>
+        </record>
+
+        <record id="cn_oca" model="china.account.type">
+            <field name="name">Other Current Assets</field>
+            <field name="code">other_current_assets</field>
+        </record>
+
+        <record id="cn_tca" model="china.account.type">
+            <field name="name">Total Current Assets</field>
+            <field name="code">total_current_assets</field>
+        </record>
+
+        <record id="cn_sma" model="china.account.type">
+            <field name="name">Available for Sale Monetary Assets</field>
+            <field name="code">available_for_sale_monetary_assets</field>
+        </record>
+
+        <record id="cn_hms" model="china.account.type">
+            <field name="name">Held-to-Maturity Securities</field>
+            <field name="code">held_to_maturity_securities</field>
+        </record>
+
+        <record id="cn_cur_lar" model="china.account.type">
+            <field name="name">Long-term Accounts Receivable</field>
+            <field name="code">long_term_accounts_receivable</field>
+        </record>
+
+        <record id="cn_lei" model="china.account.type">
+            <field name="name">Long-term Equity Investment</field>
+            <field name="code">long_term_equity_investment</field>
+        </record>
+
+        <record id="cn_ere" model="china.account.type">
+            <field name="name">Equity Real Estate</field>
+            <field name="code">equity_real_estate</field>
+        </record>
+
+        <record id="cn_fa" model="china.account.type">
+            <field name="name">Fixed Assets</field>
+            <field name="code">fixed_assets</field>
+        </record>
+
+        <record id="cn_ad" model="china.account.type">
+            <field name="name">Accumulated Depreciation</field>
+            <field name="code">accumulated_depreciation</field>
+        </record>
+
+        <record id="cn_em" model="china.account.type">
+            <field name="name">Engineering Material</field>
+            <field name="code">engineering_material</field>
+        </record>
+
+        <record id="cn_cur_dfa" model="china.account.type">
+            <field name="name">Disposal of Fixed Assets</field>
+            <field name="code">disposal_of_fixed_assets</field>
+        </record>
+
+        <record id="cn_bap" model="china.account.type">
+            <field name="name">Biologically Assets for Production</field>
+            <field name="code">biologically_assets_for_production</field>
+        </record>
+
+        <record id="cn_goa" model="china.account.type">
+            <field name="name">Accumulated Amortization</field>
+            <field name="code">accumulated_amortization</field>
+        </record>
+
+        <record id="cn_ia" model="china.account.type">
+            <field name="name">Intangible Assets</field>
+            <field name="code">intangible_assets</field>
+        </record>
+
+        <record id="cn_de" model="china.account.type">
+            <field name="name">Development Expenditures</field>
+            <field name="code">development_expenditures</field>
+        </record>
+
+        <record id="cn_gw" model="china.account.type">
+            <field name="name">Goodwill</field>
+            <field name="code">goodwill</field>
+        </record>
+
+        <record id="cn_lde" model="china.account.type">
+            <field name="name">Long-term Deferred Expenditure</field>
+            <field name="code">long_term_deferred_expenditure</field>
+        </record>
+
+        <record id="cn_tda" model="china.account.type">
+            <field name="name">Income Tax Deferred Assets</field>
+            <field name="code">income_tax_deferred_assets</field>
+        </record>
+
+        <record id="cn_onca" model="china.account.type">
+            <field name="name">Other Non-Current Assets</field>
+            <field name="code">other_non_current_assets</field>
+        </record>
+
+        <record id="cn_tnca" model="china.account.type">
+            <field name="name">Total Non-Current Assets</field>
+            <field name="code">total_non_current_assets</field>
+        </record>
+
+        <record id="cn_cl" model="china.account.type">
+            <field name="name">Current Liabilities</field>
+            <field name="code">current_liabilities</field>
+        </record>
+
+        <record id="cn_stl" model="china.account.type">
+            <field name="name">Short-term Loans</field>
+            <field name="code">short_term_loans</field>
+        </record>
+
+        <record id="cn_mml" model="china.account.type">
+            <field name="name">Money Market Liabilities</field>
+            <field name="code">money_market_liabilities</field>
+        </record>
+
+        <record id="cn_np" model="china.account.type">
+            <field name="name">Notes Payable</field>
+            <field name="code">notes_payable</field>
+        </record>
+
+        <record id="cn_ap" model="china.account.type">
+            <field name="name">Accounts Payable</field>
+            <field name="code">accounts_payable</field>
+        </record>
+
+        <record id="cn_afc" model="china.account.type">
+            <field name="name">Advances from Customers</field>
+            <field name="code">advances_from_customers</field>
+        </record>
+
+        <record id="cn_apr" model="china.account.type">
+            <field name="name">Accrued Payroll</field>
+            <field name="code">accrued_payroll</field>
+        </record>
+
+        <record id="cn_cur_tp" model="china.account.type">
+            <field name="name">Taxes Payable</field>
+            <field name="code">taxes_payable</field>
+        </record>
+
+        <record id="cn_ip" model="china.account.type">
+            <field name="name">Interest Payable</field>
+            <field name="code">interest_payable</field>
+        </record>
+
+        <record id="cn_dp" model="china.account.type">
+            <field name="name">Dividends Payable</field>
+            <field name="code">dividends_payable</field>
+        </record>
+
+        <record id="cn_op" model="china.account.type">
+            <field name="name">Other Payables</field>
+            <field name="code">other_payables</field>
+        </record>
+
+        <record id="cn_nclf" model="china.account.type">
+            <field name="name">Accrued Expenses</field>
+            <field name="code">accrued_expenses</field>
+        </record>
+
+        <record id="cn_ocl" model="china.account.type">
+            <field name="name">Other Current Liabilities</field>
+            <field name="code">other_current_liabilities</field>
+        </record>
+
+        <record id="cn_tcl" model="china.account.type">
+            <field name="name">Total Current Liabilities</field>
+            <field name="code">total_current_liabilities</field>
+        </record>
+
+        <record id="cn_ncl" model="china.account.type">
+            <field name="name">Non-Current Liabilities:</field>
+            <field name="code">non_current_liabilities:</field>
+        </record>
+
+        <record id="cn_ltl" model="china.account.type">
+            <field name="name">Long-term Loans</field>
+            <field name="code">long_term_loans</field>
+        </record>
+
+        <record id="cn_bp" model="china.account.type">
+            <field name="name">Bonds Payable</field>
+            <field name="code">bonds_payable</field>
+        </record>
+
+        <record id="cn_ltap" model="china.account.type">
+            <field name="name">Long-term Accounts Payable</field>
+            <field name="code">long_term_accounts_payable</field>
+        </record>
+
+        <record id="cn_sap" model="china.account.type">
+            <field name="name">Special Accounts Payable</field>
+            <field name="code">special_accounts_payable</field>
+        </record>
+
+        <record id="cn_cur_fl" model="china.account.type">
+            <field name="name">Forecasted Liabilities</field>
+            <field name="code">forecasted_liabilities</field>
+        </record>
+
+        <record id="cn_itdl" model="china.account.type">
+            <field name="name">Income Tax Deferred Liabilities</field>
+            <field name="code">income_tax_deferred_liabilities</field>
+        </record>
+
+        <record id="cn_oncl" model="china.account.type">
+            <field name="name">Other Non-Current Liabilities</field>
+            <field name="code">other_non_current_liabilities</field>
+        </record>
+
+        <record id="cn_tncl" model="china.account.type">
+            <field name="name">Total Non-Current Liabilities</field>
+            <field name="code">total_non_current_liabilities</field>
+        </record>
+
+        <record id="cn_tl" model="china.account.type">
+            <field name="name">Total Liabilities</field>
+            <field name="code">total_liabilities</field>
+        </record>
+
+        <record id="cn_cur_pic" model="china.account.type">
+            <field name="name">Paid-in Capital(Shares)</field>
+            <field name="code">paid_in_capital_shares</field>
+        </record>
+
+        <record id="cn_cur_cr" model="china.account.type">
+            <field name="name">Capital Reserves</field>
+            <field name="code">capital_reserves</field>
+        </record>
+
+        <record id="cn_oci" model="china.account.type">
+            <field name="name">Other comprehensive income</field>
+            <field name="code">other_comprehensive_income</field>
+        </record>
+
+        <record id="cn_lts" model="china.account.type">
+            <field name="name">Less: Treasury Stock</field>
+            <field name="code">less_treasury_stock</field>
+        </record>
+
+        <record id="cn_sr" model="china.account.type">
+            <field name="name">Surplus Reserves</field>
+            <field name="code">surplus_reserves</field>
+        </record>
+
+        <record id="cn_re" model="china.account.type">
+            <field name="name">Retained Earnings</field>
+            <field name="code">retained_earnings</field>
+        </record>
+        
+        <record id="cn_toe" model="china.account.type">
+            <field name="name">Total Owner’s Equity</field>
+            <field name="code">total_owner_equity</field>
+        </record>
+        
+    </data>
+</odoo>

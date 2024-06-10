@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+
+		<record id="financial_report_cn" model="account.report">
+            <field name="name">China Balance Sheet</field>
+            <field name="filter_analytic" eval="True"/>
+            <field name="filter_unfold_all" eval="True"/>
+            <field name="filter_journals" eval="True"/>
+            <!-- <field name='parent_id' ref='mjb_l10n_cn_report.mjb_account_reports_legal_statements_menu'/> -->
+        </record>
+
+        <record id="financial_report_cn_asset" model="account.report.line">
+            <field name="name">Assets</field>
+            <field name="code">BS_01</field>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="sequence" eval="1"/>
+            <field name="hierarchy_level" eval="0" />
+        </record>
+
+        <record id="financial_report_cn_curasset" model="account.report.line">
+            <field name="name">Current Assets</field>
+            <field name="code">BS_02</field>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="sequence" eval="2"/>
+            <field name="hierarchy_level" eval="1" />
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_cur_asset'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_bankcash" model="account.report.line">
+            <field name="name">Bank and Cash</field>
+            <field name="code">BS_03</field>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="sequence" eval="3"/>
+            <field name="hierarchy_level" eval="3" />
+            <field name="groupby">partner_id</field>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_bnc'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_mmf" model="account.report.line">
+            <field name="name">Money Market Funds</field>
+            <field name="code">BS_04</field>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="sequence" eval="4"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_mmf'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_nr" model="account.report.line">
+            <field name="name">Notes Receivable</field>
+            <field name="code">BS_05</field>
+            <field name="sequence" eval="5"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_nr'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_ar" model="account.report.line">
+            <field name="name">Accounts Receivable</field>
+            <field name="code">BS_06</field>
+            <field name="sequence" eval="6"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <field name="groupby">partner_id</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_ar'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_pre" model="account.report.line">
+            <field name="name">Prepayments</field>
+            <field name="code">BS_07</field>
+            <field name="sequence" eval="7"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_pre'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_dr" model="account.report.line">
+            <field name="name">Dividends Receivable</field>
+            <field name="code">BS_08</field>
+            <field name="sequence" eval="8"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_intr'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_ir" model="account.report.line">
+            <field name="name">Interest Receivable</field>
+            <field name="code">BS_09</field>
+            <field name="sequence" eval="9"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_dr'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_or" model="account.report.line">
+            <field name="name">Other Receivable</field>
+            <field name="code">BS_10</field>
+            <field name="sequence" eval="10"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_or'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_inv" model="account.report.line">
+            <field name="name">Inventories</field>
+            <field name="code">BS_11</field>
+            <field name="sequence" eval="11"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_inv'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_non_cur" model="account.report.line">
+            <field name="name">Non-current Assets Falling Due Treasury Stock Within One Year</field>
+            <field name="code">BS_12</field>
+            <field name="sequence" eval="12"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_non_cur'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_oca" model="account.report.line">
+            <field name="name">Other Current Assets</field>
+            <field name="code">BS_13</field>
+            <field name="sequence" eval="13"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_oca'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_tca" model="account.report.line">
+            <field name="name">Total Current Assets</field>
+            <field name="code">BS_14</field>
+            <field name="sequence" eval="14"/>
+            <field name="hierarchy_level" eval="2"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">BS_03 + BS_04 + BS_05 + BS_06 + BS_07 + BS_08 + BS_09 + BS_10 + BS_11 + BS_12 + BS_13  </field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_tca'))]"/> -->
+        </record>
+
+         <record id="financial_report_cn_nca" model="account.report.line">
+            <field name="name">Non-Current Assets</field>
+            <field name="code">BS_15</field>
+            <field name="sequence" eval="15"/>
+            <field name="hierarchy_level" eval="1"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=','非流动资产：')]"/> -->
+        </record>
+
+        <record id="financial_report_cn_sma" model="account.report.line">
+            <field name="name">Available for Sale Monetary Assets</field>
+            <field name="code">BS_16</field>
+            <field name="sequence" eval="16"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_sma'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_hms" model="account.report.line">
+            <field name="name">Held-to-Maturity Securities</field>
+            <field name="code">BS_17</field>
+            <field name="sequence" eval="17"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_hms'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_lar" model="account.report.line">
+            <field name="name">Long-term Accounts Receivable</field>
+            <field name="code">BS_18</field>
+            <field name="sequence" eval="18"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_cur_lar'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_lei" model="account.report.line">
+            <field name="name">Long-term Equity Investment</field>
+            <field name="code">BS_19</field>
+            <field name="sequence" eval="19"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_lei'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_ere" model="account.report.line">
+            <field name="name">Equity Real Estate</field>
+            <field name="code">BS_20</field>
+            <field name="sequence" eval="20"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_ere'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_fa" model="account.report.line">
+            <field name="name">Fixed Assets</field>
+            <field name="code">BS_21</field>
+            <field name="sequence" eval="21"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <field name="groupby">partner_id</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_fa'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_ad" model="account.report.line">
+            <field name="name">Accumulated Depreciation</field>
+            <field name="code">BS_22</field>
+            <field name="sequence" eval="22"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <field name="groupby">partner_id</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_ad'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_em" model="account.report.line">
+            <field name="name">Engineering Material</field>
+            <field name="code">BS_23</field>
+            <field name="sequence" eval="23"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_em'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_dfa" model="account.report.line">
+            <field name="name">Disposal of Fixed Assets</field>
+            <field name="code">BS_24</field>
+            <field name="sequence" eval="24"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_cur_dfa'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_bap" model="account.report.line">
+            <field name="name">Biologically Assets for Production</field>
+            <field name="code">BS_25</field>
+            <field name="sequence" eval="25"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_bap'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_goa" model="account.report.line">
+            <field name="name">Gas and Oil Assets</field>
+            <field name="code">BS_26</field>
+            <field name="sequence" eval="26"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_goa'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_ia" model="account.report.line">
+            <field name="name">Intangible Assets</field>
+            <field name="code">BS_27</field>
+            <field name="sequence" eval="27"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_ia'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_de" model="account.report.line">
+            <field name="name">Development Expenditures</field>
+            <field name="code">BS_28</field>
+            <field name="sequence" eval="28"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_de'))]"/> -->
+       </record>
+
+        <record id="financial_report_cn_gw" model="account.report.line">
+            <field name="name">Goodwill</field>
+            <field name="code">BS_29</field>
+            <field name="sequence" eval="29"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_gw'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_lde" model="account.report.line">
+            <field name="name">Long-term Deferred Expenditure</field>
+            <field name="code">BS_30</field>
+            <field name="sequence" eval="30"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <field name="groupby">partner_id</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_lde'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_tda" model="account.report.line">
+            <field name="name">Income Tax Deferred Assets</field>
+            <field name="code">BS_31</field>
+            <field name="sequence" eval="31"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_tda'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_onca" model="account.report.line">
+            <field name="name">Other Non-Current Assets</field>
+            <field name="code">BS_32</field>
+            <field name="sequence" eval="32"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_onca'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_tnca" model="account.report.line">
+            <field name="name">Total Non-Current Assets</field>
+            <field name="code">BS_33</field>
+            <field name="sequence" eval="33"/>
+            <field name="hierarchy_level" eval="2"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">BS_16 + BS_17 + BS_18 + BS_19 + BS_20 + BS_21 + BS_22 + BS_23 + BS_24 + BS_25 + BS_26 + BS_27 + BS_28 + BS_29 + BS_30 + BS_31 + BS_32</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_tnca'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_ta" model="account.report.line">
+            <field name="name">Total Assets</field>
+            <field name="code">BS_34</field>
+            <field name="sequence" eval="34"/>
+            <field name="hierarchy_level" eval="2"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">BS_14 + BS_33</field>
+        </record>
+
+        <record id="financial_report_cn_loe" model="account.report.line">
+            <field name="name">Liabilities and Owner’s Equity (or Shareholder Shares)</field>
+            <field name="code">BS_35</field>
+            <field name="sequence" eval="35"/>
+            <field name="hierarchy_level" eval="0"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+        </record>
+
+        <record id="financial_report_cn_lia" model="account.report.line">
+            <field name="name">Liabilities</field>
+            <field name="code">BS_36</field>
+            <field name="sequence" eval="36"/>
+            <field name="hierarchy_level" eval="0"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+        </record>
+
+        <record id="financial_report_cn_cl" model="account.report.line">
+            <field name="name">Current Liabilities</field>
+            <field name="code">BS_37</field>
+            <field name="sequence" eval="37"/>
+            <field name="hierarchy_level" eval="1"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_cl'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_stl" model="account.report.line">
+            <field name="name"> Short-term Loans</field>
+            <field name="code">BS_38</field>
+            <field name="sequence" eval="38"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_stl'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_mml" model="account.report.line">
+            <field name="name">Money Market Liabilities</field>
+            <field name="code">BS_39</field>
+            <field name="sequence" eval="39"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_mml'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_np" model="account.report.line">
+            <field name="name">Notes Payable</field>
+            <field name="code">BS_40</field>
+            <field name="sequence" eval="40"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_np'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_ap" model="account.report.line">
+            <field name="name">Accounts Payable</field>
+            <field name="code">BS_41</field>
+            <field name="sequence" eval="41"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <field name="groupby">partner_id</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_ap'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_afc" model="account.report.line">
+            <field name="name">Advances from Customers</field>
+            <field name="code">BS_42</field>
+            <field name="sequence" eval="42"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_afc'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_apr" model="account.report.line">
+            <field name="name">Accrued Payroll</field>
+            <field name="code">BS_43</field>
+            <field name="sequence" eval="43"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <field name="groupby">partner_id</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_apr'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_tp" model="account.report.line">
+            <field name="name">Taxes Payable</field>
+            <field name="code">BS_44</field>
+            <field name="sequence" eval="44"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <field name="groupby">partner_id</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_cur_tp'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_ip" model="account.report.line">
+            <field name="name">Interest Payable</field>
+            <field name="code">BS_45</field>
+            <field name="sequence" eval="45"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_ip'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_dp" model="account.report.line">
+            <field name="name">Dividends Payable</field>
+            <field name="code">BS_46</field>
+            <field name="sequence" eval="46"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_dp'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_op" model="account.report.line">
+            <field name="name">Other Payables</field>
+            <field name="code">BS_47</field>
+            <field name="sequence" eval="47"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <field name="groupby">partner_id</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_op'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_nclf" model="account.report.line">
+            <field name="name">Non-Current Liabilities Falling Due within One Year</field>
+            <field name="code">BS_48</field>
+            <field name="sequence" eval="48"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <field name="groupby">partner_id</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_nclf'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_ocl" model="account.report.line">
+            <field name="name">Other Current Liabilities</field>
+            <field name="code">BS_49</field>
+            <field name="sequence" eval="49"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_ocl'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_tcl" model="account.report.line">
+            <field name="name">Total Current Liabilities</field>
+            <field name="code">BS_50</field>
+            <field name="sequence" eval="50"/>
+            <field name="hierarchy_level" eval="2"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">BS_38 + BS_39 + BS_40 + BS_41 + BS_42 + BS_43 + BS_44 + BS_45 + BS_46 + BS_47 + BS_48 + BS_49</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_tcl'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_ncl" model="account.report.line">
+            <field name="name">Non-Current Liabilities</field>
+            <field name="code">BS_51</field>
+            <field name="sequence" eval="51"/>
+            <field name="hierarchy_level" eval="1"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_ncl'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_ltl" model="account.report.line">
+            <field name="name">Long-term Loans</field>
+            <field name="code">BS_52</field>
+            <field name="sequence" eval="52"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_ltl'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_bp" model="account.report.line">
+            <field name="name">Bonds Payable</field>
+            <field name="code">BS_53</field>
+            <field name="sequence" eval="53"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_bp'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_ltap" model="account.report.line">
+            <field name="name">Long-term Accounts Payable</field>
+            <field name="code">BS_54</field>
+            <field name="sequence" eval="54"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <field name="groupby">partner_id</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_ltap'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_sap" model="account.report.line">
+            <field name="name">Special Accounts Payable</field>
+            <field name="code">BS_55</field>
+            <field name="sequence" eval="55"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="account_codes_formula">-sum</field>
+            <field name="report_id" ref="financial_report_cn"/>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_sap'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_fl" model="account.report.line">
+            <field name="name">Forecasted Liabilities</field>
+            <field name="code">BS_56</field>
+            <field name="sequence" eval="56"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="account_codes_formula">-sum</field>
+            <field name="report_id" ref="financial_report_cn"/>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_cur_fl'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_itdl" model="account.report.line">
+            <field name="name">Income Tax Deferred Liabilities</field>
+            <field name="code">BS_57</field>
+            <field name="sequence" eval="57"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_itdl'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_oncl" model="account.report.line">
+            <field name="name">Other Non-Current Liabilities</field>
+            <field name="code">BS_58</field>
+            <field name="sequence" eval="58"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_oncl'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_tncl" model="account.report.line">
+            <field name="name">Total Non-Current Liabilities</field>
+            <field name="code">BS_59</field>
+            <field name="sequence" eval="59"/>
+            <field name="hierarchy_level" eval="2"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">BS_52 + BS_53 + BS_54 + BS_55 + BS_56 + BS_57 + BS_58</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_tncl'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_tl" model="account.report.line">
+            <field name="name">Total Liabilities</field>
+            <field name="code">BS_60</field>
+            <field name="sequence" eval="60"/>
+            <field name="hierarchy_level" eval="2"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">BS_50 + BS_59</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_tl'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_oe" model="account.report.line">
+            <field name="name">Owner’s Equity：(Shareholders’ Equity)</field>
+            <field name="code">BS_61</field>
+            <field name="sequence" eval="61"/>
+            <field name="hierarchy_level" eval="0"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+        </record>
+
+        <record id="financial_report_cn_pic" model="account.report.line">
+            <field name="name">Paid-in Capital(Shares)</field>
+            <field name="code">BS_62</field>
+            <field name="sequence" eval="62"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <field name="groupby">partner_id</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_cur_pic'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_cr" model="account.report.line">
+            <field name="name">Capital Reserves</field>
+            <field name="code">BS_63</field>
+            <field name="sequence" eval="63"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <field name="groupby">partner_id</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_cur_cr'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_lts" model="account.report.line">
+            <field name="name">Less: Treasury Stock</field>
+            <field name="code">BS_64</field>
+            <field name="sequence" eval="64"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_lts'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_sr" model="account.report.line">
+            <field name="name">Surplus Reserves</field>
+            <field name="code">BS_65</field>
+            <field name="sequence" eval="65"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_sr'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_re" model="account.report.line">
+            <field name="name">Retained Earnings</field>
+            <field name="code">BS_66</field>
+            <field name="sequence" eval="66"/>
+            <field name="hierarchy_level" eval="3"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">-sum+PL_22</field>
+            
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_re'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_toe" model="account.report.line">
+            <field name="name">Total Owner’s Equity</field>
+            <field name="code">BS_67</field>
+            <field name="sequence" eval="67"/>
+            <field name="hierarchy_level" eval="2"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">BS_62 + BS_63 + BS_64 + BS_65 + BS_66</field>
+            <!-- <field name="domain_formula" eval="[('account_id.china_account_type', '=', ref('mjb_financial_report_cn.cn_toe'))]"/> -->
+        </record>
+
+        <record id="financial_report_cn_tloe" model="account.report.line">
+            <field name="name">Total Liabilities and Owner’s Equity</field>
+            <field name="code">BS_68</field>
+            <field name="sequence" eval="68"/>
+            <field name="hierarchy_level" eval="2"/>
+            <field name="parent_id" eval="False"/>
+            <field name="report_id" ref="financial_report_cn"/>
+            <field name="account_codes_formula">BS_60 + BS_67</field>
+        </record>
+
+	</data>
+</odoo>

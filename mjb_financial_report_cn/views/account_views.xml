@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_financial_report" model="ir.ui.view">
+            <field name="name">view.financial.report</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form//field[@name='tax_ids']" position="after">
+                    <field name="china_account_type" string="China Account Type"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="financial_report_cn_account_type_form" model="ir.ui.view">
+            <field name="name">financial.report.cn.account.type.form</field>
+            <field name="model">china.account.type</field>
+            <field name="arch" type="xml">
+                <form string="China Account Type">
+                    <sheet>
+                        <label for="name">
+                            <span>Account Name</span>
+                        </label>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <label for="code">
+                            <span>Account Code</span>
+                        </label>
+                        <h1>
+                            <field name="code"/>
+                        </h1>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="financial_report_cn_account_type_tree">
+            <field name="name">financial.report.cn.account.type.tree</field>
+            <field name="model">china.account.type</field>
+            <field name="arch" type="xml">
+                <tree string="China Account Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

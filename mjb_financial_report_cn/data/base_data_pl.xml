@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="cn_pl_rmb" model="china.account.type">
+            <field name="name">1, Operating Income</field>
+            <field name="code">1_operating_income</field>
+        </record>
+
+        <record id="cn_pl_loc" model="china.account.type">
+            <field name="name">Less: Operating Cost</field>
+            <field name="code">less_operating_cost</field>
+        </record>
+
+        <record id="cn_pl_bts" model="china.account.type">
+            <field name="name">Business Tax and Surcharges</field>
+            <field name="code">business_tax_and_surcharges</field>
+        </record>
+
+        <record id="cn_pl_se" model="china.account.type">
+            <field name="name">Selling Expense</field>
+            <field name="code">selling_expense</field>
+        </record>
+
+        <record id="cn_pl_gae" model="china.account.type">
+            <field name="name">General and Administrative Expense</field>
+            <field name="code">general_and_administrative_expense</field>
+        </record>
+
+        <record id="cn_pl_fe" model="china.account.type">
+            <field name="name">Financial Expense</field>
+            <field name="code">financial_expense</field>
+        </record>
+
+        <record id="cn_pl_awd" model="china.account.type">
+            <field name="name">On Assets Write - Down</field>
+            <field name="code">on_assets_write_down</field>
+        </record>
+
+        <record id="cn_pl_ifv" model="china.account.type">
+            <field name="name">Add: Income from Fair Value Changed(put \"-\" if loss)</field>
+            <field name="code">add_income_from_fair_value_changed</field>
+        </record>
+
+        <record id="cn_pl_ii" model="china.account.type">
+            <field name="name">Investment Income(put \"-\" if loss)</field>
+            <field name="code">investment_income</field>
+        </record>
+
+        <record id="cn_pl_ime" model="china.account.type">
+            <field name="name">Including: To Joint Management Enterprise and Joint Enterprise's Investment Income</field>
+            <field name="code">including_to_joint_management_enterprise_and_joint_enterprise_s_investment_income</field>
+        </record>
+
+        <record id="cn_pl_aoi" model="china.account.type">
+            <field name="name">Add: Non-operating Income</field>
+            <field name="code">add_non_operating_income</field>
+        </record>
+
+        <record id="cn_pl_loe" model="china.account.type">
+            <field name="name">Less: Non-operating Expense</field>
+            <field name="code">less_non_operating_expense</field>
+        </record>
+
+        <record id="cn_pl_ina" model="china.account.type">
+            <field name="name">Including: Non-current Assets Handling Loss</field>
+            <field name="code">including_non_current_assets_handling_loss</field>
+        </record>
+
+        <record id="cn_pl_lit" model="china.account.type">
+            <field name="name">Less: Income Tax</field>
+            <field name="code">less_income_tax</field>
+        </record>
+
+        <record id="cn_pl_bei" model="china.account.type">
+            <field name="name">(1) Basic Each Income</field>
+            <field name="code">(1)_basic_each_income</field>
+        </record>
+
+        <record id="cn_pl_dei" model="china.account.type">
+            <field name="name">(2) Dilutes Each Income</field>
+            <field name="code">(2)_dilutes_each_income</field>
+        </record>
+
+    </data>
+</odoo>

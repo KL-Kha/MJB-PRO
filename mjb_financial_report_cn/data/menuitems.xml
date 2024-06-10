@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="report_cn_pl_menu" name="China Profit &amp; Loss" parent="mjb_l10n_cn_report.mjb_account_reports_legal_statements_menu" action="action_report_cn_pl" groups="account.group_account_user"/>   
+    <menuitem id="financial_report_cn_menu" name="China Balance Sheet" parent="mjb_l10n_cn_report.mjb_account_reports_legal_statements_menu" action="action_financial_report_cn" groups="account.group_account_user"/>
+</odoo>

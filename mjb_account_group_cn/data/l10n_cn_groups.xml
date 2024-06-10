@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="cn_gen_root" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="name">丹鸟 || Majorbird China (SHZ)</field>
+            <field name="code_prefix_start">00000000</field>
+        </record>
+        <record id="gen_chart1000" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">1</field>
+            <field ref="cn_gen_root" name="parent_id"/>
+            <field name="name">一、资产类 || Asset</field>
+        </record>
+        <record id="gen_chart2000" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">2</field>
+            <field ref="cn_gen_root" name="parent_id"/>
+            <field name="name">二、负债类 || LIABILITY</field>
+        </record>
+        <record id="gen_chart3000" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">3</field>
+            <field ref="cn_gen_root" name="parent_id"/>
+            <field name="name">三、共同类 || Common Category</field>
+        </record>
+        <record id="gen_chart4000" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">4</field>
+            <field ref="cn_gen_root" name="parent_id"/>
+            <field name="name">四、所有者权益类 || EQUITY</field>
+        </record>
+        <record id="gen_chart5000" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">5</field>
+            <field ref="cn_gen_root" name="parent_id"/>
+            <field name="name">五、成本类 || COST</field>
+        </record>
+        <record id="gen_chart6000" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">6</field>
+            <field ref="cn_gen_root" name="parent_id"/>
+            <field name="name">六、损益类 || REVENUE, EXPENSES</field>
+        </record>
+
+        <!-- End of Parent cn_gen_root -->
+
+        <record id="gen_chart2001" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">20010000</field>
+            <field ref="gen_chart2000" name="parent_id"/>
+            <field name="name">短期借款 || Short term Loan &amp; Debt (LD)</field>
+        </record>
+        <record id="gen_chart2202" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">22020000</field>
+            <field ref="gen_chart2000" name="parent_id"/>
+            <field name="name">应付账款 || Account payables (AP)</field>
+        </record>
+        <record id="gen_chart2203" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">2203000</field>
+            <field ref="gen_chart2000" name="parent_id"/>
+            <field name="name">预收账款 || Advance from Customers</field>
+        </record>
+        <record id="gen_chart2211" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">22110</field>
+            <field ref="gen_chart2000" name="parent_id"/>
+            <field name="name">应付职工薪酬 || Staff payables</field>
+        </record>
+        <record id="gen_chart2221" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">222100</field>
+            <field ref="gen_chart2000" name="parent_id"/>
+            <field name="name">应交税费 || State payable (EP)</field>
+        </record>
+        <record id="gen_chart22201" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">222101</field>
+            <field ref="gen_chart2221" name="parent_id"/>
+            <field name="name">应交税费 - 应交增值税 || EP - VAT Account</field>
+        </record>
+        <record id="gen_chart22208" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">222108</field>
+            <field ref="gen_chart2221" name="parent_id"/>
+            <field name="name">应交税费 - 应交教育费附加 || EP - Education tax</field>
+        </record>
+        <record id="gen_chart22112" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">22211200</field>
+            <field ref="gen_chart2221" name="parent_id"/>
+            <field name="name">应交税费 - 国外增值税 || EP - Abroad VAT</field>
+        </record>
+        <record id="gen_chart2231" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">22310000</field>
+            <field ref="gen_chart2000" name="parent_id"/>
+            <field name="name">应付股利 || Dividends payable</field>
+        </record>
+        <record id="gen_chart2241" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">22410000</field>
+            <field ref="gen_chart2000" name="parent_id"/>
+            <field name="name">其他应付款 || Other accounts payable</field>
+        </record>
+        <record id="gen_chart2501" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">25010000</field>
+            <field ref="gen_chart2000" name="parent_id"/>
+            <field name="name">长期借款 || Long term Loan &amp; Debt (LD)</field>
+        </record>
+
+        <!-- End of Parent gen_chart2000 -->
+
+        <record id="gen_chart4001" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">4001</field>
+            <field ref="gen_chart4000" name="parent_id"/>
+            <field name="name">实收资本 || CP - Reserves</field>
+        </record>
+        <record id="gen_chart4103" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">41030000</field>
+            <field ref="gen_chart4000" name="parent_id"/>
+            <field name="name">本年利润 || Yearly Net Income (Profit or Loss) (PL)</field>
+        </record>
+        <record id="gen_chart4104" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">4104</field>
+            <field ref="gen_chart4000" name="parent_id"/>
+            <field name="name">利润分配 || Allocation of profits</field>
+        </record>
+
+        <!-- End of Parent gen_chart4000 -->
+
+        <record id="gen_chart5101" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">51010000</field>
+            <field ref="gen_chart5000" name="parent_id"/>
+            <field name="name">制造费用 || Manufacturing expenses</field>
+        </record>
+
+        <!-- End of Parent gen_chart5000 -->
+
+        <record id="gen_chart6001" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">60010000</field>
+            <field ref="gen_chart6000" name="parent_id"/>
+            <field name="name">主营业务收入 || Income on sales (IOV)</field>
+        </record>
+        <record id="gen_chart6011" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">60110000</field>
+            <field ref="gen_chart6000" name="parent_id"/>
+            <field name="name">利息收入 || FIR - Interest revenue</field>
+        </record>
+        <record id="gen_chart6051" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">60510000</field>
+            <field ref="gen_chart6000" name="parent_id"/>
+            <field name="name">其他业务收入 || Income on delivery (IOD)</field>
+        </record>
+        <record id="gen_chart6301" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">6301</field>
+            <field ref="gen_chart6000" name="parent_id"/>
+            <field name="name">营业外收入 || Non-operating incomes</field>
+        </record>
+        <record id="gen_chart6401" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">64010000</field>
+            <field ref="gen_chart6000" name="parent_id"/>
+            <field name="name">主营业务成本 || Cost of purchases (COP)</field>
+        </record>
+        <record id="gen_chart6402" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">64020000</field>
+            <field ref="gen_chart6000" name="parent_id"/>
+            <field name="name">其他业务成本 || Other operational costs</field>
+        </record>
+        <record id="gen_chart6403" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">6403</field>
+            <field ref="gen_chart6000" name="parent_id"/>
+            <field name="name">税金及附加 || Tax and extra charges</field>
+        </record>
+        <record id="gen_chart6601" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">660104</field>
+            <field ref="gen_chart6000" name="parent_id"/>
+            <field name="name">销售费用 || Sales expenses</field>
+        </record>
+        <record id="gen_chart6602" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">66020000</field>
+            <field ref="gen_chart6000" name="parent_id"/>
+            <field name="name">管理费用 || Manangement expenses (OFE)</field>
+        </record>
+        <record id="gen_chart6603" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">660</field>
+            <field ref="gen_chart6000" name="parent_id"/>
+            <field name="name">财务费用 || FINANCE EXPENSES (FIE)</field>
+        </record>
+        <record id="gen_chart6711" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">6711</field>
+            <field ref="gen_chart6000" name="parent_id"/>
+            <field name="name">营业外支出 || Non-operating expense</field>
+        </record>
+        <record id="gen_chart6801" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">6801</field>
+            <field ref="gen_chart6000" name="parent_id"/>
+            <field name="name">所得税费用 || Profit Tax</field>
+        </record>
+
+        <!-- End Of Parent gen_chart6000 -->
+
+        <record id="gen_chart66010" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">66010100</field>
+            <field ref="gen_chart6601" name="parent_id"/>
+            <field name="name">销售费用 - 交通费 || Travelling Expenses</field>
+        </record>
+        <record id="gen_chart66012" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">66010200</field>
+            <field ref="gen_chart6601" name="parent_id"/>
+            <field name="name">销售费用 - 差旅费 || Mission expenses (MSE)</field>
+        </record>
+        <record id="gen_chart66013" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">66010300</field>
+            <field ref="gen_chart6601" name="parent_id"/>
+            <field name="name">销售费用 - 公共关系费 || Public relation expenses (PRE)</field>
+        </record>
+
+        <!-- End Of Parent gen_chart6601 -->
+
+        <record id="gen_chart1001" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">10010000</field>
+            <field ref="gen_chart1000" name="parent_id"/>
+            <field name="name">库存现金 || Cash Box</field>
+        </record>
+        <record id="gen_chart1002" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">1002</field>
+            <field ref="gen_chart1000" name="parent_id"/>
+            <field name="name">银行存款 || Bank (BK)</field>
+        </record>
+        <record id="gen_chart1122" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">11220000</field>
+            <field ref="gen_chart1000" name="parent_id"/>
+            <field name="name">应收账款 || Accounts Receivable (AR)</field>
+        </record>
+        <record id="gen_chart1131" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">11310000</field>
+            <field ref="gen_chart1000" name="parent_id"/>
+            <field name="name">应收股利 || Subsidiary and Shares related to subsidiary companies</field>
+        </record>
+        <record id="gen_chart1221" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">12210000</field>
+            <field ref="gen_chart1000" name="parent_id"/>
+            <field name="name">其他应收款 || Other receivable</field>
+        </record>
+        <record id="gen_chart1303" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">13030000</field>
+            <field ref="gen_chart1000" name="parent_id"/>
+            <field name="name">贷款 || Loans</field>
+        </record>
+        <record id="gen_chart1403" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">14030000</field>
+            <field ref="gen_chart1000" name="parent_id"/>
+            <field name="name">原材料 || SK - Inventory of raw materials and supply</field>
+        </record>
+        <record id="gen_chart1405" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">14050000</field>
+            <field ref="gen_chart1000" name="parent_id"/>
+            <field name="name">库存商品 || SK - Products (SKP)</field>
+        </record>
+        <record id="gen_chart1411" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">14110000</field>
+            <field ref="gen_chart1000" name="parent_id"/>
+            <field name="name">周转材料 || Working materials</field>
+        </record>
+        <record id="gen_chart1601" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">16010000</field>
+            <field ref="gen_chart1000" name="parent_id"/>
+            <field name="name">固定资产 || Tangible assets (TA)</field>
+        </record>
+        <record id="gen_chart1602" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">16020000</field>
+            <field ref="gen_chart1000" name="parent_id"/>
+            <field name="name">累计折旧 || Accumulated depreciation</field>
+        </record>
+        <record id="gen_chart16020" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">16020200</field>
+            <field ref="gen_chart1000" name="parent_id"/>
+            <field name="name">待摊费用 || Unamortized Expenditures</field>
+        </record>
+        <record id="gen_chart1701" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="code_prefix_start">17010000</field>
+            <field ref="gen_chart1000" name="parent_id"/>
+            <field name="name">无形资产 || Intangible Assets (IA)</field>
+        </record>
+
+        <!-- End Of Parent gen_chart1000 -->
+
+        <record id="gen_chart660201" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">66020100</field>
+             <field ref="gen_chart6602" name="parent_id"/>
+             <field name="name">管理费用 - 办公室租金及其相关费用 || OFE - Office renting and utilities</field>
+        </record>
+        <record id="gen_chart660205" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">660205</field>
+             <field ref="gen_chart6602" name="parent_id"/>
+             <field name="name">管理费用 - 办公室费用 - 行政管理费 || OFE - Administrative stuff</field>
+        </record>
+        <record id="gen_chart660206" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">660206</field>
+             <field ref="gen_chart6602" name="parent_id"/>
+             <field name="name">管理费用 - 办公室费用 - 电话&amp;网络 || OFE - Phone, Internet</field>
+        </record>
+        <record id="gen_chart660207" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">66020700</field>
+             <field ref="gen_chart6602" name="parent_id"/>
+             <field name="name">管理费用 - 办公室服务费 || Office services Expenses (OSE)</field>
+        </record>
+        <record id="gen_chart6602071" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">66020710</field>
+             <field ref="gen_chart660207" name="parent_id"/>
+             <field name="name">管理费用 - 审计,律师,财务 || OSE - Audit ／Lawyer／Finance</field>
+        </record>
+        <record id="gen_chart660208" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">660208</field>
+             <field ref="gen_chart6602" name="parent_id"/>
+             <field name="name">管理费用 - 信息 || OSE - Informatic</field>
+        </record>
+        <record id="gen_chart660209" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">660209</field>
+             <field ref="gen_chart6602" name="parent_id"/>
+             <field name="name">管理费用 - 产品,市场,销售 || OSE - Commercial,Marketing,Sales</field>
+        </record>
+        <record id="gen_chart660210" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">6602100</field>
+             <field ref="gen_chart6602" name="parent_id"/>
+             <field name="name">管理费用 - 维护费 || OSE - Maintenance</field>
+        </record>
+        <record id="gen_chart660211" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">6602110</field>
+             <field ref="gen_chart6602" name="parent_id"/>
+             <field name="name">管理费用 - 保险费 || OSE - Insurance fees expenses (IFE)</field>
+        </record>
+        <record id="gen_chart6602112" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">6602112</field>
+             <field ref="gen_chart660211" name="parent_id"/>
+             <field name="name">管理费用 - 运输保险 || IFE - Transportation insurance</field>
+        </record>
+        <record id="gen_chart660213" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">66021300</field>
+             <field ref="gen_chart6602" name="parent_id"/>
+             <field name="name">管理费用 - 差旅费,公关费 || Travelling, mission and public relation expenses</field>
+        </record>
+        <record id="gen_chart660214" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">66021400</field>
+             <field ref="gen_chart6602" name="parent_id"/>
+             <field name="name">管理费用 - 奖金和工资 || Wages and salaries (WSE)</field>
+        </record>
+        <record id="gen_chart660217" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">6602170</field>
+             <field ref="gen_chart6602" name="parent_id"/>
+             <field name="name">管理费用 - 例外费用 || EXCEPTIONAL EXPENSES (EXE)</field>
+        </record>
+        <record id="gen_chart660218" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">660218</field>
+             <field ref="gen_chart6602" name="parent_id"/>
+             <field name="name">管理费用 - 管理层租金及其相关费用 || OFE - Directors' Appartment renting and utilities</field>
+        </record>
+        <record id="gen_chart660220" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">66022000</field>
+             <field ref="gen_chart6602" name="parent_id"/>
+             <field name="name">管理费用 - 员工宿舍租金及其相关费用 || OFE - Employee‘s Appartment renting and utilities</field>
+        </record>
+        <record id="gen_chart660221" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">660221</field>
+             <field ref="gen_chart6602" name="parent_id"/>
+             <field name="name">管理费用 - 累计折旧 || Management Exp - Accumulated depreciation</field>
+        </record>
+
+        <!-- End of Parent gen_chart6602 -->
+
+        <record id="gen_chart6602131" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">66021310</field>
+             <field ref="gen_chart660213" name="parent_id"/>
+             <field name="name">管理费用 - 国内交通费 || Mission Local Travelling (MLT)</field>
+        </record>
+        <record id="gen_chart6602132" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">66021320</field>
+             <field ref="gen_chart660213" name="parent_id"/>
+             <field name="name">管理费用 - 国外交通费 || Mission Abroad Travelling (MAT)</field>
+        </record>
+        <record id="gen_chart6602133" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">6602133</field>
+             <field ref="gen_chart660213" name="parent_id"/>
+             <field name="name">管理费用 - 差旅费 || Mission expenses (MSE)</field>
+        </record>
+        <record id="gen_chart6602134" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">6602134</field>
+             <field ref="gen_chart660213" name="parent_id"/>
+             <field name="name">管理费用 - 公共关系费 || Public relation expenses (PRE)</field>
+        </record>
+        <record id="gen_chart6602135" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">66021350</field>
+             <field ref="gen_chart660213" name="parent_id"/>
+             <field name="name">管理费用 - 娱乐费 || PRE - Entertainment</field>
+        </record>
+        <record id="gen_chart6602136" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">66021360</field>
+             <field ref="gen_chart660213" name="parent_id"/>
+             <field name="name">管理费用 - 人际关系费 || PRE - Networking</field>
+        </record>
+
+        <!-- End of Parent gen_chart660213 -->
+
+        <record id="gen_chart6602141" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">6602141</field>
+             <field ref="gen_chart660214" name="parent_id"/>
+             <field name="name">管理费用 - 应付工资 || WSE - Salary</field>
+        </record>
+        <record id="gen_chart6602142" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">6602142</field>
+             <field ref="gen_chart660214" name="parent_id"/>
+             <field name="name">管理费用 - 带薪休假 || WSE - Paid leave</field>
+        </record>
+        <record id="gen_chart6602143" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">6602143</field>
+             <field ref="gen_chart660214" name="parent_id"/>
+             <field name="name">管理费用 - 佣金 || WSE - Commission (based on contract)</field>
+        </record>
+        <record id="gen_chart6602144" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">6602144</field>
+             <field ref="gen_chart660214" name="parent_id"/>
+             <field name="name">管理费用 - 奖金 || WSE - Bonus (official)</field>
+        </record>
+        <record id="gen_chart6602145" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">6602145</field>
+             <field ref="gen_chart660214" name="parent_id"/>
+             <field name="name">管理费用 - 非官方不定额奖金 || WSE - Bonus (black)</field>
+        </record>
+        <record id="gen_chart6602146" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">6602146</field>
+             <field ref="gen_chart660214" name="parent_id"/>
+             <field name="name">管理费用 - 员工福利 || WSE - Advantage in Nature (ADN)</field>
+        </record>
+        <record id="gen_chart6602147" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">6602147</field>
+             <field ref="gen_chart660214" name="parent_id"/>
+             <field name="name">管理费用 - 赔偿金及其他福利 || Indemnity and other benefits (IBE)</field>
+        </record>
+
+        <!-- End of Parent gen_chart6602_14 -->
+
+        <record id="gen_chart6602172" model="account.group.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+             <field name="code_prefix_start">6602172</field>
+             <field ref="gen_chart660217" name="parent_id"/>
+             <field name="name">管理费用 - 预提的风险 || EXE - Provision for risk</field>
+        </record>
+
+        <!-- End of Parent gen_chart6602_17 -->
+    </data>
+</odoo>

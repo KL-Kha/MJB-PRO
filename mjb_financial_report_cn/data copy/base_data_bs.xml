@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="cn_cur_asset" model="china.account.type">
+            <field name="name">流动资产：</field>
+        </record>
+
+        <record id="cn_bnc" model="china.account.type">
+            <field name="name">货币资金</field>
+        </record>
+
+        <record id="cn_mmf" model="china.account.type">
+            <field name="name">交易性金融资产</field>
+        </record>
+
+        <record id="cn_nr" model="china.account.type">
+            <field name="name">应收票据</field>
+        </record>
+
+        <record id="cn_pre" model="china.account.type">
+            <field name="name">预付款项</field>
+        </record>
+
+        <record id="cn_dr" model="china.account.type">
+            <field name="name">应收利息</field>
+        </record>
+
+        <record id="cn_intr" model="china.account.type">
+            <field name="name">应收股利</field>
+        </record>
+
+        <record id="cn_or" model="china.account.type">
+            <field name="name">其他应收款</field>
+        </record>
+
+        <record id="cn_inv" model="china.account.type">
+            <field name="name">存货</field>
+        </record>
+
+        <record id="cn_non_cur" model="china.account.type">
+            <field name="name">一年内到期的非流动资产</field>
+        </record>
+
+        <record id="cn_oca" model="china.account.type">
+            <field name="name">其他流动资产</field>
+        </record>
+
+        <record id="cn_tca" model="china.account.type">
+            <field name="name">流动资产合计</field>
+        </record>
+
+        <record id="cn_sma" model="china.account.type">
+            <field name="name">可供出售金融资产</field>
+        </record>
+
+        <record id="cn_hms" model="china.account.type">
+            <field name="name">持有至到期投资</field>
+        </record>
+
+        <record id="cn_cur_lar" model="china.account.type">
+            <field name="name">长期应收款</field>
+        </record>
+
+        <record id="cn_lei" model="china.account.type">
+            <field name="name">长期股权投资</field>
+        </record>
+
+        <record id="cn_ere" model="china.account.type">
+            <field name="name">投资性房地产</field>
+        </record>
+
+        <record id="cn_fa" model="china.account.type">
+            <field name="name">固定资产</field>
+        </record>
+
+        <record id="cn_ad" model="china.account.type">
+            <field name="name">累计折旧</field>
+        </record>
+
+        <record id="cn_em" model="china.account.type">
+            <field name="name">工程物资</field>
+        </record>
+
+        <record id="cn_cur_dfa" model="china.account.type">
+            <field name="name">固定资产清理</field>
+        </record>
+
+        <record id="cn_bap" model="china.account.type">
+            <field name="name">生产性生物资产</field>
+        </record>
+
+        <record id="cn_goa" model="china.account.type">
+            <field name="name">累计摊销</field>
+        </record>
+
+        <record id="cn_ia" model="china.account.type">
+            <field name="name">无形资产</field>
+        </record>
+
+        <record id="cn_de" model="china.account.type">
+            <field name="name">开发支出</field>
+        </record>
+
+        <record id="cn_gw" model="china.account.type">
+            <field name="name">商誉</field>
+        </record>
+
+        <record id="cn_lde" model="china.account.type">
+            <field name="name">长摊待摊费用</field>
+        </record>
+
+        <record id="cn_tda" model="china.account.type">
+            <field name="name">递延所得税资产</field>
+        </record>
+
+        <record id="cn_onca" model="china.account.type">
+            <field name="name">其他非流动资产</field>
+        </record>
+
+        <record id="cn_tnca" model="china.account.type">
+            <field name="name">非流动资产合计</field>
+        </record>
+
+        <record id="cn_cl" model="china.account.type">
+            <field name="name">流动负债：</field>
+        </record>
+
+        <record id="cn_stl" model="china.account.type">
+            <field name="name">短期借款</field>
+        </record>
+
+        <record id="cn_mml" model="china.account.type">
+            <field name="name">交易性金融负债</field>
+        </record>
+
+        <record id="cn_np" model="china.account.type">
+            <field name="name">应付票据</field>
+        </record>
+
+        <record id="cn_ap" model="china.account.type">
+            <field name="name">应付账款</field>
+        </record>
+
+        <record id="cn_afc" model="china.account.type">
+            <field name="name">预收款项</field>
+        </record>
+
+        <record id="cn_apr" model="china.account.type">
+            <field name="name">应付职工薪酬</field>
+        </record>
+
+        <record id="cn_cur_tp" model="china.account.type">
+            <field name="name">应交税费</field>
+        </record>
+
+        <record id="cn_ip" model="china.account.type">
+            <field name="name">应付利息</field>
+        </record>
+
+        <record id="cn_dp" model="china.account.type">
+            <field name="name">应付股利</field>
+        </record>
+
+        <record id="cn_op" model="china.account.type">
+            <field name="name">其他应付款</field>
+        </record>
+
+        <record id="cn_nclf" model="china.account.type">
+            <field name="name">预提费用</field>
+        </record>
+
+        <record id="cn_ocl" model="china.account.type">
+            <field name="name">其他流动负债</field>
+        </record>
+
+        <record id="cn_tcl" model="china.account.type">
+            <field name="name">流动负债合计</field>
+        </record>
+
+        <record id="cn_ncl" model="china.account.type">
+            <field name="name">非流动负债：</field>
+        </record>
+
+        <record id="cn_ltl" model="china.account.type">
+            <field name="name">长期借款</field>
+        </record>
+
+        <record id="cn_bp" model="china.account.type">
+            <field name="name">应付债券</field>
+        </record>
+
+        <record id="cn_ltap" model="china.account.type">
+            <field name="name">长期应付款</field>
+        </record>
+
+        <record id="cn_sap" model="china.account.type">
+            <field name="name">专项应付款`</field>
+        </record>
+
+        <record id="cn_cur_fl" model="china.account.type">
+            <field name="name">预计负债</field>
+        </record>
+
+        <record id="cn_itdl" model="china.account.type">
+            <field name="name">递延所得税负债</field>
+        </record>
+
+        <record id="cn_oncl" model="china.account.type">
+            <field name="name">其他非流动负债</field>
+        </record>
+
+        <record id="cn_tncl" model="china.account.type">
+            <field name="name">非流动负债合计</field>
+        </record>
+
+        <record id="cn_tl" model="china.account.type">
+            <field name="name">负债合计</field>
+        </record>
+
+        <record id="cn_cur_pic" model="china.account.type">
+            <field name="name">实收资本（或股本）</field>
+        </record>
+
+        <record id="cn_cur_cr" model="china.account.type">
+            <field name="name">资本公积</field>
+        </record>
+
+        <record id="cn_lts" model="china.account.type">
+            <field name="name">减：库存股</field>
+        </record>
+
+        <record id="cn_sr" model="china.account.type">
+            <field name="name">盈余公积</field>
+        </record>
+
+        <record id="cn_re" model="china.account.type">
+            <field name="name">未分配利润</field>
+        </record>
+        
+        <record id="cn_toe" model="china.account.type">
+            <field name="name">所有者权益（或股东权益）合计</field>
+        </record>
+        
+    </data>
+</odoo>

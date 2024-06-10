@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="1">
+        <!-- General Business Account Tax Template -->
+        <record id="gen_vats13" model="account.tax.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="name">增值税13%销项税 || Sale Tax 13%</field>
+            <field name="amount">13</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">sale</field>
+            <field name="description">13.00%</field>
+            <field name="sequence">2</field>
+        </record>
+
+        <record id="gen_vatp13" model="account.tax.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="name">增值税13%进项税 || Purchase Tax 13%</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">13</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="description">13.00%</field>
+            <field name="sequence">2</field>
+        </record>
+
+        <record id="gen_vats9" model="account.tax.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="name">增值税9%销项税 || Sale Tax 9%</field>
+            <field name="amount">9</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">sale</field>
+            <field name="description">9.00%</field>
+            <field name="sequence">3</field>
+        </record>
+
+        <record id="gen_vatp9" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gen_chart_china"/>
+            <field name="name">增值税9%进项税 || Purchase Tax 9%</field>
+            <field name="amount">9</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="description">9.00%</field>
+            <field name="sequence">3</field>
+        </record>
+
+        <record id="gen_vats6" model="account.tax.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="name">增值税6%销项税 || Sale Tax 6%</field>
+            <field name="amount">6</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">sale</field>
+            <field name="description">6.00%</field>
+            <field name="sequence">4</field>
+        </record>
+
+        <record id="gen_vatp6" model="account.tax.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="name">增值税6%进项税 || Purchase Tax 6%</field>
+            <field name="amount">6</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="description">6.00%</field>
+            <field name="sequence">4</field>
+        </record>
+
+        <record id="gen_vats3" model="account.tax.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="name">增值税3%销项税 || Sale Tax 3%</field>
+            <field name="amount">3</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">sale</field>
+            <field name="description">3.00%</field>
+            <field name="sequence">5</field>
+        </record>
+
+        <record id="gen_vatp3" model="account.tax.template">
+            <field name="chart_template_id" ref="mjb_l10n_cn.l10n_gen_chart_china"/>
+            <field name="name">增值税3%进项税 || Purchase Tax 3%</field>
+            <field name="amount">3</field>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="description">3.00%</field>
+            <field name="sequence">5</field>
+        </record>
+
+    </data>
+</odoo>

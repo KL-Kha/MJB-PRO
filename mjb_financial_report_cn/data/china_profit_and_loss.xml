@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_cn_pl" model="account.report">
+        <field name="name">China Profit &amp; Loss</field>
+        <field name="filter_analytic_groupby" eval="True"/>
+        <field name="filter_unfold_all" eval="True"/>
+        <field name="filter_journals" eval="True"/>
+        <field name="filter_multi_company">selector</field>
+        <field name="default_opening_date_filter">this_year</field>
+        <field name="column_ids">
+            <record id="report_cn_pl_column" model="account.report.column">
+                <field name="name">Balance</field>
+                <field name="expression_label">balance</field>
+                <field name="figure_type">monetary</field>
+                <field name="sortable">False</field>
+                <field name="blank_if_zero">True</field>
+            </record>
+        </field>
+        <field name="line_ids">
+            <record id="report_cn_pl_rb" model="account.report.line">
+                <field name="name">1, Revenue from Main Business</field>
+                <field name="code">PL_01</field>
+                <!-- <field name="foldable" eval="True"/> -->
+                <field name="expression_ids">
+                    <record id="report_cn_pl_rb_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">domain</field>
+                        <field name="formula" eval="[('account_id.china_account_type.code', '=','1_operating_income')]"/>
+                        <field name="subformula">-sum</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+                <field name="children_ids">
+                    <record id="report_cn_pl_lop" model="account.report.line">
+                        <field name="name">Less: Operation Cost</field>
+                        <field name="code">PL_02</field>
+                        <field name="groupby">partner_id</field>
+                        <!-- <field name="foldable" eval="True"/> -->
+                        <field name="expression_ids">
+                            <record id="report_cn_pl_lop_expression" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">domain</field>
+                                <field name="formula" eval="[('account_id.china_account_type.code', '=','less_operating_cost')]"/>
+                                <field name="subformula">sum</field>
+                                <field name="date_scope">normal</field>
+                                <field name="figure_type">float</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="report_cn_pl_bts" model="account.report.line">
+                        <field name="name">Business Tax and Surcharges</field>
+                        <field name="code">PL_03</field>
+                        <field name="groupby">partner_id</field>
+                        <!-- <field name="foldable" eval="True"/> -->
+                        <field name="expression_ids">
+                            <record id="report_cn_pl_bts_expression" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">domain</field>
+                                <field name="formula" eval="[('account_id.china_account_type.code', '=','business_tax_and_surcharges')]"/>
+                                <field name="subformula">sum</field>
+                                <field name="date_scope">normal</field>
+                                <field name="figure_type">float</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="report_cn_pl_se" model="account.report.line">
+                        <field name="name">Selling Expense</field>
+                        <field name="code">PL_04</field>
+                        <field name="groupby">partner_id</field>
+                        <!-- <field name="foldable" eval="True"/> -->
+                        <field name="expression_ids">
+                            <record id="report_cn_pl_se_expression" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">domain</field>
+                                <field name="formula" eval="[('account_id.china_account_type.code', '=','selling_expense')]"/>
+                                <field name="subformula">sum</field>
+                                <field name="date_scope">normal</field>
+                                <field name="figure_type">float</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="report_cn_pl_gae" model="account.report.line">
+                        <field name="name">General and Administrative Expense</field>
+                        <field name="code">PL_05</field>
+                        <field name="groupby">partner_id</field>
+                        <!-- <field name="foldable" eval="True"/> -->
+                        <field name="expression_ids">
+                            <record id="report_cn_pl_gae_expression" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">domain</field>
+                                <field name="formula" eval="[('account_id.china_account_type.code', '=','general_and_administrative_expense')]"/>
+                                <field name="subformula">sum</field>
+                                <field name="date_scope">normal</field>
+                                <field name="figure_type">float</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="report_cn_pl_fe" model="account.report.line">
+                        <field name="name">Financial Expense</field>
+                        <field name="code">PL_06</field>
+                        <field name="groupby">partner_id</field>
+                        <!-- <field name="foldable" eval="True"/> -->
+                        <field name="expression_ids">
+                            <record id="report_cn_pl_fe_expression" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">domain</field>
+                                <field name="formula" eval="[('account_id.china_account_type.code', '=','financial_expense')]"/>
+                                <field name="subformula">sum</field>
+                                <field name="date_scope">normal</field>
+                                <field name="figure_type">float</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="report_cn_pl_awd" model="account.report.line">
+                        <field name="name">On Assets Write - Down</field>
+                        <field name="code">PL_07</field>
+                        <field name="groupby">partner_id</field>
+                        <!-- <field name="foldable" eval="True"/> -->
+                        <field name="expression_ids">
+                            <record id="report_cn_pl_awd_expression" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">domain</field>
+                                <field name="formula" eval="[('account_id.china_account_type.code', '=','on_assets_write_down')]"/>
+                                <field name="subformula">sum</field>
+                                <field name="date_scope">normal</field>
+                                <field name="figure_type">float</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="report_cn_pl_ivc" model="account.report.line">
+                        <field name="name">Add: Income from Fair Value Changed(put "-" if loss)</field>
+                        <field name="code">PL_08</field>
+                        <field name="groupby">partner_id</field>
+                        <!-- <field name="foldable" eval="True"/> -->
+                        <field name="expression_ids">
+                            <record id="report_cn_pl_ivc_expression" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">domain</field>
+                                <field name="formula" eval="[('account_id.china_account_type.code', '=','add_income_from_fair_value_changed')]"/>
+                                <field name="subformula">sum</field>
+                                <field name="date_scope">normal</field>
+                                <field name="figure_type">float</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="report_cn_pl_ii" model="account.report.line">
+                        <field name="name">Investment Income(put "-" if loss)</field>
+                        <field name="code">PL_09</field>
+                        <!-- <field name="foldable" eval="True"/> -->
+                        <field name="expression_ids">
+                            <record id="report_cn_pl_ii_expression" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">domain</field>
+                                <field name="formula" eval="[('account_id.china_account_type.code', '=','investment_income')]"/>
+                                <field name="subformula">sum</field>
+                                <field name="date_scope">normal</field>
+                                <field name="figure_type">float</field>
+                            </record>
+                        </field>
+                        <field name="children_ids">
+                            <record id="report_cn_pl_itj" model="account.report.line">
+                                <field name="name">Including：To Joint Management Enterprise and Joint Enterprise's Investment Income</field>
+                                <field name="code">PL_10</field>
+                                <field name="groupby">partner_id</field>
+                                <field name="foldable" eval="True"/>
+                                <field name="expression_ids">
+                                    <record id="report_cn_pl_itj_expression" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">domain</field>
+                                        <field name="formula" eval="[('account_id.china_account_type.code', '=','including_to_joint_management_enterprise_and_joint_enterprise_s_investment_income')]"/>
+                                        <field name="subformula">sum</field>
+                                        <field name="date_scope">normal</field>
+                                        <field name="figure_type">float</field>
+                                    </record>
+                                </field>
+                            </record>
+                        </field>
+                    </record>
+                </field>
+            </record>
+            <record id="report_cn_pl_op" model="account.report.line">
+                <field name="name">2, Operation Profit (put "-" if loss)</field>
+                <field name="code">PL_11</field>
+                <!-- <field name="foldable" eval="True"/> -->
+                <field name="expression_ids">
+                    <record id="report_cn_pl_op_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">aggregation</field>
+                        <field name="formula">PL_01.balance - PL_02.balance - PL_03.balance - PL_04.balance - PL_05.balance - PL_06.balance - PL_07.balance + PL_08.balance + PL_09.balance</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+                <field name="children_ids">
+                    <record id="report_cn_pl_ano" model="account.report.line">
+                        <field name="name">Add: Non-operating Income</field>
+                        <field name="code">PL_12</field>
+                        <field name="groupby">partner_id</field>
+                        <!-- <field name="foldable" eval="True"/> -->
+                        <field name="expression_ids">
+                            <record id="report_cn_pl_ano_expression" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">domain</field>
+                                <field name="formula" eval="[('account_id.china_account_type.code', '=','add_non_operating_income')]"/>
+                                <field name="subformula">-sum</field>
+                                <field name="date_scope">normal</field>
+                                <field name="figure_type">float</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="report_cn_pl_lno" model="account.report.line">
+                        <field name="name">Less: Non-operating Expense</field>
+                        <field name="code">PL_13</field>
+                        <!-- <field name="foldable" eval="True"/> -->
+                        <field name="expression_ids">
+                            <record id="report_cn_pl_lno_expression" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">domain</field>
+                                <field name="formula" eval="[('account_id.china_account_type.code', '=','less_non_operating_expense')]"/>
+                                <field name="subformula">sum</field>
+                                <field name="date_scope">normal</field>
+                                <field name="figure_type">float</field>
+                            </record>
+                        </field>
+                        <field name="children_ids">
+                            <record id="report_cn_pl_inc" model="account.report.line">
+                                <field name="name">Including: Non-current Assets Handling Loss</field>
+                                <field name="code">PL_14</field>
+                                <field name="groupby">partner_id</field>
+                                <field name="foldable" eval="True"/>
+                                <field name="expression_ids">
+                                    <record id="report_cn_pl_inc_expression" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">domain</field>
+                                        <field name="formula" eval="[('account_id.china_account_type.code', '=','including_non_current_assets_handling_loss')]"/>
+                                        <field name="subformula">sum</field>
+                                        <field name="date_scope">normal</field>
+                                        <field name="figure_type">float</field>
+                                    </record>
+                                </field>
+                            </record>
+                        </field>
+                    </record>
+                </field>
+            </record>
+            <record id="report_cn_pl_tp" model="account.report.line">
+                <field name="name">3, Total Profit (put "-" if loss)</field>
+                <field name="code">PL_15</field>
+                <!-- <field name="foldable" eval="True"/> -->
+                <field name="expression_ids">
+                    <record id="report_cn_pl_tp_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">aggregation</field>
+                        <field name="formula">PL_11.balance + PL_12.balance - PL_13.balance</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+                <field name="children_ids">
+                    <record id="report_cn_pl_lit" model="account.report.line">
+                        <field name="name">Less: Income Tax</field>
+                        <field name="code">PL_16</field>
+                        <field name="groupby">partner_id</field>
+                        <!-- <field name="foldable" eval="True"/> -->
+                        <field name="expression_ids">
+                            <record id="report_cn_pl_lit_expression" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">domain</field>
+                                <field name="formula" eval="[('account_id.china_account_type.code', '=','less_income_tax')]"/>
+                                <field name="subformula">sum</field>
+                                <field name="date_scope">normal</field>
+                                <field name="figure_type">float</field>
+                            </record>
+                        </field>
+                    </record>
+                </field>
+            </record>
+            <record id="report_cn_pl_np" model="account.report.line">
+                <field name="name">4, Net Profit (put "-" if loss)</field>
+                <field name="code">PL_17</field>
+                <!-- <field name="foldable" eval="True"/> -->
+                <field name="expression_ids">
+                    <record id="report_cn_pl_np_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">aggregation</field>
+                        <field name="formula">PL_15.balance - PL_16.balance</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+            <!-- <record id="report_cn_pl_ps" model="account.report.line">
+                <field name="name">5, Per share</field>
+                <field name="code">PL_18</field>
+                <field name="foldable" eval="True"/>
+                <field name="children_ids">
+                    <record id="report_cn_pl_bei" model="account.report.line">
+                        <field name="name">(1) Basic Each Income</field>
+                        <field name="code">PL_19</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="report_cn_pl_bei_expression" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">domain</field>
+                                <field name="formula" eval="[('account_id.china_account_type.code', '=','(1)_basic_each_income')]"/>
+                                <field name="date_scope">normal</field>
+                                <field name="figure_type">float</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="report_cn_pl_dei" model="account.report.line">
+                        <field name="name">(2) Dilutes Each Income</field>
+                        <field name="code">PL_20</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="report_cn_pl_dei_expression" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">domain</field>
+                                <field name="formula" eval="[('account_id.china_account_type.code', '=','(2)_dilutes_each_income')]"/>
+                                <field name="date_scope">normal</field>
+                                <field name="figure_type">float</field>
+                            </record>
+                        </field>
+                    </record>
+                </field>
+            </record>
+            <record id="report_cn_pl_oci" model="account.report.line">
+                <field name="name">6, Other Comprehensive Income</field>
+                <field name="code">PL_21</field>
+                <field name="foldable" eval="True"/>
+            </record> -->
+            <record id="report_cn_pl_tci" model="account.report.line">
+                <field name="name">7, Total Comprehensive Income</field>
+                <field name="code">PL_22</field>
+                <!-- <field name="foldable" eval="True"/> -->
+                <field name="expression_ids">
+                    <record id="report_cn_pl_tci_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">aggregation</field>
+                        <field name="formula">PL_17.balance</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+        </field>
+    </record>
+
+    <record id="action_report_cn_pl" model="ir.actions.client">
+        <field name="name">China Profit &amp; Loss</field>
+        <field name="tag">account_report</field>
+        <field name="context" eval="{'report_id': ref('report_cn_pl')}"/>
+    </record>
+</odoo>

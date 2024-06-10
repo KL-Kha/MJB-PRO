@@ -1,0 +1,1535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="0">
+
+        <!-- General Business Account Template -->
+        <record id="mjb_l10n_cn.gen_chart10010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10010100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10020100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10020110" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10020120" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10020130" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10020200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10020300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10020400" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10020500" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10020600" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10020700" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10020800" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10030000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10120000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10210000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart10310000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_or"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart11010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_mmf"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart11110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart11210000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_nr"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart11220000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ar"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart11220100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ar"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart11220200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ar"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart11220300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ar"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart11230000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pre"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart11310000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_intr"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart11310100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_intr"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart11310200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_or"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart11320000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_dr"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart12010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_or"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart12110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_or"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart12120000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_or"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart12210000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_or"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart12210100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_or"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart12210200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_or"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart12210300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_or"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart12210400" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_or"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart12210500" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_or"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart12210600" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_or"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart12210700" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_or"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart12210800" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_or"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart12210900" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_or"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart12310000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ar"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart13010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart13020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart13030000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart13030100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart13030200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart13040000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart13110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart13210000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14030000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14030100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14030200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14030300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14030310" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14030320" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14030330" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14040000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14050000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14050100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14050200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14060000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14070000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14080000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14110100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14110100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14210000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14310000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14410000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14510000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14610000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14710000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14810000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart14820000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart15010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_hms"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart15020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_hms"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart15030000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_sma"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart15110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_lei"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart15120000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_lei"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart15210000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ere"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart15270000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_onca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart15310000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_lar"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart15320000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_onca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart15410000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_onca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_fa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16010100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_fa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16010110" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_fa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16010120" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_fa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16010130" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_fa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16010200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_fa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16010300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_fa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16010310" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_fa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16010400" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_fa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16010410" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_fa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16010420" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_fa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16010600" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_fa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16010900" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_fa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ad"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16020100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ad"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16020110" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ad"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16020111" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ad"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16020112" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ad"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16020120" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ad"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16020130" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ad"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16020131" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ad"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16020140" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ad"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16020141" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ad"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16020142" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ad"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16020180" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ad"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16020190" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ad"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16020200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16020210" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16020220" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16030000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16040000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_fa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16050000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_em"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16060000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_dfa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_onca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16210000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bap"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16220000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bap"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16230000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_onca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16310000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_onca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart16320000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_onca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart17010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ia"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart17020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_goa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart17030000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ia"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart17110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_gw"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart18010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_lde"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart18110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_tda"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart18120000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_onca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart19010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_onca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart20010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_stl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart20010100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_stl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart20010200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_stl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart20010300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_stl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart20010310" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_stl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart20010320" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_stl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart20020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_afc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart20030000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_stl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart20040000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_stl"/>
+        </record>
+            <record id="mjb_l10n_cn.gen_chart20050000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_nclf"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart20110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ocl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart20120000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ocl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart20210000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ocl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart21010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_mml"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart21110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ocl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_np"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ap"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22020100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ap"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22020200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ap"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22020300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ap"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22020400" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ap"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22030000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_afc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22030100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_afc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22040000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_op"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_apr"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22110100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_apr"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22110200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_apr"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22110300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_apr"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22110400" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_apr"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22110500" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_apr"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22110600" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_apr"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22110700" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_apr"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22110800" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_apr"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22210000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22210101" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22210120" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22210150" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22210160" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22210170" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22210190" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22210200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22210300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22210400" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22210500" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22210600" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22210700" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22210810" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22210820" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22210900" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22211000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22211100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22211210" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22211220" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_tp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22310000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_dp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22310100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_dp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22320000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ip"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22410000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_op"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22410100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_op"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22410200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_op"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22410300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_op"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22410400" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_op"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22410500" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_op"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22510000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_op"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart22610000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_op"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart23110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_op"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart23120000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_op"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart23130000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_op"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart23140000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_op"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart24010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ocl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart25010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ltl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart25010100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ltl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart25010200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ltl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart25010300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ltl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart25010310" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ltl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart25010320" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ltl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart25020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bp"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart26010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ocl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart26020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ocl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart26110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oncl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart26210000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oncl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart27010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_ltap"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart27020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oncl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart27110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_sap"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart28010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_fl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart28020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oncl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart29010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_itdl"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart31010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oci"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart32010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oci"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart40010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_pic"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart40010100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_pic"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart40010200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_pic"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart40020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_cur_cr"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart41010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_sr"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart41020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oci"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart41030000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_re"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart41030100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_re"/>
+        </record>
+        <!-- <record id="mjb_l10n_cn.gen_chart41030200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_bnc"/>
+        </record> -->
+        <record id="mjb_l10n_cn.gen_chart41040000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_re"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart41040100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_re"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart42010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_lts"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart50010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010310" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010320" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010330" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010400" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010410" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010411" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010412" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010413" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010414" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010415" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010500" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010510" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010520" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010530" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010600" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010610" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010620" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010630" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010700" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010710" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010720" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010730" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010800" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010810" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart51010820" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_inv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart52010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart53010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart54010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart54020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart54030000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_oca"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60010100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60010200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60010300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60010400" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60010500" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_fe"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60110100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_fe"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60110200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_fe"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60210000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60310000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60410000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60510000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60510100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60510200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60510300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60510310" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60510320" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60510330" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60510340" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60510400" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60510410" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_rmb"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart60610000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_fa"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart61010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_ifv"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart61110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_ii"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart62010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart62020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart62030000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart63010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_aoi"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart63010100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_aoi"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart63010200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_aoi"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64010100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64010200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64010300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64010400" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64010410" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64010420" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64010430" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64010440" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64010450" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64010500" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020110" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020111" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020112" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020120" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020121" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020122" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020210" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020211" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020212" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020213" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020214" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020215" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020220" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020221" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020222" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020223" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020310" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020400" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020500" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020600" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64020610" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loc"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64030000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_bts"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64030100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_bts"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64030200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_bts"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64030300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_bts"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_fe"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart64210000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_fe"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart65010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart65020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart65110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart65210000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart65310000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart65410000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart65420000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010110" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010111" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010112" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010113" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010114" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010115" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010116" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010117" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010118" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010120" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010121" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010122" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010123" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010124" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010125" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010126" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010127" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010128" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010210" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010220" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010230" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010310" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010320" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010330" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010340" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010341" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010342" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010343" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010350" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66010400" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_se"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020110" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020120" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020130" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020140" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020190" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020400" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020500" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020510" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020520" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020530" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020610" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020620" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020630" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020640" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020700" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020710" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020711" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020712" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020713" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020714" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020715" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020800" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020810" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020820" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020830" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020840" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020850" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020860" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020900" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020910" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66020920" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021010" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021020" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021110" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021120" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021121" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021122" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021129" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021310" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021311" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021312" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021313" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021314" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021315" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021316" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021317" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021318" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021319" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021320" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021321" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021322" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021323" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021324" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021325" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021326" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021327" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021329" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021330" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021331" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021332" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021333" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021340" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021341" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021342" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021343" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021350" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021351" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021352" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021353" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021360" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021400" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021410" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021411" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021412" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021420" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021421" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021422" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021431" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021432" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021441" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021442" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021451" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021452" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021461" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021462" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021470" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021471" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021472" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021473" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021500" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021600" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021700" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021710" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021721" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021722" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021730" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021800" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021810" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021820" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021830" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66021900" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66022000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66022010" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66022020" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66022110" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66022120" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66030000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_fe"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66030100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_fe"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66030200" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_fe"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66030300" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_fe"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart66040000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_gae"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart67010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_awd"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart67110000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loe"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart67110100" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_ina"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart67110900" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loe"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart68011000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_lit"/>
+        </record>
+        <record id="mjb_l10n_cn.gen_chart69010000" model="account.account.template">
+            <field name="china_account_type" ref="mjb_financial_report_cn.cn_pl_loe"/>
+        </record>
+    </data>
+</odoo>

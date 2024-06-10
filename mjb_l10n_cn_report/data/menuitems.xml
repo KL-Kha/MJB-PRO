@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="mjb_account_reports_legal_statements_menu" name="Legal Statements" parent="account.menu_finance_reports" sequence="1" groups="account.group_account_user"/>
+    <menuitem id="mjb_account_reports_china_legal_profit_loss_menu" name="China Legal Profit &amp; Loss" parent="mjb_account_reports_legal_statements_menu" action="action_china_legal_profit_loss" groups="account.group_account_user"/>   
+    <menuitem id="mjb_account_reports_china_legal_balance_sheet_menu" name="China Legal Balance Sheet" parent="mjb_account_reports_legal_statements_menu" action="action_china_legal_balance_sheet" groups="account.group_account_user"/>
+</odoo>

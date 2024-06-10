@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <template id="mjb_journal_entry_report">
+            <t t-call="web.html_container">
+                <t t-set="page_number" t-value="0"/>
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                     <t t-set="o" t-value="o"/>
+                     <div class="page"> 
+                        <t t-set="page_number" t-value="page_number + 1"/>
+                        <t t-set="number_of_section" t-value="int(round(len(o.line_ids)/5+0.5))"/>
+                        <t t-set="number_of_last_section" t-value="len(o.line_ids)%5"/>
+                        <t t-set="number_of_limit_last_page" t-value="len(o.line_ids)-number_of_last_section"/>
+                        <t t-set="number_of_current_line" t-value="0"/>
+                        <t t-foreach="range(number_of_section)" t-as="sec">
+                            <t t-set="number_of_last_current_line" t-value="number_of_current_line" />
+                            <t t-if="number_of_limit_last_page &gt; number_of_current_line">
+                                <div style="page-break-inside:avoid;">
+                                    <h2 style="text-align: center;" t-field="o.company_id"/>
+                                    <h2 style="text-align: center;">Journal Entry</h2>
+                                    <table class="table table-sm o_main_table" style="padding: 1px; margin: 1px;">
+                                        <tr>
+                                            <td><strong>Reference:</strong></td>
+                                            <td><span t-field="o.ref"/></td>
+                                            <td><strong>Date:</strong></td>
+                                            <td><span t-field="o.date"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>No:</strong></td>
+                                            <td><span t-field="o.name"/></td>
+                                            <td><strong>Period:</strong></td>
+                                            <td><span t-esc="o.date.strftime('%Y-%m')"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Voucher No:</strong></td>
+                                            <td><t t-esc="page_number"/> (<t t-esc="sec + 1"/>/<t t-esc="number_of_section"/>)</td>
+                                            <td><strong></strong></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                    <table class="table table-sm o_main_table" style="padding: 1px; margin: 1px;">
+                                        <thead>
+                                            <tr>
+                                                <th>Description</th>
+                                                <th>Account Name</th>
+                                                <th>Debit</th>
+                                                <th>Credit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="o.line_ids[number_of_last_current_line:number_of_current_line+5]" t-as="move_line">
+                                                <td t-att-style="td_style"><span t-field="move_line.name" /></td>
+                                                <td t-att-style="td_style"><span t-field="move_line.account_id" /></td>
+                                                <td t-att-style="td_style"><span t-field="move_line.debit" /></td>
+                                                <td t-att-style="td_style"><span t-field="move_line.credit" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4"><strong>Continue to next section</strong></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table table-sm o_main_table" style="padding: 1px; margin: 1px;">
+                                        <tr>
+                                            <td><strong>Operation:</strong></td>
+                                            <td></td>
+                                            <td><strong>Validation:</strong></td>
+                                            <td></td>
+                                            <td><strong>Post:</strong></td>
+                                            <td></td>
+                                            <td><strong>Cashier:</strong></td>
+                                            <td></td>
+                                            <td><strong>Preparation:</strong></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                            </t>
+                            <t t-if="number_of_limit_last_page &lt;= number_of_current_line">
+                                <div style="page-break-inside:avoid;">
+                                    <h2 style="text-align: center;" t-field="o.company_id"/>
+                                    <h2 style="text-align: center;">Journal Entry</h2>
+                                    <table class="table table-sm o_main_table" style="padding: 1px; margin: 1px;">
+                                        <tr>
+                                            <td><strong>Reference:</strong></td>
+                                            <td><span t-field="o.ref"/></td>
+                                            <td><strong>Date:</strong></td>
+                                            <td><span t-field="o.date"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>No:</strong></td>
+                                            <td><span t-field="o.name"/></td>
+                                            <td><strong>Period:</strong></td>
+                                            <td><span t-esc="o.date.strftime('%Y-%m')"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Voucher No:</strong></td>
+                                            <td><t t-esc="page_number"/> (<t t-esc="sec + 1"/>/<t t-esc="number_of_section"/>)</td>
+                                            <td><strong></strong></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                    <table class="table table-sm o_main_table" style="padding: 1px; margin: 1px;">
+                                        <thead>
+                                            <tr>
+                                                <th>Description</th>
+                                                <th>Account Name</th>
+                                                <th>Debit</th>
+                                                <th>Credit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="o.line_ids[number_of_last_current_line:]" t-as="move_line">
+                                                <td t-att-style="td_style"><span t-field="move_line.name" /></td>
+                                                <td t-att-style="td_style"><span t-field="move_line.account_id" /></td>
+                                                <td t-att-style="td_style"><span t-field="move_line.debit" /></td>
+                                                <td t-att-style="td_style"><span t-field="move_line.credit" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><strong>Total</strong></td>
+                                                <td><span t-field="o.amount_total_signed"/></td>
+                                                <td><span t-field="o.amount_total_signed"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table table-sm o_main_table" style="padding: 1px; margin: 1px;">
+                                        <tr>
+                                            <td><strong>Operation:</strong></td>
+                                            <td></td>
+                                            <td><strong>Validation:</strong></td>
+                                            <td></td>
+                                            <td><strong>Post:</strong></td>
+                                            <td></td>
+                                            <td><strong>Cashier:</strong></td>
+                                            <td></td>
+                                            <td><strong>Preparation:</strong></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </t>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+                        
+<!--         <report
+            id="mjb_action_journal_entry_report"
+            model="account.move"
+            string="Print Journal Entry"
+            report_type="qweb-pdf"
+            name="mjb_l10n_cn_report.mjb_journal_entry_report"
+            file="mjb_l10n_cn_report.mjb_journal_entry_report"/> -->
+
+        <record id="mjb_action_journal_entry_report" model="ir.actions.report">
+            <field name="name">Print Journal Entry</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">mjb_l10n_cn_report.mjb_journal_entry_report</field>
+            <field name="report_file">mjb_l10n_cn_report.mjb_journal_entry_report</field>
+            <field name="binding_model_id" ref="model_account_report_line"></field>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

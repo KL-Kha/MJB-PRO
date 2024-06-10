@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		
+		<record id="report_cn_pl" model="account.financial.html.report">
+            <field name="name">Income Statement</field>
+            <field name="analytic" eval="True"/>
+            <field name="unfold_all_filter" eval="True"/>
+            <field name="show_journal_filter" eval="True"/>
+            <field name='parent_id' ref='account.account_reports_legal_statements_menu'/>
+        </record>
+
+        <record id="report_cn_pl_rb" model="account.financial.html.report.line">
+            <field name="name">1, Revenue from Main Business</field>
+            <field name="code">PL_01</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="69"/>
+            <field name="groupby">partner_id</field>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','流动资产：')]"/>
+            <field name="level" eval="0" />
+        </record>
+
+        <record id="report_cn_pl_lop" model="account.financial.html.report.line">
+            <field name="name">Less: Operation Cost</field>
+            <field name="code">PL_02</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="70"/>
+            <field name="groupby">partner_id</field>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','减：营业成本')]"/>
+            <field name="level" eval="2" />
+        </record>
+
+        <record id="report_cn_pl_bts" model="account.financial.html.report.line">
+            <field name="name">Business Tax and Surcharges</field>
+            <field name="code">PL_03</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="71"/>
+            <field name="groupby">partner_id</field>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','营业税金及附加')]"/>
+            <field name="level" eval="2" />
+        </record>
+
+        <record id="report_cn_pl_se" model="account.financial.html.report.line">
+            <field name="name">Selling Expense</field>
+            <field name="code">PL_04</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="72"/>
+            <field name="groupby">partner_id</field>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','销售费用')]"/>
+            <field name="level" eval="2" />
+        </record>
+
+        <record id="report_cn_pl_gae" model="account.financial.html.report.line">
+            <field name="name">General and Administrative Expense</field>
+            <field name="code">PL_05</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="73"/>
+            <field name="groupby">partner_id</field>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','管理费用')]"/>
+            <field name="level" eval="2" />
+        </record>
+
+        <record id="report_cn_pl_fe" model="account.financial.html.report.line">
+            <field name="name">Financial Expense</field>
+            <field name="code">PL_06</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="74"/>
+            <field name="groupby">partner_id</field>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','财务费用')]"/>
+            <field name="level" eval="2" />
+        </record>
+
+        <record id="report_cn_pl_awd" model="account.financial.html.report.line">
+            <field name="name">On Assets Write - Down</field>
+            <field name="code">PL_07</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="75"/>
+            <field name="groupby">partner_id</field>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','资产减值损失')]"/>
+            <field name="level" eval="2" />
+        </record>
+
+        <record id="report_cn_pl_ivc" model="account.financial.html.report.line">
+            <field name="name">Add: Income from Fair Value Changed(put "-" if loss)</field>
+            <field name="code">PL_08</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="76"/>
+            <field name="groupby">partner_id</field>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','加：公允价值变动收益（损失以“-”号填列')]"/>
+            <field name="level" eval="2" />
+        </record>
+
+        <record id="report_cn_pl_ii" model="account.financial.html.report.line">
+            <field name="name">Investment Income(put "-" if loss)</field>
+            <field name="code">PL_09</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="77"/>
+            <field name="groupby">partner_id</field>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','投资收益（损失以“－”号填列')]"/>
+            <field name="level" eval="2" />
+        </record>
+
+        <record id="report_cn_pl_itj" model="account.financial.html.report.line">
+            <field name="name">Including：To Joint Management Enterprise and Joint Enterprise's Investment Income</field>
+            <field name="code">PL_10</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="78"/>
+            <field name="groupby">partner_id</field>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','其中：对联营企业和合营企业的投资收益')]"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="report_cn_pl_op" model="account.financial.html.report.line">
+            <field name="name">2, Operation Profit (put "-" if loss)</field>
+            <field name="code">PL_11</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="79"/>
+            <field name="formulas">PL_01 - PL_02 - PL_03 - PL_04 - PL_05 - PL_06 - PL_07 + PL_08 + PL_09</field>
+            <field name="level" eval="0"/>
+        </record>
+
+        <record id="report_cn_pl_ano" model="account.financial.html.report.line">
+            <field name="name">Add: Non-operating Income</field>
+            <field name="code">PL_12</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="80"/>
+            <field name="groupby">partner_id</field>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','加：营业外收入')]"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="report_cn_pl_lno" model="account.financial.html.report.line">
+            <field name="name">Less: Non-operating Expense</field>
+            <field name="code">PL_13</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="81"/>
+            <field name="groupby">partner_id</field>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','减：营业外支出')]"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="report_cn_pl_inc" model="account.financial.html.report.line">
+            <field name="name">Including: Non-current Assets Handling Loss</field>
+            <field name="code">PL_14</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="82"/>
+            <field name="groupby">partner_id</field>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','其中：非流动资产处置损失')]"/>
+            <field name="level" eval="3"/>
+        </record>
+
+        <record id="report_cn_pl_tp" model="account.financial.html.report.line">
+            <field name="name">3, Total Profit (put "-" if loss)</field>
+            <field name="code">PL_15</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="83"/>
+            <field name="formulas">PL_11 + PL_12 - PL_13</field>
+            <field name="level" eval="0"/>
+        </record>
+
+        <record id="report_cn_pl_lit" model="account.financial.html.report.line">
+            <field name="name">Less: Income Tax</field>
+            <field name="code">PL_16</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="84"/>
+            <field name="groupby">partner_id</field>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.china_account_type', '=','减：所得税费用')]"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="report_cn_pl_np" model="account.financial.html.report.line">
+            <field name="name">4, Net Profit (put "-" if loss)</field>
+            <field name="code">PL_17</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="85"/>
+            <field name="formulas">PL_15 - PL_16</field>
+            <field name="level" eval="0"/>
+        </record>
+
+        <record id="report_cn_pl_ps" model="account.financial.html.report.line">
+            <field name="name">5, Per share</field>
+            <field name="code">PL_18</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="86"/>
+            <field name="level" eval="0"/>
+        </record>
+
+        <record id="report_cn_pl_bei" model="account.financial.html.report.line">
+            <field name="name">(1) Basic Each Income</field>
+            <field name="code">PL_19</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="87"/>
+            <field name="domain" eval="[('account_id.china_account_type', '=','（一）基本每股收益')]"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="report_cn_pl_dei" model="account.financial.html.report.line">
+            <field name="name">(2) Dilutes Each Income</field>
+            <field name="code">PL_20</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="88"/>
+            <field name="domain" eval="[('account_id.china_account_type', '=','（二）稀释每股收益')]"/>
+            <field name="level" eval="2"/>
+        </record>
+
+        <record id="report_cn_pl_oci" model="account.financial.html.report.line">
+            <field name="name">6, Other Comprehensive Income</field>
+            <field name="code">PL_21</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="89"/>
+            <field name="level" eval="0"/>
+        </record>
+
+        <record id="report_cn_pl_tci" model="account.financial.html.report.line">
+            <field name="name"> 7, Total Comprehensive Income</field>
+            <field name="code">PL_22</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="report_cn_pl"/>
+            <field name="sequence" eval="90"/>
+            <field name="formulas">PL_17</field>
+            <field name="level" eval="0"/>
+        </record>
+
+	</data>
+</odoo>

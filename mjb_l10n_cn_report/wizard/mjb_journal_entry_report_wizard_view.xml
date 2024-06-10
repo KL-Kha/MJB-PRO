@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_mjb_journal_entry_report_wizard" model="ir.ui.view">
+            <field name="name">mjb.journal.entry.report.wizard</field>
+            <field name="model">mjb.journal.entry.report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Journal Entry">
+                    <group>
+                        <group>
+                            <field name="start_date" />
+                            <field name="end_date" />
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="action_print" string="Print" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_mjb_journal_entry_report_wizard" model="ir.actions.act_window">
+            <field name="name">Journal Entries</field>
+            <field name="res_model">mjb.journal.entry.report.wizard</field>
+            <field name="view_id" ref="view_mjb_journal_entry_report_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Print Journal Entries" action="action_mjb_journal_entry_report_wizard"
+            id="menu_mjb_journal_entry_report_wizard"
+            parent="account_reports.account_reports_audit_reports_menu" sequence="117" groups="account.group_account_manager"/>
+
+    </data>
+</odoo>

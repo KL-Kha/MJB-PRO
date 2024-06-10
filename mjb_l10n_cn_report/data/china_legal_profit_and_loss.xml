@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mjb_account_financial_report_profitandloss0" model="account.report">
+        <field name="name">China Legal Profit &amp; Loss</field>
+        <field name="filter_analytic_groupby" eval="True"/>
+        <field name="filter_unfold_all" eval="True"/>
+        <field name="filter_journals" eval="True"/>
+        <field name="filter_multi_company">selector</field>
+        <field name="default_opening_date_filter">this_year</field>
+        <field name="column_ids">
+            <record id="mjb_account_financial_report_profitandloss0_column" model="account.report.column">
+                <field name="name">Balance</field>
+                <field name="expression_label">balance</field>
+                <field name="figure_type">monetary</field>
+                <field name="sortable">False</field>
+                <field name="blank_if_zero">True</field>
+            </record>
+        </field>
+        <field name="line_ids">
+            <record id="mjb_account_financial_report_income0" model="account.report.line">
+                <field name="name">Income</field>
+                <field name="code">C_INC</field>
+                <field name="groupby">account_id</field>
+                <field name="foldable" eval="True"/>
+                <field name="expression_ids">
+                    <record id="mjb_account_financial_report_income0_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">domain</field>
+                        <field name="formula" eval="[('account_id.tag_ids.x_code', 'in', ['income'])]" />
+                        <field name="subformula">-sum</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+            <record id="mjb_account_financial_report_operation_cost0" model="account.report.line">
+                <field name="name">Operation Costs</field>
+                <field name="code">C_OPC</field>
+                <field name="groupby">account_id</field>
+                <field name="foldable" eval="True"/>
+                <field name="expression_ids">
+                    <record id="mjb_account_financial_report_operation_cost0_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">domain</field>
+                        <field name="formula" eval="[('account_id.tag_ids.x_code', 'in', ['operation_costs'])]" />
+                        <field name="subformula">sum</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+            <record id="mjb_account_financial_report_operation_tax_addons0" model="account.report.line">
+                <field name="name">Operation tax and add-ons</field>
+                <field name="code">C_OPTAD</field>
+                <field name="groupby">account_id</field>
+                <field name="foldable" eval="True"/>
+                <field name="expression_ids">
+                    <record id="mjb_account_financial_report_operation_tax_addons0_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">domain</field>
+                        <field name="formula" eval="[('account_id.tag_ids.x_code', 'in', ['operation_tax_and_add_ons'])]" />
+                        <field name="subformula">sum</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+                <record id="mjb_account_financial_report_sales_expense0" model="account.report.line">
+                <field name="name">Sales Expenses</field>
+                <field name="code">C_SEXP</field>
+                <field name="groupby">account_id</field>
+                <field name="foldable" eval="True"/>
+                <field name="expression_ids">
+                    <record id="mjb_account_financial_report_sales_expense0_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">domain</field>
+                        <field name="formula" eval="[('account_id.tag_ids.x_code', 'in', ['sales_expenses'])]" />
+                        <field name="subformula">sum</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+            <record id="mjb_account_financial_report_overheard_expense0" model="account.report.line">
+                <field name="name">Overheard Expenses</field>
+                <field name="code">C_OEXP</field>
+                <field name="groupby">account_id</field>
+                <field name="foldable" eval="True"/>
+                <field name="expression_ids">
+                    <record id="mjb_account_financial_report_overheard_expense0_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">domain</field>
+                        <field name="formula" eval="[('account_id.tag_ids.x_code', 'in', ['overhead_expenses'])]" />
+                        <field name="subformula">sum</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+            <record id="mjb_account_financial_report_financial_expense0" model="account.report.line">
+                <field name="name">Financial Expenses</field>
+                <field name="code">C_FEXP</field>
+                <field name="groupby">account_id</field>
+                <field name="foldable" eval="True"/>
+                <field name="expression_ids">
+                    <record id="mjb_account_financial_report_financial_expense0_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">domain</field>
+                        <field name="formula" eval="[('account_id.tag_ids.x_code', 'in', ['financial_expenses'])]" />
+                        <field name="subformula">sum</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+            <record id="mjb_account_financial_report_devaluation_lost_asset0" model="account.report.line">
+                <field name="name">Devaluation Lost of assets</field>
+                <field name="code">C_DEP</field>
+                <field name="groupby">account_id</field>
+                <field name="foldable" eval="True"/>
+                <field name="expression_ids">
+                    <record id="mjb_account_financial_report_devaluation_lost_asset0_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">domain</field>
+                        <field name="formula" eval="[('account_id.tag_ids.x_code', 'in', ['devaluation_lost_of_assets'])]" />
+                        <field name="subformula">sum</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+            <record id="mjb_account_financial_report_net_changes_asset0" model="account.report.line">
+                <field name="name">Net changes in fair value(loss of "-")</field>
+                <field name="code">C_NCFV</field>
+                <field name="groupby">account_id</field>
+                <field name="foldable" eval="True"/>
+                <field name="expression_ids">
+                    <record id="mjb_account_financial_report_net_changes_asset0_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">domain</field>
+                        <field name="formula" eval="[('account_id.tag_ids.x_code', 'in', ['net_changes_in_fair_value'])]" />
+                        <field name="subformula">sum</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+            <record id="mjb_account_financial_report_net_investment_income0" model="account.report.line">
+                <field name="name">Net investment income(loss of "-")</field>
+                <field name="code">C_NINVINC</field>
+                <field name="groupby">account_id</field>
+                <field name="foldable" eval="True"/>
+                <field name="expression_ids">
+                    <record id="mjb_account_financial_report_net_investment_income0_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">domain</field>
+                        <field name="formula" eval="[('account_id.tag_ids.x_code', 'in', ['net_investment_income'])]" />
+                        <field name="subformula">sum</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+            <record id="mjb_account_financial_report_prior_icome_adjustment0" model="account.report.line">
+                <field name="name">Prior year income adjustment</field>
+                <field name="code">C_PYINCAD</field>
+                <field name="groupby">account_id</field>
+                <field name="foldable" eval="True"/>
+                <field name="expression_ids">
+                    <record id="mjb_account_financial_report_prior_icome_adjustment0_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">domain</field>
+                        <field name="formula" eval="[('account_id.tag_ids.x_code', 'in', ['prior_year_income_adjustment'])]" />
+                        <field name="subformula">sum</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+            <record id="mjb_account_financial_report_operation_profit0" model="account.report.line">
+                <field name="name">Operation profit(loss of "-")</field>
+                <field name="code">C_OPROF</field>
+                <field name="foldable" eval="True"/>
+                <field name="expression_ids">
+                    <record id="mjb_account_financial_report_operation_profit0_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">aggregation</field>
+                        <field name="formula">C_INC.balance + C_NCFV.balance + C_NINVINC.balance - C_OPC.balance - C_SEXP.balance - C_OEXP.balance - C_FEXP.balance - C_DEP.balance</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+            <record id="mjb_account_financial_report_nonoperation_income0" model="account.report.line">
+                <field name="name">Non-operation Income</field>
+                <field name="code">C_NONOPINC</field>
+                <field name="groupby">account_id</field>
+                <field name="foldable" eval="True"/>
+                <field name="expression_ids">
+                    <record id="mjb_account_financial_report_nonoperation_income0_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">domain</field>
+                        <field name="formula" eval="[('account_id.tag_ids.x_code', 'in', ['non_operation_income'])]" />
+                        <field name="subformula">sum</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+            <record id="mjb_account_financial_report_nonoperation_expenses0" model="account.report.line">
+                <field name="name">Non-operation Expenses</field>
+                <field name="code">C_NONOPEXP</field>
+                <field name="groupby">account_id</field>
+                <field name="foldable" eval="True"/>
+                <field name="expression_ids">
+                    <record id="mjb_account_financial_report_nonoperation_expenses0_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">domain</field>
+                        <field name="formula" eval="[('account_id.tag_ids.x_code', 'in', ['non_operation_expenses'])]" />
+                        <field name="subformula">sum</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+            <record id="mjb_account_financial_report_total_profit0" model="account.report.line">
+                <field name="name">Total profit (loss of "-")</field>
+                <field name="code">C_TOPRO</field>
+                <field name="foldable" eval="True"/>
+                <field name="expression_ids">
+                    <record id="mjb_account_financial_report_total_profit0_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">aggregation</field>
+                        <field name="formula">C_OPROF.balance + C_NONOPINC.balance - C_NONOPEXP.balance</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+            <record id="mjb_account_financial_report_profit_tax_expenses0" model="account.report.line">
+                <field name="name">Profit tax expenses</field>
+                <field name="code">C_PROTAXEX</field>
+                <field name="groupby">account_id</field>
+                <field name="foldable" eval="True"/>
+                <field name="expression_ids">
+                    <record id="mjb_account_financial_report_profit_tax_expenses0_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">domain</field>
+                        <field name="formula" eval="[('account_id.tag_ids.x_code', 'in', ['profit_tax_expenses'])]" />
+                        <field name="subformula">sum</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+            <record id="mjb_account_financial_report_net_profit0" model="account.report.line">
+                <field name="name">NET PROFIT</field>
+                <field name="code">C_NEP</field>
+                <field name="foldable" eval="True"/>
+                <field name="expression_ids">
+                    <record id="mjb_account_financial_report_net_profit0_expression" model="account.report.expression">
+                        <field name="label">balance</field>
+                        <field name="engine">aggregation</field>
+                        <field name="formula">C_TOPRO.balance - C_PROTAXEX.balance</field>
+                        <field name="date_scope">normal</field>
+                        <field name="figure_type">float</field>
+                    </record>
+                </field>
+            </record>
+        </field>
+    </record>
+
+    <record id="action_china_legal_profit_loss" model="ir.actions.client">
+        <field name="name">China Legal Profit &amp; Loss</field>
+        <field name="tag">account_report</field>
+        <field name="context" eval="{'report_id': ref('mjb_account_financial_report_profitandloss0')}"/>
+    </record>
+</odoo>

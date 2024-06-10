@@ -1,0 +1,659 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mjb_financial_report_cn
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e-20230313\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-24 06:11+0000\n"
+"PO-Revision-Date: 2023-03-24 06:11+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pl_bei
+msgid "(1) Basic Each Income"
+msgstr "（一）基本每股收益"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pl_dei
+msgid "(2) Dilutes Each Income"
+msgstr "（二）稀释每股收益"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pl_rmb
+msgid "1, Operating Income"
+msgstr "一、营业收入"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_rb
+msgid "1, Revenue from Main Business"
+msgstr "1、主营业务收入"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_op
+msgid "2, Operation Profit (put \"-\" if loss)"
+msgstr "2、营业利润（亏损填“-”）"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_tp
+msgid "3, Total Profit (put \"-\" if loss)"
+msgstr "3、总利润（亏损填“-”）"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_np
+msgid "4, Net Profit (put \"-\" if loss)"
+msgstr "4、净利润（亏损填“-”）"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_tci
+msgid "7, Total Comprehensive Income"
+msgstr "7、综合收益总额"
+
+#. module: mjb_financial_report_cn
+#: model_terms:ir.ui.view,arch_db:mjb_financial_report_cn.financial_report_cn_account_type_form
+msgid "<span>Account Name</span>"
+msgstr "科目名称"
+
+#. module: mjb_financial_report_cn
+#: model:ir.model,name:mjb_financial_report_cn.model_account_account
+msgid "Account"
+msgstr "账户"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_ap
+#: model:china.account.type,name:mjb_financial_report_cn.cn_ap
+msgid "Accounts Payable"
+msgstr "应付账款"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_ar
+#: model:china.account.type,name:mjb_financial_report_cn.cn_ar
+msgid "Accounts Receivable"
+msgstr "应收账款"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_nclf
+msgid "Accrued Expenses"
+msgstr "预提费用"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_apr
+#: model:china.account.type,name:mjb_financial_report_cn.cn_apr
+msgid "Accrued Payroll"
+msgstr "应付职工薪酬"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_goa
+msgid "Accumulated Amortization"
+msgstr "累计摊销"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_ad
+#: model:china.account.type,name:mjb_financial_report_cn.cn_ad
+msgid "Accumulated Depreciation"
+msgstr "累计折旧"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_ivc
+msgid "Add: Income from Fair Value Changed(put \"-\" if loss)"
+msgstr "加：公允价值变动收益（损失以“-”号填列）"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pl_ifv
+msgid "Add: Income from Fair Value Changed(put \\\"-\\\" if loss)"
+msgstr "加：公允价值变动收益（损失以“-”号填列）"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_ano
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pl_aoi
+msgid "Add: Non-operating Income"
+msgstr "加：营业外收入"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_afc
+#: model:china.account.type,name:mjb_financial_report_cn.cn_afc
+msgid "Advances from Customers"
+msgstr "预收款项"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_asset
+msgid "Assets"
+msgstr "资产"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_sma
+#: model:china.account.type,name:mjb_financial_report_cn.cn_sma
+msgid "Available for Sale Monetary Assets"
+msgstr "可供出售金融资产"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.column,name:mjb_financial_report_cn.financial_report_cn_column
+#: model:account.report.column,name:mjb_financial_report_cn.report_cn_pl_column
+msgid "Balance"
+msgstr "余额"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_bankcash
+msgid "Bank and Cash"
+msgstr "银行和现金"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_bap
+#: model:china.account.type,name:mjb_financial_report_cn.cn_bap
+msgid "Biologically Assets for Production"
+msgstr "生产性生物资产"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_bp
+#: model:china.account.type,name:mjb_financial_report_cn.cn_bp
+msgid "Bonds Payable"
+msgstr "应付债券"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_bts
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pl_bts
+msgid "Business Tax and Surcharges"
+msgstr "营业税金及附加"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_cr
+#: model:china.account.type,name:mjb_financial_report_cn.cn_cur_cr
+msgid "Capital Reserves"
+msgstr "资本公积"
+
+#. module: mjb_financial_report_cn
+#: model:ir.model,name:mjb_financial_report_cn.model_china_account_type
+#: model:ir.model.fields,field_description:mjb_financial_report_cn.field_account_account__china_account_type
+#: model:ir.model.fields,field_description:mjb_financial_report_cn.field_account_account_template__china_account_type
+#: model_terms:ir.ui.view,arch_db:mjb_financial_report_cn.financial_report_cn_account_type_form
+#: model_terms:ir.ui.view,arch_db:mjb_financial_report_cn.financial_report_cn_account_type_tree
+#: model_terms:ir.ui.view,arch_db:mjb_financial_report_cn.view_financial_report
+msgid "China Account Type"
+msgstr "中国科目类型"
+
+#. module: mjb_financial_report_cn
+#: model:account.report,name:mjb_financial_report_cn.financial_report_cn
+#: model:ir.actions.client,name:mjb_financial_report_cn.action_financial_report_cn
+#: model:ir.ui.menu,name:mjb_financial_report_cn.financial_report_cn_menu
+msgid "China Balance Sheet"
+msgstr "中国资产负债表"
+
+#. module: mjb_financial_report_cn
+#: model:account.report,name:mjb_financial_report_cn.report_cn_pl
+#: model:ir.actions.client,name:mjb_financial_report_cn.action_report_cn_pl
+#: model:ir.ui.menu,name:mjb_financial_report_cn.report_cn_pl_menu
+msgid "China Profit & Loss"
+msgstr "中国利润表"
+
+#. module: mjb_financial_report_cn
+#: model:ir.model.fields,field_description:mjb_financial_report_cn.field_china_account_type__create_uid
+msgid "Created by"
+msgstr "创建者"
+
+#. module: mjb_financial_report_cn
+#: model:ir.model.fields,field_description:mjb_financial_report_cn.field_china_account_type__create_date
+msgid "Created on"
+msgstr "创建于"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_curasset
+msgid "Current Assets"
+msgstr "流动资产"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_cur_asset
+msgid "Current Assets"
+msgstr "流动资产"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_cl
+msgid "Current Liabilities"
+msgstr "流动负债"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_cl
+msgid "Current Liabilities"
+msgstr "流动负债"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_de
+#: model:china.account.type,name:mjb_financial_report_cn.cn_de
+msgid "Development Expenditures"
+msgstr "开发支出"
+
+#. module: mjb_financial_report_cn
+#: model:ir.model.fields,field_description:mjb_financial_report_cn.field_china_account_type__display_name
+msgid "Display Name"
+msgstr "显示名称"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_dfa
+#: model:china.account.type,name:mjb_financial_report_cn.cn_cur_dfa
+msgid "Disposal of Fixed Assets"
+msgstr "固定资产清理"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_dp
+#: model:china.account.type,name:mjb_financial_report_cn.cn_dp
+msgid "Dividends Payable"
+msgstr "应付股利"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_dr
+#: model:china.account.type,name:mjb_financial_report_cn.cn_intr
+msgid "Dividends Receivable"
+msgstr "应收股利"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_em
+#: model:china.account.type,name:mjb_financial_report_cn.cn_em
+msgid "Engineering Material"
+msgstr "工程物资"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_ere
+#: model:china.account.type,name:mjb_financial_report_cn.cn_ere
+msgid "Equity Real Estate"
+msgstr "投资性房地产"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_fe
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pl_fe
+msgid "Financial Expense"
+msgstr "财务费用"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_fa
+#: model:china.account.type,name:mjb_financial_report_cn.cn_fa
+msgid "Fixed Assets"
+msgstr "固定资产"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_fl
+#: model:china.account.type,name:mjb_financial_report_cn.cn_cur_fl
+msgid "Forecasted Liabilities"
+msgstr "预计负债"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_goa
+msgid "Gas and Oil Assets"
+msgstr "天然气和石油资产"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_gae
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pl_gae
+msgid "General and Administrative Expense"
+msgstr "管理费用"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_gw
+#: model:china.account.type,name:mjb_financial_report_cn.cn_gw
+msgid "Goodwill"
+msgstr "商誉"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_hms
+#: model:china.account.type,name:mjb_financial_report_cn.cn_hms
+msgid "Held-to-Maturity Securities"
+msgstr "持有至到期投资"
+
+#. module: mjb_financial_report_cn
+#: model:ir.model.fields,field_description:mjb_financial_report_cn.field_china_account_type__id
+msgid "ID"
+msgstr "ID"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_inc
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pl_ina
+msgid "Including: Non-current Assets Handling Loss"
+msgstr "其中：非流动资产处置损失"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pl_ime
+msgid ""
+"Including: To Joint Management Enterprise and Joint Enterprise's Investment "
+"Income"
+msgstr "其中：对联营企业和合营企业的投资收益"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_itj
+msgid ""
+"Including：To Joint Management Enterprise and Joint Enterprise's Investment "
+"Income"
+msgstr "其中：对联营企业和合营企业的投资收益"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_tda
+#: model:china.account.type,name:mjb_financial_report_cn.cn_tda
+msgid "Income Tax Deferred Assets"
+msgstr "递延所得税资产"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_itdl
+#: model:china.account.type,name:mjb_financial_report_cn.cn_itdl
+msgid "Income Tax Deferred Liabilities"
+msgstr "递延所得税负债"
+
+#. module: mjb_financial_report_cn
+#: model:ir.model.fields,help:mjb_financial_report_cn.field_account_account__china_account_type
+#: model:ir.model.fields,help:mjb_financial_report_cn.field_account_account_template__china_account_type
+msgid "Information field for CN financial report"
+msgstr "中国财务报告的信息字段"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_ia
+#: model:china.account.type,name:mjb_financial_report_cn.cn_ia
+msgid "Intangible Assets"
+msgstr "无形资产"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_ip
+#: model:china.account.type,name:mjb_financial_report_cn.cn_ip
+msgid "Interest Payable"
+msgstr "应付利息"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_ir
+#: model:china.account.type,name:mjb_financial_report_cn.cn_dr
+msgid "Interest Receivable"
+msgstr "应收利息"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_inv
+#: model:china.account.type,name:mjb_financial_report_cn.cn_inv
+msgid "Inventories"
+msgstr "存货"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_ii
+msgid "Investment Income(put \"-\" if loss)"
+msgstr "投资收益（损失以“－”号填列）"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pl_ii
+msgid "Investment Income(put \\\"-\\\" if loss)"
+msgstr "投资收益（损失以“－”号填列"
+
+#. module: mjb_financial_report_cn
+#: model:ir.model.fields,field_description:mjb_financial_report_cn.field_china_account_type____last_update
+msgid "Last Modified on"
+msgstr "上次修改时间"
+
+#. module: mjb_financial_report_cn
+#: model:ir.model.fields,field_description:mjb_financial_report_cn.field_china_account_type__write_uid
+msgid "Last Updated by"
+msgstr "上次更新者"
+
+#. module: mjb_financial_report_cn
+#: model:ir.model.fields,field_description:mjb_financial_report_cn.field_china_account_type__write_date
+msgid "Last Updated on"
+msgstr "上次更新于"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_lit
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pl_lit
+msgid "Less: Income Tax"
+msgstr "减：所得税费用"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_lno
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pl_loe
+msgid "Less: Non-operating Expense"
+msgstr "减：营业外支出"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pl_loc
+msgid "Less: Operating Cost"
+msgstr "减：营业成本"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_lop
+msgid "Less: Operation Cost"
+msgstr "减：运营成本"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_lts
+#: model:china.account.type,name:mjb_financial_report_cn.cn_lts
+msgid "Less: Treasury Stock"
+msgstr "减：库存股"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_lia
+msgid "Liabilities"
+msgstr "负债"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_loe
+msgid "Liabilities and Owner’s Equity (or Shareholder Shares)"
+msgstr "负债和所有者权益（或股东股份）"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_ltap
+#: model:china.account.type,name:mjb_financial_report_cn.cn_ltap
+msgid "Long-term Accounts Payable"
+msgstr "长期应付款"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_lar
+#: model:china.account.type,name:mjb_financial_report_cn.cn_cur_lar
+msgid "Long-term Accounts Receivable"
+msgstr "长期应收款"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_lde
+#: model:china.account.type,name:mjb_financial_report_cn.cn_lde
+msgid "Long-term Deferred Expenditure"
+msgstr "长摊待摊费用"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_lei
+#: model:china.account.type,name:mjb_financial_report_cn.cn_lei
+msgid "Long-term Equity Investment"
+msgstr "长期股权投资"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_ltl
+#: model:china.account.type,name:mjb_financial_report_cn.cn_ltl
+msgid "Long-term Loans"
+msgstr "长期借款"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_bnc
+msgid "Monetary Capital"
+msgstr "货币资金"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_mmf
+#: model:china.account.type,name:mjb_financial_report_cn.cn_mmf
+msgid "Money Market Funds"
+msgstr "交易性金融资产"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_mml
+#: model:china.account.type,name:mjb_financial_report_cn.cn_mml
+msgid "Money Market Liabilities"
+msgstr "交易性金融负债"
+
+#. module: mjb_financial_report_cn
+#: model:ir.model.fields,field_description:mjb_financial_report_cn.field_china_account_type__name
+msgid "Name"
+msgstr "名称"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_nca
+msgid "Non-Current Assets"
+msgstr "非流动资产"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_ncl
+msgid "Non-Current Liabilities"
+msgstr "非流动负债"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_nclf
+msgid "Non-Current Liabilities Falling Due within One Year"
+msgstr "一年内到期的非流动负债"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_ncl
+msgid "Non-Current Liabilities:"
+msgstr "非流动负债："
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_non_cur
+#: model:china.account.type,name:mjb_financial_report_cn.cn_non_cur
+msgid "Non-current Assets Falling Due Treasury Stock Within One Year"
+msgstr "一年内到期的非流动资产"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_np
+#: model:china.account.type,name:mjb_financial_report_cn.cn_np
+msgid "Notes Payable"
+msgstr "应付票据"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_nr
+#: model:china.account.type,name:mjb_financial_report_cn.cn_nr
+msgid "Notes Receivable"
+msgstr "应收票据"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_awd
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pl_awd
+msgid "On Assets Write - Down"
+msgstr "资产减值损失"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_oca
+#: model:china.account.type,name:mjb_financial_report_cn.cn_oca
+msgid "Other Current Assets"
+msgstr "其他流动资产"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_ocl
+#: model:china.account.type,name:mjb_financial_report_cn.cn_ocl
+msgid "Other Current Liabilities"
+msgstr "其他流动负债"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_onca
+#: model:china.account.type,name:mjb_financial_report_cn.cn_onca
+msgid "Other Non-Current Assets"
+msgstr "其他非流动资产"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_oncl
+#: model:china.account.type,name:mjb_financial_report_cn.cn_oncl
+msgid "Other Non-Current Liabilities"
+msgstr "其他非流动负债"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_op
+#: model:china.account.type,name:mjb_financial_report_cn.cn_op
+msgid "Other Payables"
+msgstr "其他应付款"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_or
+#: model:china.account.type,name:mjb_financial_report_cn.cn_or
+msgid "Other Receivable"
+msgstr "其他应收款"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_oci
+msgid "Other comprehensive income"
+msgstr "其他综合收益"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_oe
+msgid "Owner’s Equity：(Shareholders’ Equity)"
+msgstr "所有者权益：（股东权益）"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_pic
+#: model:china.account.type,name:mjb_financial_report_cn.cn_cur_pic
+msgid "Paid-in Capital(Shares)"
+msgstr "实收资本（或股本）"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_pre
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pre
+msgid "Prepayments"
+msgstr "预付款项"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_re
+#: model:china.account.type,name:mjb_financial_report_cn.cn_re
+msgid "Retained Earnings"
+msgstr "未分配利润"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.report_cn_pl_se
+#: model:china.account.type,name:mjb_financial_report_cn.cn_pl_se
+msgid "Selling Expense"
+msgstr "销售费用"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_stl
+#: model:china.account.type,name:mjb_financial_report_cn.cn_stl
+msgid "Short-term Loans"
+msgstr "短期借款"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_sap
+#: model:china.account.type,name:mjb_financial_report_cn.cn_sap
+msgid "Special Accounts Payable"
+msgstr "专项应付款"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_sr
+#: model:china.account.type,name:mjb_financial_report_cn.cn_sr
+msgid "Surplus Reserves"
+msgstr "盈余公积"
+
+#. module: mjb_financial_report_cn
+#: model:account.report.line,name:mjb_financial_report_cn.financial_report_cn_tp
+#: model:china.account.type,name:mjb_financial_report_cn.cn_cur_tp
+msgid "Taxes Payable"
+msgstr "应交税费"
+
+#. module: mjb_financial_report_cn
+#: model:ir.model,name:mjb_financial_report_cn.model_account_account_template
+msgid "Templates for Accounts"
+msgstr "科目模板"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_tca
+msgid "Total Current Assets"
+msgstr "流动资产合计"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_tcl
+msgid "Total Current Liabilities"
+msgstr "流动负债合计"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_tl
+msgid "Total Liabilities"
+msgstr "负债合计"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_tnca
+msgid "Total Non-Current Assets"
+msgstr "非流动资产合计"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_tncl
+msgid "Total Non-Current Liabilities"
+msgstr "非流动负债合计"
+
+#. module: mjb_financial_report_cn
+#: model:china.account.type,name:mjb_financial_report_cn.cn_toe
+msgid "Total Owner’s Equity"
+msgstr "所有者权益（或股东权益）合计"
