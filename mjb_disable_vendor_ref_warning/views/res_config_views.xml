@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_configuration_ext" model="ir.ui.view">
+        <field name="name">view_account_configuration_ext</field>
+        <field name="model">res.config.settings</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='analytic']" position="after">
+                <h2>Vendor Ref Warning</h2>
+                <div class="row mt16 o_settings_container"  groups="account.group_account_user">
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_left_pane"/>
+                            <div class="o_setting_left_pane">
+                                <field name="disable_vendor_ref_warning"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                            <span class="o_form_label">Disable Vendor Ref Warning</span>
+                            <div class="text-muted">
+                                Override to disable the RedirectWarning on duplicate supplier references
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
